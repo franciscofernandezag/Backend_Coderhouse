@@ -1,9 +1,9 @@
 {
-  "name": "backend_coderhouse",
+  "name": "3er-desafio",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev": "nodemon src/index.js"
   },
