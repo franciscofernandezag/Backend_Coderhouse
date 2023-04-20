@@ -1,47 +1,11 @@
 [
   {
     "id": 1,
-    "code": "CH-113",
-    "title": "chaqueta",
-    "description": "chaqueta de cuero para hombre",
-    "price": 20.9,
-    "thumbnail": "URL Imagen1",
-    "stock": 10
-  },
-  {
-    "id": 2,
-    "code": "PA-212",
-    "title": "pantalon",
-    "description": "pantalon de vestir",
-    "price": 10.9,
-    "thumbnail": "URL Imagen2",
-    "stock": 20
-  },
-  {
-    "id": 3,
-    "code": "PO-216",
-    "title": "polera",
-    "description": "polera de mujer",
-    "price": 5.55,
-    "thumbnail": "URL Imagen3",
-    "stock": 10
-  },
-  {
-    "id": 4,
-    "code": "ZA-117",
-    "title": "zapatilla",
-    "description": "zapatillas deportivas",
-    "price": 88.9,
-    "thumbnail": "URL Imagen4",
-    "stock": 100
-  },
-  {
-    "id": 5,
-    "code": "GO-319",
-    "title": "gorro",
-    "description": "Gorro de invierno",
-    "price": 9.99,
-    "thumbnail": "URL Imagen5",
-    "stock": 10
+    "code": "CA-121",
+    "title": "Camisa",
+    "description": "Camisa de algodón para mujer",
+    "price": 15.99,
+    "thumbnail": "URL Imagen6",
+    "stock": 5
   }
 ]
