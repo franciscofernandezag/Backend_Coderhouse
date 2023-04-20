@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "code": "CA-121",
+    "title": "Camisa",
+    "description": "Camisa de algodón para mujer",
+    "price": 15.99,
+    "thumbnail": "URL Imagen6",
+    "stock": 5
+  },
+  {
+    "id": 2,
+    "code": "IN-345",
+    "title": "interior",
+    "description": "ropa interior",
+    "price": 15.99,
+    "thumbnail": "URL Imagen7",
+    "stock": 50
+  },
+  {
+    "id": 3,
+    "code": "CO-22",
+    "title": "corbata",
+    "description": "corbata negra",
+    "price": 88.55,
+    "thumbnail": "URL Imagen8",
+    "stock": 80
+  },
+  {
+    "id": 4,
+    "code": "CA-123",
+    "title": "calcetin",
+    "description": "calcetin mujer mujer",
+    "price": 15.99,
+    "thumbnail": "URL Imagen9",
+    "stock": 50
+  },
+  {
+    "id": 5,
+    "code": "GO-329",
+    "title": "gorra",
+    "description": "gorra negra de invierno",
+    "price": 18.99,
+    "thumbnail": "URL Imagen10",
+    "stock": 50
+  }
+]
