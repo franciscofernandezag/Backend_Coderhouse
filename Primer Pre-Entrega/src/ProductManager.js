@@ -49,16 +49,16 @@ export class ProductManager {
     try {
       const data = await fs.readFile(this.path, "utf-8");
       const getProductos = JSON.parse(data);
-      // console.log(getProductos);
+       console.log(getProductos);
       return getProductos;
 
     } catch (err) {
       console.log(`Error al leer el archivo: ${err}`);
     }
   }
-  async  getProductsById(id, path) {
+  async  getProductsById(id) {
     try {
-      const data = await fs.readFile(path, "utf-8");
+      const data = await fs.readFile(this.path, "utf-8");
       const getProductos = JSON.parse(data);
       const ProductFiltered = getProductos.filter((item) => item.id == id);
       if (ProductFiltered.length === 0) {
@@ -78,23 +78,19 @@ export class ProductManager {
       if (field === "id") {
         console.log(" No se puede modificar el campo ID");
       } else {
-        const data = await fs.readFile(path, "utf-8");
+        const data = await fs.readFile(this.path, "utf-8");
         const getProductos = JSON.parse(data);
         const productUpdate = getProductos.find((p) => p.id === id);
         if (!productUpdate) {
           console.log(`El producto con id ${id} no existe.`);
           return;
         } else if (!Object.keys(productUpdate).includes(field)) {
-          console.log(
-            `El campo ${field} no coincide con los campos del producto. Debe indicar los siguientes campos: code , title, descripcion , price, thumbnail y stock`
-          );
+          console.log(`El campo ${field} no coincide con los campos del producto. Debe indicar los siguientes campos: code , title, descripcion , price, thumbnail y stock`);
           return;
         } else {
           productUpdate[field] = value;
-          await fs.writeFile(path, JSON.stringify(getProductos, null, 2));
-          console.log(
-            `Se ha actualizado el producto con id ${id} y el campo ${field} ha sido modificado a ${value}.`
-          );
+          await fs.writeFile(this.path , JSON.stringify(getProductos, null, 2));
+          console.log(`Se ha actualizado el producto con id ${id} y el campo ${field} ha sido modificado a ${value}.`);
         }
       }
     } catch (err) {
@@ -105,7 +101,7 @@ export class ProductManager {
   // Funcion para eliminar productos por ID
   async  deleteProduct(id) {
     try {
-      const data = await fs.readFile(path, "utf-8");
+      const data = await fs.readFile(this.path, "utf-8");
       const getProductos = JSON.parse(data);
       const deleteindex = getProductos.findIndex((p) => p.id === id);
       if (deleteindex !== -1) {
@@ -115,7 +111,7 @@ export class ProductManager {
         console.table(deletedProducto);
         console.log("Tabla Actualizada")
         console.table(getProductos);
-        await fs.writeFile(path, JSON.stringify(getProductos, null, 2));
+        await fs.writeFile(this.path, JSON.stringify(getProductos, null, 2));
 
       } else {
         console.log(`No existe el producto con ID ${id}`);
@@ -128,6 +124,7 @@ export class ProductManager {
 }
 const producto = new ProductManager('./info.txt')
 
+ 
 // Ejecucion de  "addProduct" para agregar nuevos productos al array original
 // producto.addProduct( "CA-121","Camisa","Camisa de algodón para mujer",15.99,"URL Imagen6",5);
 // producto.addProduct("IN-345","interior","ropa interior",15.99,"URL Imagen7",50);
@@ -136,11 +133,17 @@ const producto = new ProductManager('./info.txt')
 // producto.addProduct("GO-329","gorra","gorra negra de invierno",18.99,"URL Imagen10",50);
 
  
+// Ejecucion getProduct()
+// const productos = await producto.getProducts();
 
 
+// Ejecucion getProductsById(4,path);
+  // const productos = await producto.getProductsById(4);
 
-//getProductsById(4,path);
 
-// updateProduct(5,"stock",200);
+//Ejecucion updateProduct(5,"stock",200);
+  // const productos = await producto.updateProduct(1,"code","AAAAA");
 
-// deleteProduct(10);
+
+// Ejecucion deleteProduct(1);
+// const productos = await producto.deleteProduct(1);
