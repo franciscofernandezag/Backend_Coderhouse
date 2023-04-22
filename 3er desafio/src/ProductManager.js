@@ -17,11 +17,11 @@ class ProductManager {
   }
 }
 // agrego productos para array original
-Products.push(new ProductManager(Products.length + 1,"CH-113","chaqueta","chaqueta de cuero para hombre",20.9,"URL Imagen1",10));
-Products.push(new ProductManager(Products.length + 1,"PA-212","pantalon","pantalon de vestir",10.9,"URL Imagen2",20));
-Products.push(new ProductManager(Products.length + 1,"PO-216","polera", "polera de mujer",5.55,"URL Imagen3",10));
-Products.push(new ProductManager(Products.length + 1,"ZA-117","zapatilla","zapatillas deportivas",88.9,"URL Imagen4",100));
-Products.push(new ProductManager(Products.length + 1,"GO-319","gorro","Gorro de invierno",9.99, "URL Imagen5",10));
+// Products.push(new ProductManager(Products.length + 1,"CH-113","chaqueta","chaqueta de cuero para hombre",20.9,"URL Imagen1",10));
+// Products.push(new ProductManager(Products.length + 1,"PA-212","pantalon","pantalon de vestir",10.9,"URL Imagen2",20));
+// Products.push(new ProductManager(Products.length + 1,"PO-216","polera", "polera de mujer",5.55,"URL Imagen3",10));
+// Products.push(new ProductManager(Products.length + 1,"ZA-117","zapatilla","zapatillas deportivas",88.9,"URL Imagen4",100));
+// Products.push(new ProductManager(Products.length + 1,"GO-319","gorro","Gorro de invierno",9.99, "URL Imagen5",10));
 
 // Agregar productos metodo sincronico
 fs.writeFile(path, JSON.stringify(Products, null, 2))
@@ -143,14 +143,14 @@ async function deleteProduct(id) {
 }
 
 // Ejecucion de funcion "addProduct" para agregar nuevos productos al array original
-// addProduct(Products.length + 1, "CA-121","Camisa","Camisa de algodón para mujer",15.99,"URL Imagen6",5);
+ addProduct(Products.length + 1, "CA-121","Camisa","Camisa de algodón para mujer",15.99,"URL Imagen6",5);
 // addProduct(Products.length + 1,"IN-345","interior","ropa interior",15.99,"URL Imagen7",50);
 // addProduct(Products.length + 1,"CO-22","corbata","corbata negra",88.55,"URL Imagen8",80);
 // addProduct(Products.length + 1,"CA-123","calcetin","calcetin mujer mujer",15.99,"URL Imagen9",50);
 // addProduct(Products.length + 1,"GO-329","gorra","gorra negra de invierno",18.99,"URL Imagen10",50);
 
-export { getProducts };
- getProducts();
+// export { getProducts };
+//  getProducts();
 
 //getProductsById(4,path);
 
