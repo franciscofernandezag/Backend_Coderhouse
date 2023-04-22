@@ -37,7 +37,7 @@ app.listen(PORT, () => {
 
 
 
-  // Prueba 1 segun desafio. Probar en Browser: 
+  // Prueba 1 segun desafio. Probar en Browser: .
   //URL: http://localhost:4000/products/3
 
     // Prueba 2 segun desafio. Probar en Browser:

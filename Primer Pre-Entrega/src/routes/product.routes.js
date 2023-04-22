@@ -3,7 +3,7 @@ import { ProductManager } from "../ProductManager.js";
 
 const productManager = new ProductManager('./info.txt')
 
-const productRouter = Router() //productRouter voy a definir mis rutas
+const productRouter = Router() //productRouter voy a definir mis rutas.
 
 
 productRouter.get("/", async (req, res) => {
