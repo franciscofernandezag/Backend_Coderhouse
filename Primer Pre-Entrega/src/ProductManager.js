@@ -19,19 +19,14 @@ export class ProductManager {
     try {
       const prodsJSON = await fs.readFile(this.path, "utf-8");
       const prods = JSON.parse(prodsJSON);
-      if (
-        !producto.code ||
-        !producto.title ||
-        !producto.description ||
-        !producto.price ||
-        !producto.stock
+      if (!producto.code ||!producto.title ||!producto.description ||!producto.price ||!producto.stock
       ) {
         throw new Error("Ha ingresado un producto con datos incompletos");
       }
       producto.id = ProductManager.incrementarID();
       producto.status = true;
       prods.push(producto);
-      await fs.writeFile(this.path, JSON.stringify(prods, null, 2));
+      await fs.writeFile(this.path, JSON.stringify(prods,null, 2));
       return "Producto creado";
     } catch (error) {
       return error;
@@ -64,10 +59,7 @@ export class ProductManager {
     }
   }
 
-  async updateProduct(
-    id,
-    { title, description, price, thumbnail, code, stock }
-  ) {
+  async updateProduct(id,{ title, description, price, thumbnail, code, stock }) {
     try {
       const prodsJSON = await fs.readFile(this.path, "utf-8");
       const prods = JSON.parse(prodsJSON);
@@ -79,7 +71,7 @@ export class ProductManager {
         prods[index].thumbnail = thumbnail;
         prods[index].code = code;
         prods[index].stock = stock;
-        await fs.writeFile(this.path, JSON.stringify(prods));
+        await fs.writeFile(this.path, JSON.stringify(prods, null, 2));
         return "Producto actualizado";
       } else {
         return "Producto no encontrado";
@@ -97,7 +89,7 @@ export class ProductManager {
       const prods = JSON.parse(prodsJSON);
       if (prods.some((prod) => prod.id === parseInt(id))) {
         const prodsFiltrados = prods.filter((prod) => prod.id !== parseInt(id));
-        await fs.writeFile(this.path, JSON.stringify(prodsFiltrados));
+        await fs.writeFile(this.path, JSON.stringify(prodsFiltrados, null, 2));
         return "Producto eliminado";
       } else {
         return "Producto no encontrado";

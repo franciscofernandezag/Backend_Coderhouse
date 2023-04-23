@@ -1,1 +1,42 @@
-[{"code":"tryrty","title":"HOLA","description":"asdasda","price":88.55,"thumbnail":"","stock":100,"id":5,"status":true},{"code":"tryrty","title":"HOLA","description":"asdasda","price":88.55,"thumbnail":"","stock":100,"id":8,"status":true}]
+[
+  {
+    "code": "PA-1423",
+    "title": "Pantalon",
+    "description": "pantalon de gurra",
+    "stock": 200,
+    "id": 1,
+    "status": true,
+    "price": 88.55,
+    "thumbnail": "AAAA"
+  },
+  {
+    "code": "PA-1423",
+    "title": "Pantalon",
+    "description": "pantalon de gurra",
+    "price": 88.55,
+    "thumbnail": "asdds",
+    "stock": 200,
+    "id": 2,
+    "status": true
+  },
+  {
+    "code": "CA-1423",
+    "title": "calcetin",
+    "description": "calcetin de gurra",
+    "price": 10.55,
+    "thumbnail": "foto calcetin",
+    "stock": 200,
+    "id": 3,
+    "status": true
+  },
+  {
+    "code": "PO-1423",
+    "title": "polera",
+    "description": "polera de gurra",
+    "price": 88.55,
+    "thumbnail": "CCCC",
+    "stock": 200,
+    "id": 4,
+    "status": true
+  }
+]
