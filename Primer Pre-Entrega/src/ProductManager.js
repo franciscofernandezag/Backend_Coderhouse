@@ -43,21 +43,15 @@ export class ProductManager {
       console.log(`Error al leer el archivo: ${err}`);
     }
   }
-  async getProductsById(id) {
-    try {
-      const data = await fs.readFile(this.path, "utf-8");
-      const getProductos = JSON.parse(data);
-      const ProductFiltered = getProductos.filter((item) => item.id == id);
-      if (ProductFiltered.length === 0) {
-        console.log("Producto no encontrado con el ID #" + id);
-      } else {
-        console.log("Su producto fue encontrado:");
-        console.table(ProductFiltered);
-      }
-    } catch (err) {
-      console.log(`Error al leer el archivo: ${err}`);
+  async getProductById(id) {
+    const prodsJSON = await fs.readFile(this.path, 'utf-8')
+    const prods = JSON.parse(prodsJSON)
+    if (prods.some(prod => prod.id === parseInt(id))) {
+        return prods.find(prod => prod.id === parseInt(id))
+    } else {
+        return "Producto no encontrado"
     }
-  }
+}
 
   async updateProduct(id,{ title, description, price, thumbnail, code, stock }) {
     try {
