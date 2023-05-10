@@ -5,6 +5,10 @@ const productManager = new ProductManager('./productos.txt')
 
 const productRouter = Router() 
 
+
+
+
+
 productRouter.get("/", async (req, res) => {
     try {
       const products = await productManager.getProducts();

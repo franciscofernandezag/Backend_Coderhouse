@@ -1,6 +1,5 @@
 import express from 'express'
 import productRouter from './routes/product.routes.js'
-
 import { __dirname, __filename } from './path.js'
 import { engine } from 'express-handlebars'
 import * as path from 'path'
@@ -48,8 +47,9 @@ app.use((req, res, next) => {
 })
 
 //Routes
-app.use('/product', productRouter)
 app.use('/products', express.static(__dirname + '/public')) 
+app.use('/products', productRouter)
+
 
 //4to Desafio 
 
