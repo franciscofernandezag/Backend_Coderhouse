@@ -8,7 +8,6 @@ import { engine } from 'express-handlebars'
 import { __dirname, __filename } from './path.js'
 import * as path from 'path'
 
-
 const app = express();
 const PORT = 4000;
 
@@ -38,13 +37,9 @@ mongoose
 app.use("/products", productRouter);
 app.use("/carts", cartRouter);
 
-
-
 app.listen(PORT, () => {
   console.log(`Server on port ${PORT}`);
 });
-
-
 
 //PRODUCTOS 
 
@@ -54,7 +49,7 @@ app.listen(PORT, () => {
 
 
   // Prueba 2 - page permitirá devolver lapágina que queremos buscar,en caso de no recibir page, ésta será de 1 :
-        //URL: http://localhost:4000/products?page=1    ( devuelve los 10 primeros productos)
+        //URL: http://localhost:4000/carts    ( devuelve los 10 primeros productos)
         //URL: http://localhost:4000/products?page=2   ( devuelve el producto numero 11 en adelante  )
 
     // Prueba 3 - sort: asc/desc, para realizarordenamiento ascendente odescendente por precio, encaso de no recibir sort, no realizar ningún ordenamiento :
@@ -63,16 +58,36 @@ app.listen(PORT, () => {
 
   //CARRITO
 
- // Prueba 1 Aplicar metodo POST en Postman para crear carrito nuevo con id=1.
-  //URL: http://localhost:4000/api/carts/1
+ //  CREAR con metodo POST un carrito nuevo mediante metodo POST en Postman para crear carrito nuevo. 
+ // se crea coleccion "carts" en mongo DB
+        //URL: http://localhost:4000/carts
 
-   // Prueba 2 Aplicar metodo GET en Postman para visualizar carrito creado segun id1.
-  //URL: http://localhost:4000/api/carts/1
+   // AGREGAR con metodo POST productos al carrito creado mediante metodo POST referenciando id de carrito y ID de producto
+   //en coleccion "Products"
+          //URL: http://localhost:4000/carts/cartId/products/:productId
 
- // Prueba 3 Aplicar metodo POST en Postman para crear productos dentro del carrito ingresando el id como "params" y la cantidad como body.
-  //URL: http://localhost:4000/api/carts/1/products/1
-  //Body:   {"quantity": 100,}  
-// Probar por 2da vez con el mismo ID en "params" para verificar que los productos se suman
+ // Prueba 1 DELETE deberá eliminar del carrito el producto seleccionado..
+          //URL: http://localhost:4000/api/carts/1/products/1
+
+ // Prueba 2 PUT deberá poder actualizar SÓLO la cantidad de ejemplares del producto por cualquier cantidad pasada desde req.body
+          //URL: http://localhost:4000/carts/:cartId/products/:productId
+          //Body:   {"quantity": 100,} 
+
+// Prueba 3 DELETE deberá eliminar todos los productos del carrito
+          //URL: http://localhost:4000/carts/:cartId/products
+         
+// Eliminar producto del carrito por ID:
+         //URL: http://localhost:4000/carts/:cartId/products/:productId
+
+// Prueba GET 4 Esta vez, para el modelo de Carts,en su propiedad products, 
+//el id decada producto generado dentro del array tiene que hacerreferencia al modelo de 
+//Products.Modificar la ruta /:cid para que altraer todos los productos, 
+//los traiga completos mediante un“populate”. De esta maneraalmacenamos sólo el Id,
+// pero alsolicitarlo podemos desglosar los productos asociados.
+ // Muestra todos los productos del carrito
+     //URL: http://localhost:4000/carts
+// Muestra productos por ID
+      //URL: http://localhost:4000/carts/:cartId
 
 
 

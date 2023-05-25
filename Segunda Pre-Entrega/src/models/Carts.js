@@ -1,24 +1,24 @@
 import { Schema, model } from "mongoose";
-import paginate from 'mongoose-paginate-v2'
+import paginate from 'mongoose-paginate-v2';
 
 const cartSchema = new Schema({
+  products: {
+    "_id" :false, 
+    type: [
+      {
+        id: {
+          type: Schema.Types.ObjectId,
+          ref: "Product" // Utiliza el mismo nombre del modelo del producto
+        },
+        quantity: Number
+      }
+    ],
+    default: []
+  }
+});
 
-    products: {
-      type: [
-        {
-          id_prod: {
-            type: Schema.Types.ObjectId,
-            ref: "products"
-          },
-          cant: Number
-        }
-      ],
-      default: []
-    }
-  });
+cartSchema.plugin(paginate);
 
-  cartSchema.plugin(paginate)
-  
-  const cartModel = model("cart", cartSchema);
+const cartModel = model("Cart", cartSchema); // Utiliza el mismo nombre del modelo
 
-  export default cartModel;
+export default cartModel;
