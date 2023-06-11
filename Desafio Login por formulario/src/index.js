@@ -73,6 +73,7 @@ app.post('/login', async (req, res) => {
 
     // Inicio de sesión exitoso
     req.session.user = user; // Guarda el usuario en la sesión
+    req.session.user.rol = user.rol; // Asigna el valor de 'rol' a la sesi
     res.redirect('/products');
   } catch (error) {
     console.error('Error en el inicio de sesión:', error);
@@ -138,73 +139,22 @@ app.listen(PORT, () => {
 });
 
 
-//PRODUCTOS 
+//LOGIN
 
-  // Prueba 1 -LIMIT permitirá devolver sólo elnúmero de elementos solicitados al momento de lapetición, en caso de no recibir limit, éste será de 10.  :
-            //URL: http://localhost:4000/products?limit=2
-            //URL: http://localhost:4000/products/
+  // Prueba 1 -Se crea pagina de login y Registro
+            //URL: http://localhost:4000/
+            // usuario por defecto "fernandezfco@hotmail.cl" Pass" 123456". 
+            // Para probar el registro se solicita crear tu propio usuario e ingresar con el.
 
-  // Prueba 2 - PAGE permitirá devolver lapágina que queremos buscar,en caso de no recibir page, ésta será de 1 :
-        //URL: http://localhost:4000/carts    ( devuelve los 10 primeros productos)
-        //URL: http://localhost:4000/products?page=2   ( devuelve el producto numero 11 en adelante  )
+  // Prueba 2 - Al ingresar con usuario logeado mostrara vista de los productos
+        //URL: http://localhost:4000/products   ( corroborar que sin logearse no se puede acceder directamente a esta ruta)
+      
 
- // Prueba 3 - QUERY:  query, el tipo de elemento que quiero buscar (es decir, qué filtro aplicar), en caso de no recibir query, realizar la búsqueda general :
-                //URL:http://localhost:4000/products?query=title   ( se filtra por titulo)
-                //URL:http://localhost:4000/products?query=    ( si no se agrega query lista todos los productos)
+ // Prueba 3 - Se implementa boton de cerrar sesion para "destruir sesion y redirigir al login"
 
-// Prueba 4 - SORT: asc/desc, para realizarordenamiento ascendente odescendente por precio, encaso de no recibir sort, no realizar ningún ordenamiento :
-                //URL:http://localhost:4000/products?sort=asc
-                //URL:http://localhost:4000/products?sort=desc
+// Prueba 4 - En la vista login se puede filtrar por titulo , ordenar por precio y correr paginas. Se mantiene la configuracion del desafio anterior de un limite 
+// de 10 productos por pagina.
 
-  //CARRITO
-
- //  CREAR con metodo POST un carrito nuevo mediante metodo POST en Postman para crear carrito nuevo. 
- // se crea coleccion "carts" en mongo DB
-        //URL: http://localhost:4000/carts
-
-   // AGREGAR con metodo productos al carrito creado mediante metodo POST referenciando id de carrito y ID de producto
-   //en coleccion "Products"
-          //URL: http://localhost:4000/carts/cartId/products/:productId
-
- // Prueba 1 DELETE deberá eliminar del carrito el producto seleccionado..
-          //URL: http://localhost:4000/api/carts/1/products/1
-
- // Prueba 2 PUT deberá poder actualizar SÓLO la cantidad de ejemplares del producto por cualquier cantidad pasada desde req.body
-          //URL: http://localhost:4000/carts/:cartId/products/:productId
-          //Body:   {"quantity": 100,} 
-
-// Prueba 3 DELETE deberá eliminar todos los productos del carrito
-          //URL: http://localhost:4000/carts/:cartId/products
-         
-// Eliminar producto del carrito por ID:
-         //URL: http://localhost:4000/carts/:cartId/products/:productId
-
-// Prueba GET 4 Esta vez, para el modelo de Carts,en su propiedad products, 
-//el id decada producto generado dentro del array tiene que hacerreferencia al modelo de 
-//Products.Modificar la ruta /:cid para que altraer todos los productos, 
-//los traiga completos mediante un“populate”. De esta maneraalmacenamos sólo el Id,
-// pero alsolicitarlo podemos desglosar los productos asociados.
- // Muestra todos los productos del carrito
-     //URL: http://localhost:4000/carts
-// Muestra productos por ID
-      //URL: http://localhost:4000/carts/:cartId
-
-
-
-// // // AGREGO PRODUCTOS A BD MONGODB coleccion Products
-// // await productModel.insertMany([
-// //     { code: "GU", title: "Guante de hombre", description: "guente de hombre para el frio", stock: 100,  status: true , price: 199 , thumbnail: "AAAA"},
-// //     { code: "POM-456", title: "Polera", description: "Polera de verano", stock: 100, status: true, price: 10 , thumbnail: "AAAA" },
-// //     { code: "CA-789", title: "Calcetin", description: "calcetin deposrtivo", stock: 123, status: true, price: 80 , thumbnail: "AAAA" },
-// //     { code: "BU-789", title: "bufanda", description: "bufanda de guerra", stock: 200, status: true, price: 50 ,thumbnail: "AAAA" },
-// //     { code: "GO-456", title: "Gorro", description: "Gorro de invierno", stock: 500, status: true, price: 10 , thumbnail: "AAAA" },
-// //     { code: "PA-789", title: "Pantalon de mujer", description: "Pantalon de mujer para el frio", stock: 456, status: true, price: 599 ,thumbnail: "AAAA" },
-// //     { code: "CH-879", title: "Chaleco", description: "chaleco de invierno", stock: 125, status: true, price: 899 , thumbnail: "AAAA" },
-// //     { code: "PA-999", title: "Parca", description: "parca de pluma", stock: 789, status: true, price: 1099 , thumbnail: "AAAA" },
-// //     { code: "POL-789", title: "Polera", description: "Gorro de invierno", stock: 78, status: true, price: 9 , thumbnail: "AAAA" },
-// //     { code: "GU-456", title: "Guante", description: "Guante de cuero", stock: 12, status: true, price: 20 , thumbnail: "AAAA" },
-// //     { code: "CAM-456", title: "Camisa", description: "Camisa ejecutiva", stock: 399, status: true, price: 59 , thumbnail: "AAAA" },
-// // ])
 
 // // AGREGO PRIMEROS USUARIOS A MODELO USERS
 // await userModel.insertMany([
@@ -213,17 +163,3 @@ app.listen(PORT, () => {
 
 
 
-
-// Muestro productos en console.log
-// const displayProducts = async () => {
-//     try {
-//       const products = await productModel.find();
-//       console.log("Productos agregados:");
-//       console.log(products);
-//     } catch (error) {
-//       console.error("Error al obtener los productos:", error);
-//     }
-//   };
-
-//   // Llama a la función para mostrar los productos agregados
-//   displayProducts();
