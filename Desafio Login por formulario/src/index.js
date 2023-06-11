@@ -32,7 +32,18 @@ app.use(session({
 await mongoose.connect(process.env.URL_MONGODB_ATLAS).then(() => console.log("MongoDB conectado"));
 
 // Handlebars 
-app.engine('handlebars', engine()) 
+app.engine(
+  'handlebars',engine({
+    runtimeOptions: {allowProtoPropertiesByDefault: true,allowProtoMethodsByDefault: true,
+    },
+    helpers: {eq: function (a, b, options) {
+        if (a === b) {return options.fn(this);
+        } else {return options.inverse(this);
+        }
+      },
+    },
+  })
+);
 app.set('view engine', 'handlebars') 
 app.set('views', path.resolve(__dirname, './views')) 
 
@@ -46,6 +57,8 @@ mongoose
 app.get('/', (req, res) => {
   res.render('home', { title: 'Página de inicio' });
 });
+
+
 
 // Ruta POST para el inicio de sesión
 app.post('/login', async (req, res) => {
@@ -90,9 +103,35 @@ app.post('/registro', async (req, res) => {
   }
 });
 
+
+// Middleware para verificar la autenticación
+const authenticate = (req, res, next) => {
+  if (req.session.user) {
+    // El usuario está autenticado, continuar con la siguiente función de middleware
+    next();
+  } else {
+    // El usuario no está autenticado, redireccionar al inicio de sesión
+    res.redirect('/');
+  }
+};
+// Configuración de la sesión
+app.use(
+  session({
+    secret: "mysecret",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+app.post("/logout", (req, res) => {
+  // Eliminar la sesión del usuario
+  req.session.destroy();
+  // Redireccionar al inicio de sesión
+  res.redirect("/");
+});
+
 // Routes
-app.use("/products", productRouter);
-app.use("/carts", cartRouter);
+app.use('/products', authenticate, productRouter);
+app.use('/carts', authenticate, cartRouter);
 
 app.listen(PORT, () => {
   console.log(`Server on port ${PORT}`);

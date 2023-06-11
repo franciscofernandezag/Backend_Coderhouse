@@ -40,7 +40,7 @@ productRouter.get("/", async (req, res) => {
       nextLink: page < totalPages ? `http://localhost:4000/products?limit=${limit}&page=${parseInt(page) + 1}` : null,
     };
 
-    res.send(response);
+    res.render("products", { products: products, response: response });
   } catch (error) {
     console.log("Error al recibir los productos:", error);
     res.status(500).send("Error al recibir los productos:");

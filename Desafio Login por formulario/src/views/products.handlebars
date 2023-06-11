@@ -74,7 +74,13 @@
  <form action="/logout" method="post">
   <button type="submit" class="btn btn-danger">Cerrar sesión</button>
 </form>
-
+<div class="d-flex">
+  <p class="mr-4"><strong>Status:</strong> {{response.status}}</p>
+  <p class="mr-4"><strong>Total Páginas:</strong> {{response.totalPages}}</p>
+  <p class="mr-4"><strong>Anterior:</strong> {{response.prevPage}}</p>
+  <p class="mr-4"><strong>Próxima:</strong> {{response.nextPage}}</p>
+  <p><strong>Actual:</strong> {{response.page}}</p>
+</div>
 
   </div>
 </body>
