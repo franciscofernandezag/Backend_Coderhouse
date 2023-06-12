@@ -29,6 +29,7 @@ app.use(session({
   saveUninitialized: true
 }));
 
+
 await mongoose.connect(process.env.URL_MONGODB_ATLAS).then(() => console.log("MongoDB conectado"));
 
 // Handlebars 
@@ -60,7 +61,7 @@ app.get('/', (req, res) => {
 
 
 
-// Ruta POST para el inicio de sesión
+// Ruta POST para el inicio de sesión (LOGIN)
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -73,7 +74,7 @@ app.post('/login', async (req, res) => {
 
     // Inicio de sesión exitoso
     req.session.user = user; // Guarda el usuario en la sesión
-    req.session.user.rol = user.rol; // Asigna el valor de 'rol' a la sesi
+    req.session.user.rol = user.rol; // Asigna el valor de 'rol' a la sesion
     res.redirect('/products');
   } catch (error) {
     console.error('Error en el inicio de sesión:', error);
@@ -115,14 +116,7 @@ const authenticate = (req, res, next) => {
     res.redirect('/');
   }
 };
-// Configuración de la sesión
-app.use(
-  session({
-    secret: "mysecret",
-    resave: false,
-    saveUninitialized: false,
-  })
-);
+// Cerrar sesion (LOGOUT)
 app.post("/logout", (req, res) => {
   // Eliminar la sesión del usuario
   req.session.destroy();
@@ -149,7 +143,6 @@ app.listen(PORT, () => {
   // Prueba 2 - Al ingresar con usuario logeado mostrara vista de los productos
         //URL: http://localhost:4000/products   ( corroborar que sin logearse no se puede acceder directamente a esta ruta)
       
-
  // Prueba 3 - Se implementa boton de cerrar sesion para "destruir sesion y redirigir al login"
 
 // Prueba 4 - En la vista login se puede filtrar por titulo , ordenar por precio y correr paginas. Se mantiene la configuracion del desafio anterior de un limite 
