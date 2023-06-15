@@ -154,5 +154,3 @@ app.listen(PORT, () => {
 //     { first_name: "Francisco", last_name: "Fernandez", email: "fernandezfco@hotmail.cl", gender: "Masculino", rol: "Administrador",  password: "123456" },
 // ])
 
-
-

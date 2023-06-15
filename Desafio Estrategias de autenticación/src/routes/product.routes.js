@@ -6,7 +6,9 @@ const productRouter = Router();
 productRouter.get("/", async (req, res) => {
   try {
     const { limit = 10, page = 1, sort, query } = req.query;
-
+    const userName = req.session.user.first_name;
+    const email = req.session.user.email;
+    const rol = req.session.user.rol;
     const options = {};
     options.limit = parseInt(limit);
     options.skip = (parseInt(page) - 1) * parseInt(limit);
@@ -40,7 +42,7 @@ productRouter.get("/", async (req, res) => {
       nextLink: page < totalPages ? `http://localhost:4000/products?limit=${limit}&page=${parseInt(page) + 1}` : null,
     };
 
-    res.send(response);
+    res.render("products", { products: products, response: response, userName: userName , email: email, rol: rol });
   } catch (error) {
     console.log("Error al recibir los productos:", error);
     res.status(500).send("Error al recibir los productos:");

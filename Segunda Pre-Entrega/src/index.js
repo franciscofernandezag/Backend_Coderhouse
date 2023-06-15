@@ -36,6 +36,7 @@ app.listen(PORT, () => {
   console.log(`Server on port ${PORT}`);
 });
 
+
 //PRODUCTOS 
 
   // Prueba 1 -LIMIT permitirá devolver sólo elnúmero de elementos solicitados al momento de lapetición, en caso de no recibir limit, éste será de 10.  :

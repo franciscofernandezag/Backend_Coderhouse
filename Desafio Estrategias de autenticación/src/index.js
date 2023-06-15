@@ -5,10 +5,13 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 
+import { __dirname, __filename } from './path.js'
 import { authenticate } from './middlewares.js';
-import { connectDatabase } from './utils/database.js';
-import productRouter from "./routes/productRoutes.js";
-import cartRouter from "./routes/cartRoutes.js";
+import { connectDatabase } from './database.js';
+import { loginUser } from "./controllers/userController.js"; 
+import { registerUser } from "./controllers/userController.js"; 
+import productRouter from "./routes/product.routes.js";
+import cartRouter from "./routes/cart.routes.js";
 
 const app = express();
 const PORT = 4000;
@@ -24,19 +27,10 @@ app.use(session({
 }));
 
 // Handlebars 
-app.engine(
-  'handlebars', engine({
-    runtimeOptions: {
-      allowProtoPropertiesByDefault: true,
-      allowProtoMethodsByDefault: true
-    },
-    helpers: {
-      eq: function (a, b, options) {
-        if (a === b) {
-          return options.fn(this);
-        } else {
-          return options.inverse(this);
-        }
+app.engine('handlebars', engine({runtimeOptions: {allowProtoPropertiesByDefault: true,allowProtoMethodsByDefault: true},
+    helpers: {eq: function (a, b, options) {
+        if (a === b) {return options.fn(this);}
+        else {return options.inverse(this);}
       },
     },
   })
@@ -50,6 +44,20 @@ connectDatabase();
 // Vista home
 app.get('/', (req, res) => {
   res.render('home', { title: 'Página de inicio' });
+});
+
+// Ruta POST para el inicio de sesión
+app.post('/login', loginUser);
+
+// Ruta POST para el registro de usuarios
+app.post('/registro', registerUser);
+
+// Cerrar sesion (LOGOUT)
+app.get("/logout", (req, res) => {
+  // Eliminar la sesión del usuario
+  req.session.destroy();
+  // Redireccionar al inicio de sesión
+  res.redirect("/");
 });
 
 // Rutas
