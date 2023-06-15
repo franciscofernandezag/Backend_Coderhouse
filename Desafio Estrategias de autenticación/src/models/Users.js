@@ -1,36 +1,40 @@
 import { Schema, model } from "mongoose";
 
 const userSchema = new Schema({
-  first_name: {
-    type: String,
-    required: true
-  },
-  last_name: {
-    type: String,
-    required: true
-  },
-  email: {
-    type: String,
-    unique: true,
-    index: true
-  },
-  gender: {
-    type: String,
-    required: true
-  },
-  rol: {
-    type: String,
-    required: true
-  },
-  password: {
-    type: String,
-    required: true
-  },
-  authenticationType: {
-    type: String,
-    required: true,
-    default: "local" // Valor predeterminado "local"
-  }
+    first_name: {
+        type: String,
+        required: false
+    },
+    last_name: {
+        type: String,
+        required: false
+    },
+    email: {
+        type: String,
+        unique: false,
+        index: false
+    },
+    gender: {
+        type: String,
+        required: false
+    },
+
+    rol: {
+        type: String,
+        required: false
+    },
+    password: {
+        type: String,
+        required: false
+    },
+    usernamegithub: {
+        type: String,
+        required: false
+    },
+    authenticationType: {
+        type: String,
+        required: true
+    }
 });
 
 export const userModel = model("users", userSchema);

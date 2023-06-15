@@ -83,6 +83,9 @@ export async function registerUser(req, res) {
       password: hashedPassword, 
       authenticationType: 'local' // Valor fijo para authenticationType
     });
+
+
+    
     res.render('home', { title: 'Página de inicio', success: 'Usuario creado exitosamente', error: null });
   } catch (error) {
     console.error('Error en el registro de usuarios:', error);

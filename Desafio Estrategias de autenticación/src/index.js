@@ -8,10 +8,11 @@ import session from 'express-session';
 import { __dirname, __filename } from './path.js'
 import { authenticate } from './middlewares.js';
 import { connectDatabase } from './database.js';
-import { loginUser } from "./controllers/userController.js"; 
-import { registerUser } from "./controllers/userController.js"; 
+import { loginUser } from "./controllers/localAuth.js"; 
+import { registerUser } from "./controllers/localAuth.js"; 
 import productRouter from "./routes/product.routes.js";
 import cartRouter from "./routes/cart.routes.js";
+import passport from './controllers/githubAuth.js';
 
 const app = express();
 const PORT = 4000;
@@ -59,6 +60,17 @@ app.get("/logout", (req, res) => {
   // Redireccionar al inicio de sesión
   res.redirect("/");
 });
+
+// Configurar las rutas de autenticación de GitHub
+app.get('/auth/github', passport.authenticate('github', { scope: ['user:email'] }));
+
+app.get(
+  '/auth/github/callback',
+  passport.authenticate('github', { failureRedirect: '/login' }),
+  (req, res) => {
+    res.redirect('/products');
+  }
+);
 
 // Rutas
 app.use('/products', authenticate, productRouter);
