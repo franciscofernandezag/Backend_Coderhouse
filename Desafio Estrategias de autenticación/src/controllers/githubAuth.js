@@ -14,9 +14,9 @@ passport.use('github',new GitHubStrategy(
         let user = await userModel.findOne({ usernamegithub: profile.username });
         if (!user) {
           let newuser = {
-            first_name: profile.displayName.split(" ")[0],
-            last_name: profile.displayName.split(" ")[1] || "",
-            email: "",
+            first_name: profile.username,
+            last_name: "",
+            email: profile.profileUrl,
             gender: "",
             rol: "usuario",
             usernamegithub: profile.username,
