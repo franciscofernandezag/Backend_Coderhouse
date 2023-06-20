@@ -3,6 +3,7 @@ import express from "express";
 import { engine } from 'express-handlebars';
 import path from 'path';
 import cookieParser from 'cookie-parser';
+import MongoStore from 'connect-mongo'
 import session from 'express-session';
 
 import { __dirname, __filename } from './path.js'
@@ -22,10 +23,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.SIGNED_COOKIE));
 app.use(session({
+  store: MongoStore.create({
+      mongoUrl: process.env.URL_MONGODB_ATLAS,
+      mongoOptions: { useNewUrlParser: true, useUnifiedTopology: true },
+      ttl: 120 // Medido en segundos
+  }),
   secret: process.env.SESSION_SECRET,
   resave: true,
   saveUninitialized: true
-}));
+}));;
 
 // Handlebars 
 app.engine('handlebars', engine({runtimeOptions: {allowProtoPropertiesByDefault: true,allowProtoMethodsByDefault: true},
@@ -62,12 +68,13 @@ app.get("/logout", (req, res) => {
 });
 
 // Configurar las rutas de autenticación de GitHub
-app.get('/auth/github', passport.authenticate('github', { scope: ['user:email'] }));
+app.get('/auth/github', passport.authenticate('github', { scope: ['user:usernamegithub'] }));
 
 app.get(
   '/auth/github/callback',
   passport.authenticate('github', { failureRedirect: '/login' }),
   (req, res) => {
+    req.session.user = req.user;
     res.redirect('/products');
   }
 );

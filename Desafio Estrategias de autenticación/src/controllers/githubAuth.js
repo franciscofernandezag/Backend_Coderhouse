@@ -2,8 +2,7 @@ import passport from "passport";
 import { Strategy as GitHubStrategy } from "passport-github2";
 import { userModel } from "../models/Users.js";
 
-passport.use(
-new GitHubStrategy(
+passport.use('github',new GitHubStrategy(
     {
       clientID: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
@@ -11,23 +10,25 @@ new GitHubStrategy(
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
+        console.log(profile);
         let user = await userModel.findOne({ usernamegithub: profile.username });
-
-        if (user) {
-          return done(null, user);
-        } else {
-          user = await userModel.create({
+        if (!user) {
+          let newuser = {
             first_name: profile.displayName.split(" ")[0],
             last_name: profile.displayName.split(" ")[1] || "",
             email: "",
             gender: "",
-            rol: "",
+            rol: "usuario",
             usernamegithub: profile.username,
             password: "",
             authenticationType: "github",
-          });
-
-          return done(null, user);
+          };
+let result = await userModel.create(newuser);
+          return done(null, result);
+        }
+        else{
+      
+          done(null,user);
         }
       } catch (error) {
         return done(error);
