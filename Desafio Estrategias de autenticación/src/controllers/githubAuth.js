@@ -20,7 +20,6 @@ passport.use('github',new GitHubStrategy(
             gender: "",
             rol: "usuario",
             usernamegithub: profile.username,
-            password: "",
             authenticationType: "github",
           };
 let result = await userModel.create(newuser);
