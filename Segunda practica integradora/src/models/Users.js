@@ -38,7 +38,7 @@ const userSchema = new Schema({
     cartId: {
         type: Schema.Types.ObjectId,
         ref: "cart",
-        required: true
+      
       },
 });
 

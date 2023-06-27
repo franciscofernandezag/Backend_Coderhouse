@@ -10,7 +10,7 @@ productRouter.get("/", async (req, res) => {
     const userName = req.session.user.first_name;
     const email = req.session.user.email;
     const rol = req.session.user.rol;
-    const cartId = req.session.user.cartId ;
+    const cartId = req.session.user.cartId;
     const options = {};
     options.limit = parseInt(limit);
     options.skip = (parseInt(page) - 1) * parseInt(limit);
@@ -47,7 +47,7 @@ productRouter.get("/", async (req, res) => {
      // Obtén el valor de 'cart' si está disponible en el contexto
 
 
-     res.render("products", { products :products, response: response, userName: userName, email: email, rol: rol, cartID: cartId  });
+     res.render("products", { products :products, response: response, userName: userName, email: email, rol: rol, cartId: cartId  });
   } catch (error) {
     console.log("Error al recibir los productos:", error);
     res.status(500).send("Error al recibir los productos:");

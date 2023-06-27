@@ -47,7 +47,7 @@ productRouter.get("/", async (req, res) => {
      // Obtén el valor de 'cart' si está disponible en el contexto
 
 
-     res.render("products", { products :products, response: response, userName: userName, email: email, rol: rol, cartID: cartId  });
+     res.render("products", { products :products, response: response, userName: userName, email: email, rol: rol, cartId: cartId  });
   } catch (error) {
     console.log("Error al recibir los productos:", error);
     res.status(500).send("Error al recibir los productos:");

@@ -1,0 +1,86 @@
+<!-- cart.handlebars -->
+
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <title>Carrito de Compras</title>
+  </head>
+
+  <body>
+    <div class="container mt-4">
+      <h1>Carrito de Compras</h1>
+  <h4>{{CartId}}</h4>
+
+
+      <a class="navbar-brand" href="/products">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          fill="currentColor"
+          class="bi bi-house"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M13.5 8.928V14h-3v-3H6v3H3.5v-4.072l-2-.5V15h14v-5.644l-2 .5zm-1.446-.53L8 4.115 3.946 8.398l-.894-.448L8 2 14.948 7.95l-.894.447z"
+          />
+        </svg>
+      </a>
+
+      {{#if cart.products.length}}
+        <table class="table table-bordered mt-4">
+          <thead>
+            <tr>
+              <th scope="col">Producto</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Subtotal</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each cart.products}}
+              <tr>
+                <td>{{this.id.title}}</td>
+                <td>{{this.id.price}}</td>
+                <td>{{this.quantity}}</td>
+                <th></th>
+                <td>
+                  <form
+                    action="/carts/{{../cartId}}/products/{{this.id._id}}"
+                    method="DELETE"
+                  >
+                    <button
+                      type="submit"
+                      class="btn btn-danger btn-sm"
+                    >Eliminar</button>
+                  </form>
+
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3" class="text-right"><strong>Total:</strong></td>
+              <td colspan="2"><strong>{{total}}</strong></td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <div class="text-right">
+          <a href="/checkout" class="btn btn-primary">Realizar Compra</a>
+        </div>
+      {{else}}
+        <p>No hay productos en el carrito.</p>
+      {{/if}}
+    </div>
+  </body>
+
+</html>
