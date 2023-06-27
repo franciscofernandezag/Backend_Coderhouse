@@ -25,6 +25,7 @@
         <div>
           <a href="/carts" style="top: 10px; right: 10px;">
             <i class="fas fa-shopping-cart fa-2x"></i>
+            <span class="badge badge-danger">{{cartItemCount}}</span>
           </a>
         </div>
       </div>
@@ -56,6 +57,7 @@
         {{#each products}}
           <div class="col-md-4 mt-4">
             <div class="card">
+              <h4>{{cartId}}</h4>
               <img
                 src="{{this.thumbnail}}"
                 class="card-img-top"
@@ -66,7 +68,9 @@
                 <p class="card-text">{{this.description}}</p>
                 <p class="card-text"><strong>Precio:</strong> {{this.price}}</p>
                 <p class="card-text"><strong>Stock:</strong> {{this.stock}}</p>
-                <button class="btn btn-success btn-block">Comprar</button>
+              <form action="/carts/{{../cartID}}/products/{{this._id}}" method="post">
+                  <button class="btn btn-success btn-block" type="submit">Comprar</button>
+              </form>
               </div>
             </div>
           </div>

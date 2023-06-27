@@ -19,7 +19,6 @@ const cartSchema = new Schema({
 
 cartSchema.plugin(paginate);
 
-
 export default model("Cart", cartSchema);
 
 

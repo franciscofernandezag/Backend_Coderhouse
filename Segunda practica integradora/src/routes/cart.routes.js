@@ -4,27 +4,10 @@ import ProductModel from "../models/Products.js";
 
 const cartRouter = Router();
 
-// Crear un nuevo carrito
-cartRouter.get("/createcart/:userId", async (req, res) => {
-  try {
-    const { userId } = req.params;
-
-    const cart = new CartModel();
-    cart.userId = userId; // Asigna el ID del usuario al campo userId del carrito
-    await cart.save();
-
-    res.json(cart);
-  } catch (error) {
-    console.log("Error al crear el carrito:", error);
-    res.status(500).json({ error: "Error al crear el carrito" });
-  }
-});
-
 // Agregar producto a un carrito
 cartRouter.post("/:cartId/products/:productId", async (req, res) => {
   try {
     const { cartId, productId } = req.params;
-    const { quantity } = req.body;
 
     const cart = await CartModel.findById(cartId);
     const product = await ProductModel.findById(productId);
@@ -37,15 +20,22 @@ cartRouter.post("/:cartId/products/:productId", async (req, res) => {
       return res.status(404).json({ error: "Producto no encontrado" });
     }
 
-    cart.products.push({ id: productId, quantity }); // Utiliza el mismo nombre de campo
-    await cart.save();
+    const quantity = 1;
+    cart.products.push({ id: productId, quantity });
 
-    res.json(cart);
+    await CartModel.findOneAndUpdate(
+      { _id: cartId },
+      { $set: { products: cart.products } }
+    );
+
+    res.redirect("/products"); 
   } catch (error) {
     console.log("Error al agregar producto al carrito:", error);
     res.status(500).json({ error: "Error al agregar producto al carrito" });
   }
 });
+
+
 
 // Eliminar todos los productos del carrito
 cartRouter.delete("/:cartId/products", async (req, res) => {

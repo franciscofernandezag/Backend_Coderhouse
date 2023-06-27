@@ -79,7 +79,7 @@ app.get('/auth/github/callback', passport.authenticate('github', { failureRedire
 
 // Rutas
 app.use('/products', authenticate, productRouter);
-app.use('/carts', authenticate, cartRouter);
+app.use('/carts', cartRouter);
 
 app.listen(PORT, () => {
   console.log(`Server on port ${PORT}`);
