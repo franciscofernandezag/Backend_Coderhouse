@@ -1,8 +1,11 @@
 import { Router } from "express";
 import CartModel from "../models/Carts.js";
 import ProductModel from "../models/Products.js";
+import methodOverride from "method-override";
 
 const cartRouter = Router();
+// Middleware para habilitar el método DELETE en formularios HTML
+cartRouter.use(methodOverride("_method"));
 
 // Agregar producto a un carrito
 cartRouter.post("/:cartId/products/:productId", async (req, res) => {
@@ -38,6 +41,33 @@ cartRouter.post("/:cartId/products/:productId", async (req, res) => {
 
 
 // Eliminar todos los productos del carrito
+cartRouter.get("/:cartId/products", async (req, res) => {
+  try {
+    const { cartId } = req.params;
+
+    const cart = await CartModel.findByIdAndUpdate(
+      cartId,
+      { $set: { products: [] } },
+      { new: true }
+    );
+
+    if (!cart) {
+      return res.status(404).json({ error: "Carrito no encontrado" });
+    }
+
+
+    res.redirect(`/carts/${cartId}`);
+
+  } catch (error) {
+    console.log("Error al eliminar productos del carrito:", error);
+    res.status(500).json({ error: "Error al eliminar productos del carrito" });
+  }
+});
+
+
+
+
+// Eliminar  un  productos del producto a un carrito en vase a su ID
 cartRouter.delete("/:cartId/products/:productId", async (req, res) => {
   try {
     const { cartId, productId } = req.params;
@@ -48,31 +78,18 @@ cartRouter.delete("/:cartId/products/:productId", async (req, res) => {
       return res.status(404).json({ error: "Carrito no encontrado" });
     }
 
-    cart.products = cart.products.filter((product) => product._id != productId);
-    await cart.save();
-
-    res.json(cart);
-  } catch (error) {
-    console.log("Error al eliminar producto del carrito:", error);
-    res.status(500).json({ error: "Error al eliminar producto del carrito" });
-  }
-});
-
-
-// Eliminar  un  productos del producto a un carrito en vase a su ID
-cartRouter.delete("/:cartId/products/:productId", async (req, res) => {
-  try {
-    const { cartId, productId } = req.params;
-
-    const cart = await CartModel.findByIdAndUpdate(
-      cartId,
-      { $pull: { products: { _id: productId } } },
-      { new: true }
+    const productIndex = cart.products.findIndex(
+      (item) => item.id.toString() === productId
     );
 
-    if (!cart) {
-      return res.status(404).json({ error: "Carrito no encontrado" });
+    if (productIndex === -1) {
+      return res
+        .status(404)
+        .json({ error: "Producto no encontrado en el carrito" });
     }
+
+    cart.products.splice(productIndex, 1);
+    await cart.save();
 
     res.json(cart);
   } catch (error) {

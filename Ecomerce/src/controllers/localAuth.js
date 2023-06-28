@@ -90,13 +90,13 @@ export async function registerUser(req, res) {
       gender: genero,
       rol,
       password: hashedPassword, 
-      authenticationType: 'local' // Valor fijo para authenticationType
+      authenticationType: 'local' 
     });
 // Crear un carrito vacío para el usuario
 const cart = await cartModel.create({ products: [] });
 
 // Asociar el carrito al usuario
-user.cart = cart._id;
+user.cartId = cart._id;
 await user.save();
 
     res.render('home', { title: 'Página de inicio', success: 'Usuario creado exitosamente', error: null });

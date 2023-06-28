@@ -31,7 +31,7 @@ passport.use(
           // Crear carrito para el usuario
           try {
             const cart = await cartModel.create({ products: [] });
-            result.cart = cart._id;
+            result.cartId = cart._id; 
             await result.save();
           } catch (error) {
             console.error('Error al crear el carrito:', error);
@@ -43,7 +43,7 @@ passport.use(
           if (!user.cart) {
             try {
               const cart = await cartModel.create({ products: [] });
-              user.cart = cart._id;
+              user.cartId = cart._id;
               await user.save();
             } catch (error) {
               console.error('Error al crear el carrito:', error);

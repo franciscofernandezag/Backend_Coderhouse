@@ -1,7 +1,4 @@
-<!-- cart.handlebars -->
-
 <html lang="en">
-
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,8 +12,6 @@
   <body>
     <div class="container mt-4">
       <h1>Carrito de Compras</h1>
-
-
 
       <a class="navbar-brand" href="/products">
         <svg
@@ -52,16 +47,10 @@
                 <td>{{this.quantity}}</td>
                 <th></th>
                 <td>
-                  <form
-                    action="/carts/{{../cartId}}/products/{{this.id._id}}"
-                    method="DELETE"
-                  >
-                    <button
-                      type="submit"
-                      class="btn btn-danger btn-sm"
-                    >Eliminar</button>
+                  <form action="/carts/{{../cartId}}/products/{{this.id._id}}" method="DELETE">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                   </form>
-
                 </td>
               </tr>
             {{/each}}
@@ -81,6 +70,11 @@
         <p>No hay productos en el carrito.</p>
       {{/if}}
     </div>
-  </body>
 
+    <div class="container mt-4 text-right">
+      <form action="/carts/{{cartId}}/products" method="GET">
+        <button type="submit" class="btn btn-danger btn-sm">Limpiar Carrito</button>
+      </form>
+    </div>
+  </body>
 </html>

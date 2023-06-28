@@ -33,17 +33,28 @@ app.use(session({
   saveUninitialized: true
 }));;
 
-// Handlebars 
-app.engine('handlebars', engine({runtimeOptions: {allowProtoPropertiesByDefault: true,allowProtoMethodsByDefault: true},
-    helpers: {eq: function (a, b, options) {
-        if (a === b) {return options.fn(this);}
-        else {return options.inverse(this);}
-      },
+// Handlebars
+app.engine(
+  'handlebars',
+  engine({
+    partialsDir: path.resolve(__dirname, 'views'),
+    runtimeOptions: {
+      allowProtoPropertiesByDefault: true,
+      allowProtoMethodsByDefault: true
     },
+    helpers: {
+      eq: function (a, b, options) {
+        if (a === b) {
+          return options.fn(this);
+        } else {
+          return options.inverse(this);
+        }
+      }
+    }
   })
 );
-app.set('view engine', 'handlebars') 
-app.set('views', path.resolve(__dirname, './views'));
+app.set('view engine', 'handlebars');
+app.set('views', path.resolve(__dirname, 'views'));
 
 // Conexion MongoDB
 connectDatabase();
@@ -79,7 +90,7 @@ app.get('/auth/github/callback', passport.authenticate('github', { failureRedire
 
 // Rutas
 app.use('/products', authenticate, productRouter);
-app.use('/carts', cartRouter);
+app.use('/carts', authenticate, cartRouter);
 
 app.listen(PORT, () => {
   console.log(`Server on port ${PORT}`);
