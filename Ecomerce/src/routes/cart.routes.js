@@ -1,11 +1,34 @@
 import { Router } from "express";
 import CartModel from "../models/Carts.js";
 import ProductModel from "../models/Products.js";
-import methodOverride from "method-override";
+import { sumarProductosIguales, calcularTotal } from "../utils.js";
+
 
 const cartRouter = Router();
-// Middleware para habilitar el método DELETE en formularios HTML
-cartRouter.use(methodOverride("_method"));
+
+
+// Ver productos de un carrito por ID de carrito
+
+cartRouter.get("/:cartId", async (req, res) => {
+  try {
+    const { cartId } = req.params;
+    const cart = await CartModel.findById(cartId).populate("products.id");
+    if (!cart) {
+      return res.status(404).json({ error: "Carrito no encontrado" });
+    }
+
+    const summedProducts = sumarProductosIguales(cart.products); // Agrega esta línea para obtener la lista de productos sumados
+
+    const message = req.session.message; // Obtén el mensaje de la sesión
+    req.session.message = null; // Limpia el mensaje de la sesión después de obtenerlo
+
+    res.render("carts", { cart: cart, cartId: cartId, products: summedProducts, total: calcularTotal(summedProducts), message: message }); 
+  } catch (error) {
+    console.log("Error al obtener los productos del carrito:", error);
+    res.status(500).json({ error: "Error al obtener los productos del carrito" });
+  }
+});
+
 
 // Agregar producto a un carrito
 cartRouter.post("/:cartId/products/:productId", async (req, res) => {
@@ -23,21 +46,26 @@ cartRouter.post("/:cartId/products/:productId", async (req, res) => {
       return res.status(404).json({ error: "Producto no encontrado" });
     }
 
-    const quantity = 1;
-    cart.products.push({ id: productId, quantity });
+    const existingProduct = cart.products.find((item) => item.id.equals(productId));
 
-    await CartModel.findOneAndUpdate(
-      { _id: cartId },
-      { $set: { products: cart.products } }
-    );
+    if (existingProduct) {
+      // El producto ya existe en el carrito, actualiza la cantidad
+      existingProduct.quantity += 1;
+    } else {
+      // El producto no existe en el carrito, agrega un nuevo objeto al arreglo de productos
+      cart.products.push({ id: productId, quantity: 1 });
+    }
 
-    res.redirect("/products"); 
+    await cart.save();
+
+    req.session.message = "Se ha agregado un producto al carrito.";
+
+    res.redirect(`/products?message=${encodeURIComponent(req.session.message)}`);
   } catch (error) {
     console.log("Error al agregar producto al carrito:", error);
     res.status(500).json({ error: "Error al agregar producto al carrito" });
   }
 });
-
 
 
 // Eliminar todos los productos del carrito
@@ -68,7 +96,7 @@ cartRouter.get("/:cartId/products", async (req, res) => {
 
 
 // Eliminar  un  productos del producto a un carrito en vase a su ID
-cartRouter.delete("/:cartId/products/:productId", async (req, res) => {
+cartRouter.post("/:cartId/products/:productId/delete", async (req, res) => {
   try {
     const { cartId, productId } = req.params;
 
@@ -91,7 +119,11 @@ cartRouter.delete("/:cartId/products/:productId", async (req, res) => {
     cart.products.splice(productIndex, 1);
     await cart.save();
 
-    res.json(cart);
+    req.session.message = "Has eliminado un producto.";
+
+   
+
+    res.redirect(`/carts/${cartId}`);
   } catch (error) {
     console.log("Error al eliminar producto del carrito:", error);
     res.status(500).json({ error: "Error al eliminar producto del carrito" });
@@ -141,24 +173,6 @@ cartRouter.put("/:cartId/products/:productId", async (req, res) => {
 //   }
 // });
 
-
-// Ver productos de un carrito por ID
-// cart.routes.js
-
-cartRouter.get("/:cartId", async (req, res) => {
-  try {
-    const { cartId } = req.params;
-    const cart = await CartModel.findById(cartId).populate("products.id");
-    if (!cart) {
-      return res.status(404).json({ error: "Carrito no encontrado" });
-    }
-    
-    res.render("carts", { cart : cart, cartId :cartId }); // Pasa cartId como una variable adicional
-  } catch (error) {
-    console.log("Error al obtener los productos del carrito:", error);
-    res.status(500).json({ error: "Error al obtener los productos del carrito" });
-  }
-});
 
 
 

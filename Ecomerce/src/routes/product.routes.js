@@ -5,7 +5,7 @@ const productRouter = Router();
 
 productRouter.get("/", async (req, res) => {
   try {
-    const { limit = 12, page = 1, sort, query } = req.query;
+    const { limit = 12, page = 1, sort, query, message } = req.query;
     const userName = req.session.user.first_name;
     const email = req.session.user.email;
     const rol = req.session.user.rol;
@@ -14,7 +14,7 @@ productRouter.get("/", async (req, res) => {
     options.limit = parseInt(limit);
     options.skip = (parseInt(page) - 1) * parseInt(limit);
     console.log("Valor de cart:", cartId);
-    
+
     const queryOptions = query ? { title: { $regex: query, $options: "i" } } : {};
 
     const totalCount = await productModel.countDocuments(queryOptions);
@@ -44,12 +44,13 @@ productRouter.get("/", async (req, res) => {
       nextLink: page < totalPages ? `http://localhost:4000/products?limit=${limit}&page=${parseInt(page) + 1}` : null,
     };
 
-    res.render('products', { navbar: 'navbar', products: products, response: response, userName: userName, email: email, rol: rol, cartId: cartId });
+    res.render('products', { navbar: 'navbar', products: products, response: response, userName: userName, email: email, rol: rol, cartId: cartId, message: message || "" });
 
   } catch (error) {
     console.log("Error al recibir los productos:", error);
     res.status(500).send("Error al recibir los productos:");
   }
 });
+
 
 export default productRouter;
