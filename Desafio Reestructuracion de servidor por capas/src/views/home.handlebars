@@ -1,0 +1,132 @@
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <title>Página de Login y Registro</title>
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Iniciar Sesión</h2>
+          {{#if error}}
+            <div class="alert alert-danger" role="alert">
+              {{error}}
+            </div>
+          {{/if}}
+          {{#if success}}
+            <div class="alert alert-success">{{success}}</div>
+          {{/if}}
+          {{#if error}}
+            <div class="alert alert-danger">{{error}}</div>
+          {{/if}}
+          <form action="/login" method="post">
+            <div class="form-group">
+              <label for="login-email">Email:</label>
+              <input
+                type="email"
+                class="form-control"
+                id="login-email"
+                name="email"
+                placeholder="Ingrese su email"
+              />
+            </div>
+            <div class="form-group">
+              <label for="login-password">Contraseña:</label>
+              <input
+                type="password"
+                class="form-control"
+                id="login-password"
+                name="password"
+                placeholder="Ingrese su contraseña"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+            <div class="col-md-6">
+              <h2>Iniciar Sesión con GitHub</h2>
+              <a href="/auth/github" class="btn btn-secondary">Iniciar Sesión
+                con GitHub</a>
+            </div>
+
+          </form>
+        </div>
+        <div class="col-md-6">
+          <h2>Registrarse</h2>
+          <form action="/registro" method="post">
+            <div class="form-group">
+              <label for="signup-nombre">Nombre:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="signup-nombre"
+                name="nombre"
+                placeholder="Ingrese su nombre"
+              />
+            </div>
+            <div class="form-group">
+              <label for="signup-apellido">Apellido:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="signup-apellido"
+                name="apellido"
+                placeholder="Ingrese su apellido"
+              />
+            </div>
+            <div class="form-group">
+              <label for="signup-email">Email:</label>
+              <input
+                type="email"
+                class="form-control"
+                id="signup-email"
+                name="email"
+                placeholder="Ingrese su email"
+              />
+            </div>
+            <div class="form-group">
+              <label for="signup-edad">Edad:</label>
+              <input
+                type="number"
+                class="form-control"
+                id="signup-edad"
+                name="edad"
+                placeholder="Ingrese su edad"
+              />
+            </div>
+            <div class="form-group">
+              <label for="signup-genero">Género:</label>
+              <select class="form-control" id="signup-genero" name="genero">
+                <option value="masculino">Masculino</option>
+                <option value="femenino">Femenino</option>
+                <option value="indeterminado">Indeterminado</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="signup-rol">Rol:</label>
+              <select class="form-control" id="signup-rol" name="rol">
+                <option value="usuario">Usuario</option>
+                <option value="administrador">Administrador</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="signup-password">Contraseña:</label>
+              <input
+                type="password"
+                class="form-control"
+                id="signup-password"
+                name="password"
+                placeholder="Ingrese su contraseña"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Registrarse</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
