@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <title>Compra Fallida</title>
+  </head>
+  <body>
+    <h1>Compra Fallida</h1>
+    <p>No se pudo adquirir los siguientes productos por falta de stock:</p>
+    <ul>
+      {{#each productsWithoutStock}}
+      <li>{{this.title}}</li>
+      {{/each}}
+    </ul>
+  </body>
+</html>
