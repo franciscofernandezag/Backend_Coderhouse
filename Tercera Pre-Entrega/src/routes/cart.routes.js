@@ -4,12 +4,9 @@ import ProductModel from "../models/Products.js";
 import purchaseModel from "../models/Purchase.js";
 import { sumarProductosIguales, calcularTotal } from "../utils/utilsCarts.js";
 
-
 const cartRouter = Router();
 
-
 // Ver productos de un carrito por ID de carrito
-
 cartRouter.get("/:cartId", async (req, res) => {
   try {
     const { cartId } = req.params;
