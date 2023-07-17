@@ -40,6 +40,12 @@ const userSchema = new Schema({
         ref: "cart",
      
       },
-});
+      purchaseId: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: "purchase"
+        }
+      ]
+    });
 
 export const userModel = model("users", userSchema);

@@ -1,5 +1,6 @@
 import { userModel } from "../models/Users.js";
 import cartModel from "../models/Carts.js";
+import purchaseModel from "../models/Purchase.js";
 import { comparePasswords, hashPassword } from "../utils/bcryptUtils.js";
 import passport from '../utils/passportUtils.js';
 

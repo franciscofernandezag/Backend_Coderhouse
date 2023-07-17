@@ -1,6 +1,7 @@
 import { Router } from "express";
 import CartModel from "../models/Carts.js";
 import ProductModel from "../models/Products.js";
+import purchaseModel from "../models/Purchase.js";
 import { sumarProductosIguales, calcularTotal } from "../utils/utilsCarts.js";
 
 
@@ -163,10 +164,13 @@ cartRouter.put("/:cartId/products/:productId", async (req, res) => {
 });
 
 
+
+// Finalizar compra
 cartRouter.post("/:cartId/purchase", async (req, res) => {
   try {
     const { cartId } = req.params;
-
+    // Obtener el ID del usuario de la sesión
+    const userId = req.session.user._id;
     const cart = await CartModel.findById(cartId);
 
     if (!cart) {
@@ -174,7 +178,9 @@ cartRouter.post("/:cartId/purchase", async (req, res) => {
     }
 
     const productsToPurchase = [];
-7
+    let total = 0;
+    let successful = true;
+
     for (const product of cart.products) {
       const { id, quantity } = product;
       const productFromDB = await ProductModel.findById(id);
@@ -186,33 +192,71 @@ cartRouter.post("/:cartId/purchase", async (req, res) => {
       if (productFromDB.stock >= quantity) {
         // Restar la cantidad del producto del stock
         productFromDB.stock -= quantity;
-        productsToPurchase.push(productFromDB);
+        const subtotal = productFromDB.price * quantity;
+        total += subtotal;
+        productsToPurchase.push({
+          product: productFromDB,
+          Id: productFromDB._id,
+          quantity: quantity,
+          price: productFromDB.price,
+          subtotal: subtotal
+        });
+      } else {
+        successful = false;
+        productsToPurchase.push({
+          product: productFromDB,
+          Id: productFromDB._id,
+          quantity: quantity,
+          price: productFromDB.price,
+          subtotal: productFromDB.price * quantity
+        });
       }
     }
 
-    if (productsToPurchase.length === cart.products.length) {
+    // Obtener y actualizar el campo "ticket" autoincrementalmente
+    const purchase = await purchaseModel.findOneAndUpdate(
+      {},
+      { $inc: { ticket: 1 } },
+      { new: true, upsert: true }
+    );
+
+    if (!purchase) {
+      return res.status(500).json({ error: "Error al finalizar la compra" });
+    }
+
+  
+    console.log("Valor de ticket:", purchase.ticket);
+
+    // Guardar los productos en la colección "purchase" con el estado "successful"
+    const newPurchase = await purchaseModel.create({
+      userId: userId,
+      products: productsToPurchase,
+      successful: successful,
+      total: successful ? total : 0,
+      ticket: purchase.ticket,
+      purchaseDate: Date.now()
+    });
+
+    if (successful) {
       // Todos los productos tienen suficiente stock
       // Guardar los cambios en los productos y vaciar el carrito
-      await Promise.all(productsToPurchase.map(product => product.save()));
+      await Promise.all(productsToPurchase.map(item => item.product.save()));
       cart.products = [];
       await cart.save();
 
       return res.render("purchase-successful");
     } else {
       // Al menos un producto no tiene suficiente stock
-      const productsWithoutStock = cart.products.filter((product, index) => {
-        const { id, quantity } = product;
-        const productFromDB = productsToPurchase[index];
-        return !productFromDB || productFromDB.stock < quantity;
-      });
-
-      return res.render("purchase-failed", { productsWithoutStock });
+      return res.render("purchase-failed", { productsWithoutStock: productsToPurchase });
     }
+
   } catch (error) {
     console.log("Error al finalizar la compra:", error);
     res.status(500).json({ error: "Error al finalizar la compra" });
   }
 });
+
+
 
 
 
