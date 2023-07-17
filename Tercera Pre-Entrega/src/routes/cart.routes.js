@@ -169,8 +169,9 @@ cartRouter.put("/:cartId/products/:productId", async (req, res) => {
 cartRouter.post("/:cartId/purchase", async (req, res) => {
   try {
     const { cartId } = req.params;
-    // Obtener el ID del usuario de la sesión
+    // Obtener el ID y correo del usuario de la sesión
     const userId = req.session.user._id;
+    const userEmail = req.session.user.email;
     const cart = await CartModel.findById(cartId);
 
     if (!cart) {
@@ -223,13 +224,15 @@ cartRouter.post("/:cartId/purchase", async (req, res) => {
     if (!purchase) {
       return res.status(500).json({ error: "Error al finalizar la compra" });
     }
-
-  
+   
     console.log("Valor de ticket:", purchase.ticket);
 
+    
+    
     // Guardar los productos en la colección "purchase" con el estado "successful"
     const newPurchase = await purchaseModel.create({
       userId: userId,
+      userEmail: userEmail,
       products: productsToPurchase,
       successful: successful,
       total: successful ? total : 0,
@@ -244,10 +247,12 @@ cartRouter.post("/:cartId/purchase", async (req, res) => {
       cart.products = [];
       await cart.save();
 
-      return res.render("purchase-successful");
+      return res.render("purchase-successful", { products: productsToPurchase, total: total });
+
     } else {
       // Al menos un producto no tiene suficiente stock
-      return res.render("purchase-failed", { productsWithoutStock: productsToPurchase });
+      return res.render("purchase-failed", { products: productsToPurchase, total: total });
+
     }
 
   } catch (error) {
@@ -255,6 +260,7 @@ cartRouter.post("/:cartId/purchase", async (req, res) => {
     res.status(500).json({ error: "Error al finalizar la compra" });
   }
 });
+
 
 
 

@@ -1,6 +1,5 @@
 import { userModel } from "../models/Users.js";
 import cartModel from "../models/Carts.js";
-import purchaseModel from "../models/Purchase.js";
 import { comparePasswords, hashPassword } from "../utils/bcryptUtils.js";
 import passport from '../utils/passportUtils.js';
 
@@ -23,10 +22,17 @@ export async function loginUser(req, res, next) {
 
       req.session.user = user;
       req.session.user.rol = user.rol;
-      res.redirect('/products');
+
+      // Verificar si el usuario tiene rol de administrador
+      if (user.rol === 'administrador') {
+        return res.redirect('/admin'); // Redirigir a la ruta /admin para usuarios administradores
+      } else {
+        return res.redirect('/products'); // Redirigir a la ruta /products para usuarios no administradores
+      }
     });
   })(req, res, next);
 }
+
 
 export async function registerUser(req, res) {
   const { nombre, apellido, email, edad, genero, rol, password } = req.body;

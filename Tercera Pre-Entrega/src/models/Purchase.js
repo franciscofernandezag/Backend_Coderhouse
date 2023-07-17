@@ -6,6 +6,10 @@ const purchaseSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User" 
   },
+  userEmail: {
+    type: String,
+    required: true
+  },
   products: {
     "_id" : false,
     type: [
