@@ -15,6 +15,7 @@ productRouter.get("/", async (req, res) => {
     options.skip = (parseInt(page) - 1) * parseInt(limit);
     console.log("Valor de cart:", cartId);
 
+
     const queryOptions = query ? { title: { $regex: query, $options: "i" } } : {};
 
     const totalCount = await productModel.countDocuments(queryOptions);
