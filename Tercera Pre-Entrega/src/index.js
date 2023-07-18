@@ -15,7 +15,7 @@ import productRouter from "./routes/product.routes.js";
 import cartRouter from "./routes/cart.routes.js";
 import adminRouter from "./routes/admin.routes.js";
 import passport from './controllers/githubAuth.js';
-
+import messagesRouter from "./routes/messages.routes.js";
 
 const app = express();
 const PORT = 4000;
@@ -94,6 +94,7 @@ app.get('/auth/github/callback', passport.authenticate('github', { failureRedire
 app.use('/products', authenticate, productRouter);
 app.use('/carts', authenticate, cartRouter);
 app.use('/admin', authenticate, adminRouter);
+app.use('/message', messagesRouter);
 
 
 app.listen(PORT, () => {

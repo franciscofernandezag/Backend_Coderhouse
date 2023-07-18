@@ -2,11 +2,14 @@
   <head>
     <title>Compra Fallida</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
     <style>
       body {
         padding: 20px;
       }
+
     </style>
+
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
@@ -17,6 +20,11 @@
       </a>
     </nav>
     <div class="container">
+      <div class="send-button-container">
+        <form action="/message/failed" method="get">
+          <button class="btn btn-success btn-block send-button" type="submit">Enviar detalle de productos a correo electronico</button>
+        </form>
+      </div>
       <h1 class="mb-4">Compra Fallida</h1>
       <div class="alert alert-danger" role="alert">
         <p class="mb-0">No se pudo adquirir los siguientes productos por falta de stock:</p>
@@ -38,5 +46,6 @@
         {{/each}}
       </div>
     </div>
+
   </body>
 </html>

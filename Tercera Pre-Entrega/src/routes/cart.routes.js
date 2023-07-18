@@ -210,22 +210,16 @@ cartRouter.post("/:cartId/purchase", async (req, res) => {
         });
       }
     }
-
     // Obtener y actualizar el campo "ticket" autoincrementalmente
     const purchase = await purchaseModel.findOneAndUpdate(
       {},
       { $inc: { ticket: 1 } },
       { new: true, upsert: true }
     );
-
     if (!purchase) {
       return res.status(500).json({ error: "Error al finalizar la compra" });
     }
-   
     console.log("Valor de ticket:", purchase.ticket);
-
-    
-    
     // Guardar los productos en la colección "purchase" con el estado "successful"
     const newPurchase = await purchaseModel.create({
       userId: userId,
@@ -236,30 +230,25 @@ cartRouter.post("/:cartId/purchase", async (req, res) => {
       ticket: purchase.ticket,
       purchaseDate: Date.now()
     });
-
     if (successful) {
       // Todos los productos tienen suficiente stock
       // Guardar los cambios en los productos y vaciar el carrito
       await Promise.all(productsToPurchase.map(item => item.product.save()));
       cart.products = [];
       await cart.save();
+      req.session.products = productsToPurchase; 
 
       return res.render("purchase-successful", { products: productsToPurchase, total: total });
-
     } else {
-      // Al menos un producto no tiene suficiente stock
+
+      req.session.products = productsToPurchase; 
       return res.render("purchase-failed", { products: productsToPurchase, total: total });
-
     }
-
   } catch (error) {
     console.log("Error al finalizar la compra:", error);
     res.status(500).json({ error: "Error al finalizar la compra" });
   }
 });
-
-
-
 
 
 
