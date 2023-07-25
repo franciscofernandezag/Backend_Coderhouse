@@ -27,7 +27,6 @@ cartRouter.get("/:cartId", async (req, res) => {
   }
 });
 
-
 // Agregar producto a un carrito
 cartRouter.post("/:cartId/products/:productId", async (req, res) => {
   try {
@@ -91,8 +90,6 @@ cartRouter.get("/:cartId/products", async (req, res) => {
 });
 
 
-
-
 // Eliminar  un  productos del producto a un carrito en vase a su ID
 cartRouter.post("/:cartId/products/:productId/delete", async (req, res) => {
   try {
@@ -128,8 +125,6 @@ cartRouter.post("/:cartId/products/:productId/delete", async (req, res) => {
   }
 });
 
-
-
 // Modificar cantidad de un producto en el carrito
 cartRouter.put("/:cartId/products/:productId", async (req, res) => {
   try {
@@ -159,8 +154,6 @@ cartRouter.put("/:cartId/products/:productId", async (req, res) => {
     res.status(500).json({ error: "Error al modificar la cantidad del producto en el carrito" });
   }
 });
-
-
 
 // Finalizar compra
 cartRouter.post("/:cartId/purchase", async (req, res) => {
@@ -237,33 +230,19 @@ cartRouter.post("/:cartId/purchase", async (req, res) => {
       cart.products = [];
       await cart.save();
       req.session.products = productsToPurchase; 
-
-      return res.render("purchase-successful", { products: productsToPurchase, total: total });
+      const cartId = req.session.user.cartId;
+      return res.render("purchase-successful", { products: productsToPurchase, total: total, cartId: cartId });
     } else {
 
       req.session.products = productsToPurchase; 
-      return res.render("purchase-failed", { products: productsToPurchase, total: total });
+      const cartId = req.session.user.cartId;
+      return res.render("purchase-failed", { products: productsToPurchase, total: total, cartId: cartId });
     }
   } catch (error) {
     console.log("Error al finalizar la compra:", error);
     res.status(500).json({ error: "Error al finalizar la compra" });
   }
 });
-
-
-
-// // Ver todos los carritos y obtener los productos completos con populate
-// cartRouter.get("/", async (req, res) => {
-//   try {
-//     const carts = await CartModel.find().populate("products.id"); // Utilizar populate para obtener los productos completos
-//     res.json(carts);
-//   } catch (error) {
-//     console.log("Error al obtener los carritos:", error);
-//     res.status(500).json({ error: "Error al obtener los carritos" });
-//   }
-// });
-
-
 
 
 export default cartRouter;

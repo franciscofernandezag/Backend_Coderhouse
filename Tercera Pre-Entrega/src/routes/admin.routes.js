@@ -40,11 +40,23 @@ adminRouter.get("/", async (req, res) => {
       page: parseInt(page),
       hasPrevPage: page > 1,
       hasNextPage: page < totalPages,
-      prevLink: page > 1 ? `http://localhost:4000/products?limit=${limit}&page=${parseInt(page) - 1}` : null,
-      nextLink: page < totalPages ? `http://localhost:4000/products?limit=${limit}&page=${parseInt(page) + 1}` : null,
+      prevLink: page > 1 ? `http://localhost:4000/admin?limit=${limit}&page=${parseInt(page) - 1}` : null,
+      nextLink: page < totalPages ? `http://localhost:4000/admin?limit=${limit}&page=${parseInt(page) + 1}` : null,
     };
 
-    res.render('admin', { navbar: 'navbar', products: products, response: response, userName: userName, email: email, rol: rol, cartId: cartId, message: message || "" });
+    res.render('admin', {
+      layout: false, // Desactivar el uso del layout
+      partials: {
+        navbar: 'navbar', // Incluir el partial del navbar si es necesario en otras vistas
+      },
+      products: products,
+      response: response,
+      userName: userName,
+      email: email,
+      rol: rol,
+      cartId: cartId,
+      message: message || ""
+    });
 
   } catch (error) {
     console.log("Error al recibir los productos:", error);

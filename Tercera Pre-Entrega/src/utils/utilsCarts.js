@@ -17,10 +17,9 @@ export function sumarProductosIguales(products) {
         });
       }
     });
-  
     return result;
   }
-  
+
   export function calcularTotal(products) {
     let total = 0;
     products.forEach((product) => {

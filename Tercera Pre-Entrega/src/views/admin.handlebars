@@ -9,26 +9,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <style>
+</head>
+
+<body class="{{#if adminView}}admin-view{{/if}}">
+   <style>
         body {
             background-color: #96b1cc;
         }
     </style>
-
-</head>
-
-<body>
-
-    {{> navbar}}
-
-
     <div class="container mt-4">
         <div class="text-right">
             <h3>Bienvenido, {{userName}}</h3>
             <h4>{{email}}</h4>
             <h5>Usted tiene permisos de: {{rol}}</h5>
-      
-
         </div>
 
         <h1>Portal de Administración</h1>
@@ -49,7 +42,6 @@
         </form>
 
         <div class="row">
-
             {{#each products}}
             <div class="col-md-4 mt-4">
                 <div class="card">
@@ -60,7 +52,7 @@
                         <p class="card-text">{{this.description}}</p>
                         <p class="card-text"><strong>Precio:</strong> {{this.price}}</p>
                         <p class="card-text"><strong>Stock:</strong> {{this.stock}}</p>
-                           <form action="/admin/products/{{this._id}}/update-price" method="post">
+                        <form action="/admin/products/{{this._id}}/update-price" method="post">
                             <div class="form-group">
                                 <label for="amount">Nuevo precio:</label>
                                 <input type="number" class="form-control" id="amount" name="amount"
@@ -79,27 +71,23 @@
                     </div>
                 </div>
             </div>
-
-
             {{/each}}
-
         </div>
 
         <div id="message-container" class="text-center mt-4">
             {{#if message}}
-      <script>
-    Swal.fire({
-        title: "Mensaje",
-        text: `{{message}}`, 
-        icon: "success",
-        timer: 3000,
-        timerProgressBar: true,
-        toast: true,
-        position: "top",
-        showConfirmButton: false
-    });
-</script>
-
+                <script>
+                    Swal.fire({
+                        title: "Mensaje",
+                        text: `{{message}}`,
+                        icon: "success",
+                        timer: 3000,
+                        timerProgressBar: true,
+                        toast: true,
+                        position: "top",
+                        showConfirmButton: false
+                    });
+                </script>
             {{/if}}
         </div>
 
@@ -107,20 +95,20 @@
             <nav aria-label="Page navigation">
                 <ul class="pagination">
                     {{#if response.hasPrevPage}}
-                    <li class="page-item">
-                        <a class="page-link" href="{{response.prevLink}}" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </li>
+                        <li class="page-item">
+                            <a class="page-link" href="{{response.prevLink}}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
                     {{/if}}
                     {{#if response.hasNextPage}}
-                    <li class="page-item">
-                        <a class="page-link" href="{{response.nextLink}}" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </li>
+                        <li class="page-item">
+                            <a class="page-link" href="{{response.nextLink}}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
                     {{/if}}
                 </ul>
             </nav>
@@ -132,8 +120,7 @@
 
         <div class="d-flex mt-4">
             <p class="mr-4"><strong>Status</strong>: {{response.status}}</p>
-            <p class="mr-4"><strong>Total Páginas:</strong>
-                {{response.totalPages}}</p>
+            <p class="mr-4"><strong>Total Páginas:</strong> {{response.totalPages}}</p>
             <p class="mr-4"><strong>Anterior:</strong> {{response.prevPage}}</p>
             <p class="mr-4"><strong>Próxima:</strong> {{response.nextPage}}</p>
             <p><strong>Actual:</strong> {{response.page}}</p>
