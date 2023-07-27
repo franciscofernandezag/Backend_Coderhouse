@@ -1,0 +1,25 @@
+warning: Inicio de sesión fallido con usuario : undefined {"timestamp":"2023-07-27 12:53:19"}
+warning: Intento de inicio de sesión fallido para el usuario: {"timestamp":"2023-07-27 12:54:23"}
+warning: Intento de inicio de sesión fallido para el usuario: {"timestamp":"2023-07-27 12:54:59"}
+warning: Intento de inicio de sesión fallido para el usuario: cata@cata.com {"timestamp":"2023-07-27 13:33:09"}
+warning: Error en el servidor al iniciar sesion local  {"timestamp":"2023-07-27 13:34:50"}
+warning: Intento de inicio de sesión local fallido para el usuario: admin@admin.com {"timestamp":"2023-07-27 13:35:45"}
+warning: Intento de inicio de sesión local fallido para el usuario: asdasd@dsfsdfsdf.cl {"timestamp":"2023-07-27 13:35:56"}
+warning: Intento de inicio de sesión local fallido para el usuario: admin@admin.com {"timestamp":"2023-07-27 13:40:54"}
+warning: Faltan campos obligatorios para el registro local de usuario:  {"timestamp":"2023-07-27 14:03:21"}
+warning: Faltan campos obligatorios para el registro local de usuario: [object Object] {"timestamp":"2023-07-27 14:03:40"}
+warning: Faltan campos obligatorios para el registro local de usuario: {"nombre":"11111","apellido":"1111111","email":"","edad":"","genero":"masculino","rol":"usuario","password":""} {"timestamp":"2023-07-27 14:09:02"}
+warning: Intento de inicio de sesión local fallido para el usuario: juan@juan.com {"timestamp":"2023-07-27 14:10:53"}
+warning: Intento de inicio de sesión local fallido para el usuario:  {"timestamp":"2023-07-27 14:11:03"}
+warning: Intento de inicio de sesión local fallido para el usuario: juan@juan.com {"timestamp":"2023-07-27 14:20:18"}
+warning: Intento de inicio de sesión local fallido para el usuario:  {"timestamp":"2023-07-27 14:20:21"}
+warning: Intento de inicio de sesión local fallido para el usuario: sdfsdf@dsfsdf.cl {"timestamp":"2023-07-27 14:20:29"}
+warning: Intento de inicio de sesión local fallido para el usuario:  {"timestamp":"2023-07-27 14:21:09"}
+warning: Intento de inicio de sesión local fallido para el usuario:  {"timestamp":"2023-07-27 14:21:10"}
+warning: Intento de inicio de sesión local fallido para el usuario:  {"timestamp":"2023-07-27 14:21:11"}
+warning: Intento de inicio de sesión local fallido para el usuario:  {"timestamp":"2023-07-27 14:21:41"}
+warning: Intento de inicio de sesión local fallido para el usuario:  {"timestamp":"2023-07-27 14:21:42"}
+warning: Intento de inicio de sesión local fallido para el usuario:  {"timestamp":"2023-07-27 14:21:54"}
+warning: Intento de inicio de sesión local fallido para el usuario:  {"timestamp":"2023-07-27 14:21:58"}
+warning: Faltan campos obligatorios para el registro local de usuario: {"nombre":"asdasdasd","apellido":"asdasd","email":"","edad":"","genero":"masculino","rol":"usuario","password":""} {"timestamp":"2023-07-27 14:22:41"}
+warning: Email de usuario en uso: admin@admin.com {"timestamp":"2023-07-27 14:24:07"}
