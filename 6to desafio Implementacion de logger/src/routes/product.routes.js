@@ -1,5 +1,6 @@
 import { Router } from "express";
 import productModel from "../models/Products.js";
+import { logger } from  "../utils/logger.js";
 
 const productRouter = Router();
 
@@ -13,14 +14,9 @@ productRouter.get("/", async (req, res) => {
     const options = {};
     options.limit = parseInt(limit);
     options.skip = (parseInt(page) - 1) * parseInt(limit);
-    console.log("Valor de cart:", cartId);
-
-
     const queryOptions = query ? { title: { $regex: query, $options: "i" } } : {};
-
     const totalCount = await productModel.countDocuments(queryOptions);
     const totalPages = Math.ceil(totalCount / options.limit);
-
     let productsQuery = productModel.find(queryOptions, null, options);
 
     // Verifica si se proporciona el parámetro 'sort' y aplica el método de ordenamiento ascendente y descendente
@@ -45,13 +41,15 @@ productRouter.get("/", async (req, res) => {
       nextLink: page < totalPages ? `http://localhost:4000/products?limit=${limit}&page=${parseInt(page) + 1}` : null,
     };
 
+    // Registro de información en el logger
+    logger.info(`Productos obtenidos satisfactoriamente. Cantidad de productos: ${products.length}`);
+
     res.render('products', { navbar: 'navbar', products: products, response: response, userName: userName, email: email, rol: rol, cartId: cartId, message: message || "" });
 
   } catch (error) {
-    console.log("Error al recibir los productos:", error);
+    logger.fatal("Error al recibir los productos:", error);
     res.status(500).send("Error al recibir los productos:");
   }
 });
-
 
 export default productRouter;

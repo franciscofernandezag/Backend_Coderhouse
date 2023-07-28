@@ -1,5 +1,6 @@
 import { Router } from "express";
 import productModel from "../models/Products.js";
+import { logger } from "../utils/logger.js";
 
 const adminRouter = Router();
 
@@ -13,7 +14,7 @@ adminRouter.get("/", async (req, res) => {
     const options = {};
     options.limit = parseInt(limit);
     options.skip = (parseInt(page) - 1) * parseInt(limit);
-    console.log("Valor de cart:", cartId);
+
 
     const queryOptions = query ? { title: { $regex: query, $options: "i" } } : {};
 
@@ -44,23 +45,32 @@ adminRouter.get("/", async (req, res) => {
       nextLink: page < totalPages ? `http://localhost:4000/admin?limit=${limit}&page=${parseInt(page) + 1}` : null,
     };
 
-    res.render('admin', {
-      layout: false, // Desactivar el uso del layout
-      partials: {
-        navbar: 'navbar', // Incluir el partial del navbar si es necesario en otras vistas
-      },
-      products: products,
-      response: response,
-      userName: userName,
-      email: email,
-      rol: rol,
-      cartId: cartId,
-      message: message || ""
-    });
+    // Utiliza el logger para registrar información debug si el usuario es administrador
+    if (rol === "administrador") {
+
+      // Si el usuario es administrador, accede a la ruta adminrouter
+      res.render('admin', {
+        layout: false,
+        partials: {
+          navbar: 'navbar',
+        },
+        products: products,
+        response: response,
+        userName: userName,
+        email: email,
+        rol: rol,
+        cartId: cartId,
+      });
+    } else {
+      logger.warning(`Usuario '${email}' no autorizado accediendo a la ruta '/admin'.`);
+      // Si el usuario tiene rol "usuario", redirigir a la raíz "/"
+      res.redirect("/");
+    }
 
   } catch (error) {
-    console.log("Error al recibir los productos:", error);
-    res.status(500).send("Error al recibir los productos:");
+    // Utiliza el logger para registrar errores
+    logger.error("Error al recibir los productos:", error);
+    res.status(500).send(`Error al recibir los productos: ${error.message}`); // Envía el mensaje de error real al cliente
   }
 });
 
@@ -69,24 +79,22 @@ adminRouter.post("/products/:id/update-stock", async (req, res) => {
   try {
     const productId = req.params.id;
     const { amount } = req.body;
-
     const product = await productModel.findById(productId);
     if (!product) {
       return res.status(404).send("Producto no encontrado");
     }
-
     product.stock = parseInt(amount);
-
     await product.save();
-
     req.session.message = "Se ha actualizado el stock del producto.";
-
+    logger.info(`Se ha actualizado el stock del producto con ID ${productId}. Stock actualizado: ${amount}.`);
     res.redirect(`/admin?message=${encodeURIComponent(req.session.message)}`);
   } catch (error) {
-    console.log("Error al actualizar el stock:", error);
+    // Utiliza el logger para registrar errores
+    logger.error("Error al actualizar el stock:", error);
     res.status(500).send("Error al actualizar el stock");
   }
 });
+
 
 // Ruta para actualizar precio
 adminRouter.post("/products/:id/update-price", async (req, res) => {
@@ -98,16 +106,13 @@ adminRouter.post("/products/:id/update-price", async (req, res) => {
       if (!product) {
         return res.status(404).send("Producto no encontrado");
       }
-  
       product.price = parseInt(amount);
-  
       await product.save();
-
       req.session.message = "Se ha actualizado el precio del producto.";
-  
+      logger.info(`Se ha actualizado el precio del producto con ID ${productId}. Precio actualizado: ${amount}.`);
       res.redirect(`/admin?message=${encodeURIComponent(req.session.message)}`);
     } catch (error) {
-      console.log("Error al actualizar el stock:", error);
+      logger.error("Error al actualizar precio:", error);
       res.status(500).send("Error al actualizar el stock");
     }
   });

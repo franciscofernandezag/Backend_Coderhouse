@@ -12,7 +12,7 @@ export async function loginUser(req, res, next) {
     }
 
     if (!user) {
-      logger.warning(`Intento de inicio de sesión local fallido para el usuario: ${req.body.email}`);
+      logger.info(`Intento de inicio de sesión local fallido para el usuario: ${req.body.email}`);
       return res.render('home', { title: 'Página de inicio', error: info.message });
     }
 
@@ -69,7 +69,7 @@ export async function registerUser(req, res) {
 
     // Crear un carrito vacío para el usuario
     const cart = await cartModel.create({ products: [] });
-    logger.info(`Nuevo usuario carrito para usuario creado: ${user.cartId}`);
+    logger.info(`ID de Nuevo carrito asociado a usuario creado: ${user.cartId}`);
 
 
     // Asociar el carrito al usuario
