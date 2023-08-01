@@ -6,14 +6,14 @@ const levelOptions = {
     error: 1,
     warning: 2,
     info: 3,
-    debug: 4,
+    http: 4,
   },
   colors: {
     fatal: 'red',
-    error: 'orange',
+    error: 'magenta',
     warning: 'yellow',
     info: 'blue',
-    debug: 'white',
+    http: 'green',
   }
 };
 
@@ -21,7 +21,7 @@ export const logger = winston.createLogger({
   levels: levelOptions.levels,
   transports: [
     new winston.transports.Console({
-      level: "info",
+      level: "http", 
       format: winston.format.combine(
         winston.format.colorize({ colors: levelOptions.colors }),
         winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
@@ -61,8 +61,8 @@ export const logger = winston.createLogger({
       )
     }),
     new winston.transports.File({
-      filename: "src/logs/debug.log",
-      level: "debug",
+      filename: "src/logs/http.log",
+      level: "http",
       format: winston.format.combine(
         winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }), 
         winston.format.simple()

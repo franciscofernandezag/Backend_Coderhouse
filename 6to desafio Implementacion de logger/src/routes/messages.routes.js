@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { transporter } from "../utils/nodemailer.js";
+import { logger } from  "../utils/logger.js";
 
 const messagesRouter = Router();
 
@@ -41,9 +42,10 @@ messagesRouter.get("/succesful", async (req, res) => {
       subject: "Compra procesada exitosamente",
       html: htmlBody,
     });
-
+    logger.info(`Se envió un correo a ${userEmail} con la compra exitosa procesada.`);
     return res.render("messages-succesful");
   } catch (error) {
+    logger.error("Error al procesar la compra exitosa:", error);
     res.status(500).json({ message: error });
   }
 });
@@ -86,9 +88,11 @@ messagesRouter.get("/failed", async (req, res) => {
       subject: "Tiene una compra pendiente !",
       html: htmlBody,
     });
+    logger.info(`Se envió un correo a ${userEmail} para la compra pendiente.`);
 
     return res.render("messages-failed");
   } catch (error) {
+    logger.error("Error al procesar la compra pendiente:", error);
     res.status(500).json({ message: error });
   }
 });

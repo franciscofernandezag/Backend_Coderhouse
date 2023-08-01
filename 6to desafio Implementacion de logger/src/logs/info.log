@@ -1,150 +1,23 @@
-
-info: Server on port 4000
-info: Server on port 4000
-info: DB is connected
-info: Server on port 4000 {"timestamp":"2023-07-27 10:24:01"}
-info: DB is connected {"timestamp":"2023-07-27 10:24:02"}
-info: Server on port 4000 {"timestamp":"2023-07-27 10:24:41"}
-info: DB is connected {"timestamp":"2023-07-27 10:24:42"}
-info: Server on port 4000 {"timestamp":"2023-07-27 10:56:21"}
-info: DB is connected {"timestamp":"2023-07-27 10:56:22"}
-info: Server on port 4000 {"timestamp":"2023-07-27 10:56:49"}
-info: DB is connected {"timestamp":"2023-07-27 10:56:50"}
-info: Server on port 4000 {"timestamp":"2023-07-27 10:57:27"}
-info: DB is connected {"timestamp":"2023-07-27 10:57:28"}
-info: Server on port 4000 {"timestamp":"2023-07-27 10:58:31"}
-info: DB is connected {"timestamp":"2023-07-27 10:58:32"}
-info: Server on port 4000 {"timestamp":"2023-07-27 11:07:28"}
-info: DB is connected {"timestamp":"2023-07-27 11:07:29"}
-info: Server on port 4000 {"timestamp":"2023-07-27 11:08:39"}
-info: DB is connected {"timestamp":"2023-07-27 11:08:40"}
-info: Server on port 4000 {"timestamp":"2023-07-27 11:08:59"}
-info: DB is connected {"timestamp":"2023-07-27 11:08:59"}
-info: Server on port 4000 {"timestamp":"2023-07-27 11:12:56"}
-info: DB is connected {"timestamp":"2023-07-27 11:12:57"}
-info: Server on port 4000 {"timestamp":"2023-07-27 11:13:51"}
-info: DB is connected {"timestamp":"2023-07-27 11:13:52"}
-info: Server on port 4000 {"timestamp":"2023-07-27 11:14:05"}
-info: DB is connected {"timestamp":"2023-07-27 11:14:06"}
-info: Server on port 4000 {"timestamp":"2023-07-27 11:14:16"}
-info: DB is connected {"timestamp":"2023-07-27 11:14:17"}
-info: Server on port 4000 {"timestamp":"2023-07-27 11:14:46"}
-info: DB is connected {"timestamp":"2023-07-27 11:14:47"}
-info: Server on port 4000 {"timestamp":"2023-07-27 11:15:01"}
-info: DB is connected {"timestamp":"2023-07-27 11:15:01"}
-info: Inicio de sesión exitoso para el usuario administrador: {"timestamp":"2023-07-27 11:17:59"}
-info: Server on port 4000 {"timestamp":"2023-07-27 11:20:34"}
-info: DB is connected {"timestamp":"2023-07-27 11:20:35"}
-info: Inicio de sesión exitoso para el usuario: test1@test1.com {"timestamp":"2023-07-27 11:20:47"}
-info: Server on port 4000 {"timestamp":"2023-07-27 11:22:42"}
-info: DB is connected {"timestamp":"2023-07-27 11:22:43"}
-info: Server on port 4000 {"timestamp":"2023-07-27 11:24:23"}
-info: DB is connected {"timestamp":"2023-07-27 11:24:25"}
-info: Server on port 4000 {"timestamp":"2023-07-27 11:27:50"}
-info: DB is connected {"timestamp":"2023-07-27 11:27:51"}
-info: Server on port 4000 {"timestamp":"2023-07-27 11:28:55"}
-info: DB is connected {"timestamp":"2023-07-27 11:28:56"}
-info: Inicio de sesión exitoso para el usuario Administrador: admin@admin.com {"timestamp":"2023-07-27 11:29:14"}
-info: Server on port 4000 {"timestamp":"2023-07-27 12:41:25"}
-info: DB is connected {"timestamp":"2023-07-27 12:41:26"}
-info: Server on port 4000 {"timestamp":"2023-07-27 12:42:12"}
-info: DB is connected {"timestamp":"2023-07-27 12:42:13"}
-info: Server on port 4000 {"timestamp":"2023-07-27 12:43:39"}
-info: Server on port 4000 {"timestamp":"2023-07-27 12:43:46"}
-info: DB is connected {"timestamp":"2023-07-27 12:43:47"}
-info: Server on port 4000 {"timestamp":"2023-07-27 12:44:28"}
-info: DB is connected {"timestamp":"2023-07-27 12:44:29"}
-info: Inicio de sesión exitoso para el usuario Administrador: admin@admin.com {"timestamp":"2023-07-27 12:44:43"}
-info: Server on port 4000 {"timestamp":"2023-07-27 12:51:15"}
-info: DB is connected {"timestamp":"2023-07-27 12:51:16"}
-info: Inicio de sesión fallido: undefined {"timestamp":"2023-07-27 12:51:19"}
-info: Server on port 4000 {"timestamp":"2023-07-27 12:51:58"}
-info: DB is connected {"timestamp":"2023-07-27 12:51:59"}
-info: Server on port 4000 {"timestamp":"2023-07-27 12:52:22"}
-info: DB is connected {"timestamp":"2023-07-27 12:52:23"}
-info: Inicio de sesión fallido: undefined {"timestamp":"2023-07-27 12:52:24"}
-info: Inicio de sesión fallido: undefined {"timestamp":"2023-07-27 12:52:29"}
-info: Server on port 4000 {"timestamp":"2023-07-27 12:53:15"}
-info: DB is connected {"timestamp":"2023-07-27 12:53:16"}
-warning: Inicio de sesión fallido con usuario : undefined {"timestamp":"2023-07-27 12:53:19"}
-info: Server on port 4000 {"timestamp":"2023-07-27 12:54:15"}
-info: DB is connected {"timestamp":"2023-07-27 12:54:16"}
-warning: Intento de inicio de sesión fallido para el usuario: {"timestamp":"2023-07-27 12:54:23"}
-info: Server on port 4000 {"timestamp":"2023-07-27 12:54:55"}
-info: DB is connected {"timestamp":"2023-07-27 12:54:56"}
-warning: Intento de inicio de sesión fallido para el usuario: {"timestamp":"2023-07-27 12:54:59"}
-info: Server on port 4000 {"timestamp":"2023-07-27 13:33:01"}
-info: DB is connected {"timestamp":"2023-07-27 13:33:02"}
-warning: Intento de inicio de sesión fallido para el usuario: cata@cata.com {"timestamp":"2023-07-27 13:33:09"}
-info: Server on port 4000 {"timestamp":"2023-07-27 13:34:47"}
-info: DB is connected {"timestamp":"2023-07-27 13:34:48"}
-warning: Error en el servidor al iniciar sesion local  {"timestamp":"2023-07-27 13:34:50"}
-info: Server on port 4000 {"timestamp":"2023-07-27 13:35:42"}
-info: DB is connected {"timestamp":"2023-07-27 13:35:43"}
-warning: Intento de inicio de sesión local fallido para el usuario: admin@admin.com {"timestamp":"2023-07-27 13:35:45"}
-warning: Intento de inicio de sesión local fallido para el usuario: asdasd@dsfsdfsdf.cl {"timestamp":"2023-07-27 13:35:56"}
-info: Server on port 4000 {"timestamp":"2023-07-27 13:40:45"}
-info: DB is connected {"timestamp":"2023-07-27 13:40:46"}
-warning: Intento de inicio de sesión local fallido para el usuario: admin@admin.com {"timestamp":"2023-07-27 13:40:54"}
-info: Server on port 4000 {"timestamp":"2023-07-27 14:03:16"}
-info: DB is connected {"timestamp":"2023-07-27 14:03:18"}
-warning: Faltan campos obligatorios para el registro local de usuario:  {"timestamp":"2023-07-27 14:03:21"}
-info: Server on port 4000 {"timestamp":"2023-07-27 14:03:39"}
-info: DB is connected {"timestamp":"2023-07-27 14:03:40"}
-warning: Faltan campos obligatorios para el registro local de usuario: [object Object] {"timestamp":"2023-07-27 14:03:40"}
-info: Server on port 4000 {"timestamp":"2023-07-27 14:07:54"}
-info: DB is connected {"timestamp":"2023-07-27 14:07:55"}
-info: Server on port 4000 {"timestamp":"2023-07-27 14:08:56"}
-info: DB is connected {"timestamp":"2023-07-27 14:08:57"}
-warning: Faltan campos obligatorios para el registro local de usuario: {"nombre":"11111","apellido":"1111111","email":"","edad":"","genero":"masculino","rol":"usuario","password":""} {"timestamp":"2023-07-27 14:09:02"}
-warning: Intento de inicio de sesión local fallido para el usuario: juan@juan.com {"timestamp":"2023-07-27 14:10:53"}
-warning: Intento de inicio de sesión local fallido para el usuario:  {"timestamp":"2023-07-27 14:11:03"}
-warning: Intento de inicio de sesión local fallido para el usuario: juan@juan.com {"timestamp":"2023-07-27 14:20:18"}
-warning: Intento de inicio de sesión local fallido para el usuario:  {"timestamp":"2023-07-27 14:20:21"}
-warning: Intento de inicio de sesión local fallido para el usuario: sdfsdf@dsfsdf.cl {"timestamp":"2023-07-27 14:20:29"}
-warning: Intento de inicio de sesión local fallido para el usuario:  {"timestamp":"2023-07-27 14:21:09"}
-warning: Intento de inicio de sesión local fallido para el usuario:  {"timestamp":"2023-07-27 14:21:10"}
-warning: Intento de inicio de sesión local fallido para el usuario:  {"timestamp":"2023-07-27 14:21:11"}
-info: Server on port 4000 {"timestamp":"2023-07-27 14:21:38"}
-info: DB is connected {"timestamp":"2023-07-27 14:21:39"}
-warning: Intento de inicio de sesión local fallido para el usuario:  {"timestamp":"2023-07-27 14:21:41"}
-warning: Intento de inicio de sesión local fallido para el usuario:  {"timestamp":"2023-07-27 14:21:42"}
-info: Server on port 4000 {"timestamp":"2023-07-27 14:21:48"}
-info: DB is connected {"timestamp":"2023-07-27 14:21:49"}
-warning: Intento de inicio de sesión local fallido para el usuario:  {"timestamp":"2023-07-27 14:21:54"}
-warning: Intento de inicio de sesión local fallido para el usuario:  {"timestamp":"2023-07-27 14:21:58"}
-info: Server on port 4000 {"timestamp":"2023-07-27 14:22:25"}
-info: DB is connected {"timestamp":"2023-07-27 14:22:26"}
-warning: Faltan campos obligatorios para el registro local de usuario: {"nombre":"asdasdasd","apellido":"asdasd","email":"","edad":"","genero":"masculino","rol":"usuario","password":""} {"timestamp":"2023-07-27 14:22:41"}
-info: Server on port 4000 {"timestamp":"2023-07-27 14:23:48"}
-info: DB is connected {"timestamp":"2023-07-27 14:23:49"}
-warning: Email de usuario en uso: admin@admin.com {"timestamp":"2023-07-27 14:24:07"}
-info: Server on port 4000 {"timestamp":"2023-07-27 15:00:48"}
-info: DB is connected {"timestamp":"2023-07-27 15:00:49"}
-info: Nuevo usuario creado: test10@test10.com {"timestamp":"2023-07-27 15:03:26"}
-info: Nuevo usuario carrito para usuario creado: undefined {"timestamp":"2023-07-27 15:03:26"}
-info: Server on port 4000 {"timestamp":"2023-07-27 15:03:57"}
-info: DB is connected {"timestamp":"2023-07-27 15:03:58"}
-info: Nuevo usuario creado: test11@test11.com {"timestamp":"2023-07-27 15:04:12"}
-info: Nuevo usuario carrito para usuario creado: undefined {"timestamp":"2023-07-27 15:04:12"}
-info: Server on port 4000 {"timestamp":"2023-07-27 15:04:45"}
-info: DB is connected {"timestamp":"2023-07-27 15:04:46"}
-info: Inicio de sesión exitoso para el usuario: {
-  _id: new ObjectId("64b4c3320a3ff5f52fbebc5e"),
-  first_name: 'test1',
-  last_name: 'test1',
-  email: 'test1@test1.com',
-  gender: 'masculino',
-  rol: 'usuario',
-  password: '$2b$10$ZGnmit7nhW7AiPlreaD7duga.7HHL1h.UZDNVJvpP51lYp9om7lsu',
-  authenticationType: 'local',
-  purchaseId: [],
-  __v: 0,
-  cartId: new ObjectId("64b4c3320a3ff5f52fbebc60")
-} {"timestamp":"2023-07-27 15:04:53"}
-info: Server on port 4000 {"timestamp":"2023-07-27 15:06:33"}
-info: DB is connected {"timestamp":"2023-07-27 15:06:34"}
-info: Inicio de sesión exitoso para el usuario: undefined {"timestamp":"2023-07-27 15:06:46"}
-info: Server on port 4000 {"timestamp":"2023-07-27 15:07:11"}
-info: DB is connected {"timestamp":"2023-07-27 15:07:12"}
-info: Inicio de sesión exitoso para el usuario: 64b4c3320a3ff5f52fbebc60 {"timestamp":"2023-07-27 15:07:26"}
+info: Productos obtenidos satisfactoriamente. Cantidad de productos: 12 {"timestamp":"2023-07-28 15:38:30"}
+info: Productos obtenidos satisfactoriamente. Cantidad de productos: 12 {"timestamp":"2023-07-28 15:41:22"}
+fatal: Este es un mensaje de log fatal {"timestamp":"2023-07-28 16:04:29"}
+info: Carrito asociado a usuario existente satisfactoriamente en autenticación github. Correo de GitHub del usuario: fco.fernandez.ag@gmail.com {"timestamp":"2023-07-28 16:09:43"}
+info: Productos obtenidos satisfactoriamente. Cantidad de productos: 12 {"timestamp":"2023-07-28 16:09:44"}
+fatal: Este es un mensaje de log fatal {"timestamp":"2023-07-28 16:11:08"}
+fatal: Este es un mensaje de log fatal {"timestamp":"2023-07-28 16:14:45"}
+fatal: Este es un mensaje de log fatal {"timestamp":"2023-07-28 16:21:22"}
+error: Este es un mensaje de log de error {"timestamp":"2023-07-28 16:21:22"}
+warning: Este es un mensaje de log de advertencia {"timestamp":"2023-07-28 16:21:22"}
+info: Este es un mensaje de log de información {"timestamp":"2023-07-28 16:21:22"}
+fatal: Este es un mensaje de log fatal {"timestamp":"2023-07-28 16:22:53"}
+fatal: Este es un mensaje de log fatal {"timestamp":"2023-07-28 16:23:33"}
+error: Este es un mensaje de log de error {"timestamp":"2023-07-28 16:23:33"}
+warning: Este es un mensaje de log de advertencia {"timestamp":"2023-07-28 16:23:33"}
+info: Este es un mensaje de log de información {"timestamp":"2023-07-28 16:23:33"}
+fatal: Este es un mensaje de log fatal {"timestamp":"2023-07-28 16:27:05"}
+error: Este es un mensaje de log de error {"timestamp":"2023-07-28 16:27:05"}
+warning: Este es un mensaje de log de advertencia {"timestamp":"2023-07-28 16:27:05"}
+info: Este es un mensaje de log de información {"timestamp":"2023-07-28 16:27:05"}
+info: Carrito asociado a usuario existente satisfactoriamente en autenticación github. Correo de GitHub del usuario: fco.fernandez.ag@gmail.com {"timestamp":"2023-07-28 16:27:23"}
+info: Productos obtenidos satisfactoriamente. Cantidad de productos: 12 {"timestamp":"2023-07-28 16:27:23"}
+warning: Usuario 'fco.fernandez.ag@gmail.com' no autorizado accediendo a la ruta '/admin'. {"timestamp":"2023-07-28 16:27:31"}

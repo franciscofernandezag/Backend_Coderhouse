@@ -17,15 +17,14 @@ import cartRouter from "./routes/cart.routes.js";
 import adminRouter from "./routes/admin.routes.js";
 import messagesRouter from "./routes/messages.routes.js";
 import { logger } from  "./utils/logger.js";
+import loggerTestRouter from "./routes/logegerTest.routes.js";
 
 const app = express();
 const PORT = 4000;
 
 const server = app.listen(PORT, () => {
-  logger.info(`Server on port ${PORT}`);
+  logger.http(`Server on port ${PORT}`);
 })
-
-
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -41,22 +40,19 @@ app.use(session({
   saveUninitialized: true
 }));;
 
-
 //ServerIO
 
 const io = new Server(server)
 const mensajes = []
 
 io.on('connection', (socket) => {
-    console.log("Cliente conectado")
+  logger.http(`Ciente conectado socket IO`);
     socket.on("mensaje", info => {
         console.log(info)
         mensajes.push(info)
-        io.emit("mensajes", mensajes) //Le envio todos los mensajes guardados
+        io.emit("mensajes", mensajes) 
     })
 })
-
-
 
 // Handlebars
 app.engine(
@@ -98,6 +94,8 @@ app.post('/registro', registerUser);
 
 // Cerrar sesion (LOGOUT)
 app.get("/logout", (req, res) => {
+  const userEmail = req.session.user.email; 
+  logger.info(`Usuario ${userEmail} ha cerrado sesión.`);
   // Eliminar la sesión del usuario
   req.session.destroy();
   // Redireccionar al inicio de sesión
@@ -119,14 +117,18 @@ app.use('/products', authenticate, productRouter);
 app.use('/carts', authenticate, cartRouter);
 app.use('/admin', authenticate, adminRouter);
 app.use('/message',authenticate, messagesRouter);
-app.use('/chat',authenticate, express.static(__dirname + '/public')) //Defino la ruta de mi carpeta publica
+app.use('/chat',authenticate, express.static(__dirname + '/public')) 
 
 //vista chat
 app.get("/chat", (req, res) => {
   const cartId = req.session.user.cartId; 
+  const userEmail = req.session.user.email; 
+  logger.http(`Ciente ${userEmail} acaba de conectarse a chat`);
   res.render('chat', { cartId: cartId }); 
 });
 
+// Agregar la ruta de prueba del logger
+app.use("/loggerTest", loggerTestRouter);
 
 
 
