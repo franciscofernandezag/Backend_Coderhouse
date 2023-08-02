@@ -1,6 +1,6 @@
 import { Router } from "express";
 import productModel from "../models/Products.js";
-import { logger } from "../utils/logger.js";
+import { loggerDev, loggerProd } from "../utils/logger.js";
 
 const adminRouter = Router();
 
@@ -62,14 +62,14 @@ adminRouter.get("/", async (req, res) => {
         cartId: cartId,
       });
     } else {
-      logger.warning(`Usuario '${email}' no autorizado accediendo a la ruta '/admin'.`);
+      loggerProd.error(`Usuario '${email}' no autorizado accediendo a la ruta '/admin'.`);
       // Si el usuario tiene rol "usuario", redirigir a la raíz "/"
       res.redirect("/");
     }
 
   } catch (error) {
     // Utiliza el logger para registrar errores
-    logger.error("Error al recibir los productos:", error);
+    loggerProd.error("Error al recibir los productos:", error);
     res.status(500).send(`Error al recibir los productos: ${error.message}`); // Envía el mensaje de error real al cliente
   }
 });
@@ -90,7 +90,7 @@ adminRouter.post("/products/:id/update-stock", async (req, res) => {
     res.redirect(`/admin?message=${encodeURIComponent(req.session.message)}`);
   } catch (error) {
     // Utiliza el logger para registrar errores
-    logger.error("Error al actualizar el stock:", error);
+    loggerProd.error("Error al actualizar el stock:", error);
     res.status(500).send("Error al actualizar el stock");
   }
 });
@@ -109,10 +109,10 @@ adminRouter.post("/products/:id/update-price", async (req, res) => {
       product.price = parseInt(amount);
       await product.save();
       req.session.message = "Se ha actualizado el precio del producto.";
-      logger.info(`Se ha actualizado el precio del producto con ID ${productId}. Precio actualizado: ${amount}.`);
+      loggerProd.info(`Se ha actualizado el precio del producto con ID ${productId}. Precio actualizado: ${amount}.`);
       res.redirect(`/admin?message=${encodeURIComponent(req.session.message)}`);
     } catch (error) {
-      logger.error("Error al actualizar precio:", error);
+      loggerProd.error("Error al actualizar precio:", error);
       res.status(500).send("Error al actualizar el stock");
     }
   });

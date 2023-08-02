@@ -7,6 +7,7 @@ const levelOptions = {
     warning: 2,
     info: 3,
     http: 4,
+    debug: 5,
   },
   colors: {
     fatal: 'red',
@@ -14,14 +15,15 @@ const levelOptions = {
     warning: 'yellow',
     info: 'blue',
     http: 'green',
+    debug: 'cyan',
   }
 };
 
-export const logger = winston.createLogger({
+export const loggerDev = winston.createLogger({
   levels: levelOptions.levels,
   transports: [
     new winston.transports.Console({
-      level: "http", 
+      level: "debug", 
       format: winston.format.combine(
         winston.format.colorize({ colors: levelOptions.colors }),
         winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
@@ -29,10 +31,24 @@ export const logger = winston.createLogger({
       )
     }),
     new winston.transports.File({
-      filename: "src/logs/fatal.log",
-      level: "fatal",
+      filename: "src/logs/debug.log",
+      level: "debug",
       format: winston.format.combine(
         winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }), 
+        winston.format.simple()
+      )
+    })
+  ]
+});
+
+export const loggerProd = winston.createLogger({
+  levels: levelOptions.levels,
+  transports: [
+    new winston.transports.Console({
+      level: "info", 
+      format: winston.format.combine(
+        winston.format.colorize({ colors: levelOptions.colors }),
+        winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
         winston.format.simple()
       )
     }),
@@ -43,30 +59,8 @@ export const logger = winston.createLogger({
         winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }), 
         winston.format.simple()
       )
-    }),
-    new winston.transports.File({
-      filename: "src/logs/warning.log",
-      level: "warning",
-      format: winston.format.combine(
-        winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }), 
-        winston.format.simple()
-      )
-    }),
-    new winston.transports.File({
-      filename: "src/logs/info.log",
-      level: "info",
-      format: winston.format.combine(
-        winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }), 
-        winston.format.simple()
-      )
-    }),
-    new winston.transports.File({
-      filename: "src/logs/http.log",
-      level: "http",
-      format: winston.format.combine(
-        winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }), 
-        winston.format.simple()
-      )
     })
+    
+
   ]
 });

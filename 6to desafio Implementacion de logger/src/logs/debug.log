@@ -1,16 +1,19 @@
-info: Server on port 4000 {"timestamp":"2023-07-28 15:22:08"}
-http: DB is connected {"timestamp":"2023-07-28 15:22:09"}
-info: Server on port 4000 {"timestamp":"2023-07-28 15:22:13"}
-http: DB is connected {"timestamp":"2023-07-28 15:22:14"}
-http: Server on port 4000 {"timestamp":"2023-07-28 15:38:28"}
-http: DB is connected {"timestamp":"2023-07-28 15:38:29"}
-info: Productos obtenidos satisfactoriamente. Cantidad de productos: 12 {"timestamp":"2023-07-28 15:38:30"}
-http: Server on port 4000 {"timestamp":"2023-07-28 15:38:48"}
-http: DB is connected {"timestamp":"2023-07-28 15:38:48"}
-info: Productos obtenidos satisfactoriamente. Cantidad de productos: 12 {"timestamp":"2023-07-28 15:38:55"}
-http: Server on port 4000 {"timestamp":"2023-07-28 15:39:02"}
-http: DB is connected {"timestamp":"2023-07-28 15:39:03"}
-http: Server on port 4000 {"timestamp":"2023-07-28 15:40:29"}
-http: DB is connected {"timestamp":"2023-07-28 15:40:30"}
-http: Server on port 4000 {"timestamp":"2023-07-28 15:40:41"}
-http: DB is connected {"timestamp":"2023-07-28 15:40:42"}
+http: Server on port 4000 {"timestamp":"2023-08-02 18:46:26"}
+http: DB is connected {"timestamp":"2023-08-02 18:46:27"}
+fatal: Este es un mensaje de log fatal {"timestamp":"2023-08-02 18:46:49"}
+error: Este es un mensaje de log de error {"timestamp":"2023-08-02 18:46:49"}
+warning: Este es un mensaje de log de advertencia {"timestamp":"2023-08-02 18:46:49"}
+info: Este es un mensaje de log de información {"timestamp":"2023-08-02 18:46:49"}
+http: Este es un mensaje de log HTTP {"timestamp":"2023-08-02 18:46:49"}
+debug: Este es un mensaje de log debug {"timestamp":"2023-08-02 18:46:49"}
+http: Server on port 4000 {"timestamp":"2023-08-02 18:48:17"}
+http: DB is connected {"timestamp":"2023-08-02 18:48:18"}
+http: Server on port 4000 {"timestamp":"2023-08-02 18:49:51"}
+http: DB is connected {"timestamp":"2023-08-02 18:49:52"}
+http: Server on port 4000 {"timestamp":"2023-08-02 18:50:39"}
+http: Server on port 4000 {"timestamp":"2023-08-02 18:50:44"}
+http: DB is connected {"timestamp":"2023-08-02 18:50:45"}
+http: Server on port 4000 {"timestamp":"2023-08-02 18:51:06"}
+http: DB is connected {"timestamp":"2023-08-02 18:51:07"}
+http: Server on port 4000 {"timestamp":"2023-08-02 18:51:51"}
+http: DB is connected {"timestamp":"2023-08-02 18:51:52"}

@@ -16,14 +16,14 @@ import productRouter from "./routes/product.routes.js";
 import cartRouter from "./routes/cart.routes.js";
 import adminRouter from "./routes/admin.routes.js";
 import messagesRouter from "./routes/messages.routes.js";
-import { logger } from  "./utils/logger.js";
+import { loggerDev, loggerProd } from  "./utils/logger.js";
 import loggerTestRouter from "./routes/logegerTest.routes.js";
 
 const app = express();
 const PORT = 4000;
 
 const server = app.listen(PORT, () => {
-  logger.http(`Server on port ${PORT}`);
+  loggerDev.http(`Server on port ${PORT}`);
 })
 
 app.use(express.json());
@@ -95,7 +95,7 @@ app.post('/registro', registerUser);
 // Cerrar sesion (LOGOUT)
 app.get("/logout", (req, res) => {
   const userEmail = req.session.user.email; 
-  logger.info(`Usuario ${userEmail} ha cerrado sesión.`);
+  loggerProd.info(`Usuario ${userEmail} ha cerrado sesión.`);
   // Eliminar la sesión del usuario
   req.session.destroy();
   // Redireccionar al inicio de sesión
@@ -123,7 +123,7 @@ app.use('/chat',authenticate, express.static(__dirname + '/public'))
 app.get("/chat", (req, res) => {
   const cartId = req.session.user.cartId; 
   const userEmail = req.session.user.email; 
-  logger.http(`Ciente ${userEmail} acaba de conectarse a chat`);
+  loggerProd.http(`Ciente ${userEmail} acaba de conectarse a chat`);
   res.render('chat', { cartId: cartId }); 
 });
 

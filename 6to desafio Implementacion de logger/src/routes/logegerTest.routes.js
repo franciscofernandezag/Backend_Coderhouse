@@ -1,16 +1,19 @@
 import { Router } from "express";
-import { logger } from "../utils/logger.js";
+import { loggerDev, loggerProd } from  "../utils/logger.js";
 
 const loggerTestRouter = Router();
 
 loggerTestRouter.get("/", (req, res) => {
 
-  logger.fatal("Este es un mensaje de log fatal");
-  logger.error("Este es un mensaje de log de error");
-  logger.warning("Este es un mensaje de log de advertencia");
-  logger.info("Este es un mensaje de log de información");
-  logger.http("Este es un mensaje de log HTTP");
+  loggerDev.fatal("Este es un mensaje de log fatal");
+  loggerDev.error("Este es un mensaje de log de error");
+  loggerDev.warning("Este es un mensaje de log de advertencia");
+  loggerDev.info("Este es un mensaje de log de información");
+  loggerDev.http("Este es un mensaje de log HTTP");
+  loggerDev.debug("Este es un mensaje de log debug");
 
+;
+  
   res.send("Registro de prueba de logs completado.");
 });
 

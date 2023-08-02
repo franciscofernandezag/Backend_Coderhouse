@@ -2,7 +2,7 @@ import passport from "passport";
 import { Strategy as GitHubStrategy } from "passport-github2";
 import { userModel } from "../models/Users.js";
 import cartModel from "../models/Carts.js";
-import { logger } from  "../utils/logger.js";
+import { loggerDev, loggerProd } from  "../utils/logger.js";
 
 passport.use(
   "github",
@@ -37,7 +37,7 @@ passport.use(
             logger.info(`Usuario y carrito creado satisfactoriamente para autenticación github. Correo de GitHub del usuario: ${profile._json.email}`);
           } catch (error) {
             console.error('Error al crear el carrito:', error);
-            logger.fatal("Error al crear carrito para usuario Github");
+            loggerProd.fatal("Error al crear carrito para usuario Github");
           }
 
           return done(null, result);
@@ -49,10 +49,10 @@ passport.use(
               user.cartId = cart._id;
               await user.save();
 
-              logger.info(`Carrito asociado a usuario existente satisfactoriamente en autenticación github. Correo de GitHub del usuario: ${profile._json.email}`);
+              loggerProd.info(`Carrito asociado a usuario existente satisfactoriamente en autenticación github. Correo de GitHub del usuario: ${profile._json.email}`);
             } catch (error) {
               console.error('Error al asociar carrito para usuario Github:', error);
-              logger.fatal("Error al asociar carrito para usuario Github");
+              loggerProd.fatal("Error al asociar carrito para usuario Github");
             }
           }
 

@@ -3,7 +3,7 @@ import CartModel from "../models/Carts.js";
 import ProductModel from "../models/Products.js";
 import purchaseModel from "../models/Purchase.js";
 import { sumarProductosIguales, calcularTotal } from "../utils/utilsCarts.js";
-import { logger } from  "../utils/logger.js";
+import { loggerDev, loggerProd } from  "../utils/logger.js";
 
 const cartRouter = Router();
 
@@ -19,11 +19,11 @@ cartRouter.get("/:cartId", async (req, res) => {
     const summedProducts = sumarProductosIguales(cart.products); // Agrega esta línea para obtener la lista de productos sumados
     const message = req.session.message; // Obtén el mensaje de la sesión
     req.session.message = null; // Limpia el mensaje de la sesión después de obtenerlo
-    logger.info(`Carrito con ID ${cartId} obtenido satisfactoriamente. Cantidad de productos en el carrito: ${summedProducts.length}`);
+    loggerProd.info(`Carrito con ID ${cartId} obtenido satisfactoriamente. Cantidad de productos en el carrito: ${summedProducts.length}`);
 
     res.render("carts", { cart: cart, cartId: cartId, products: summedProducts, total: calcularTotal(summedProducts), message: message }); 
   } catch (error) {
-    logger.fatal("Error al obtener los productos del carrito:", error);
+    loggerProd.fatal("Error al obtener los productos del carrito:", error);
     res.status(500).json({ error: "Error al obtener los productos del carrito" });
   }
 });
@@ -56,11 +56,11 @@ cartRouter.post("/:cartId/products/:productId", async (req, res) => {
 
     await cart.save();
     req.session.message = "Se ha agregado un producto al carrito.";
-    logger.info(`Producto con ID ${productId} agregado o actualizado en el carrito con ID ${cartId}`);
+    loggerProd.info(`Producto con ID ${productId} agregado o actualizado en el carrito con ID ${cartId}`);
 
     res.redirect(`/products?message=${encodeURIComponent(req.session.message)}`);
   } catch (error) {
-    logger.fatal("Error al agregar producto al carrito:", error);
+    loggerProd.fatal("Error al agregar producto al carrito:", error);
     res.status(500).json({ error: "Error al agregar producto al carrito" });
   }
 });
@@ -80,11 +80,11 @@ cartRouter.get("/:cartId/products", async (req, res) => {
     if (!cart) {
       return res.status(404).json({ error: "Carrito no encontrado" });
     }
-    logger.info(`Todos los productos eliminados del carrito con ID ${cartId}`);
+    loggerProd.info(`Todos los productos eliminados del carrito con ID ${cartId}`);
     res.redirect(`/carts/${cartId}`);
 
   } catch (error) {
-    logger.fatal("Error al eliminar productos del carrito:", error);
+    loggerProd.fatal("Error al eliminar productos del carrito:", error);
     res.status(500).json({ error: "Error al eliminar productos del carrito" });
   }
 });
@@ -113,11 +113,11 @@ cartRouter.post("/:cartId/products/:productId/delete", async (req, res) => {
     cart.products.splice(productIndex, 1);
     await cart.save();
     req.session.message = "Has eliminado un producto.";
-    logger.info(`Producto con ID ${productId} eliminado del carrito con ID ${cartId}`);
+    loggerProd.info(`Producto con ID ${productId} eliminado del carrito con ID ${cartId}`);
 
     res.redirect(`/carts/${cartId}`);
   } catch (error) {
-    logger.fatal("Error al eliminar producto del carrito:", error);
+    loggerProd.fatal("Error al eliminar producto del carrito:", error);
     res.status(500).json({ error: "Error al eliminar producto del carrito" });
   }
 });
@@ -197,7 +197,7 @@ cartRouter.post("/:cartId/purchase", async (req, res) => {
       await cart.save();
       req.session.products = productsToPurchase; 
       const cartId = req.session.user.cartId;
-      logger.info(`Compra finalizada con éxito para el carrito con ID ${cartId}. Ticket de compra: ${purchase.ticket}`);
+      loggerProd.info(`Compra finalizada con éxito para el carrito con ID ${cartId}. Ticket de compra: ${purchase.ticket}`);
       return res.render("purchase-successful", { products: productsToPurchase, total: total, cartId: cartId });
     } else {
 
@@ -207,7 +207,7 @@ cartRouter.post("/:cartId/purchase", async (req, res) => {
       return res.render("purchase-failed", { products: productsToPurchase, total: total, cartId: cartId });
     }
   } catch (error) {
-    logger.fatal("Error al finalizar la compra:", error);
+    loggerProd.fatal("Error al finalizar la compra:", error);
     res.status(500).json({ error: "Error al finalizar la compra" });
   }
 });

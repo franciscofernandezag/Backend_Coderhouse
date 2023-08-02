@@ -1,6 +1,6 @@
 import { Router } from "express";
 import productModel from "../models/Products.js";
-import { logger } from  "../utils/logger.js";
+import { loggerDev, loggerProd } from  "../utils/logger.js";
 
 const productRouter = Router();
 
@@ -42,12 +42,12 @@ productRouter.get("/", async (req, res) => {
     };
 
     // Registro de información en el logger
-    logger.info(`Productos obtenidos satisfactoriamente. Cantidad de productos: ${products.length}`);
+    loggerProd.info(`Productos obtenidos satisfactoriamente. Cantidad de productos: ${products.length}`);
 
     res.render('products', { navbar: 'navbar', products: products, response: response, userName: userName, email: email, rol: rol, cartId: cartId, message: message || "" });
 
   } catch (error) {
-    logger.fatal("Error al recibir los productos:", error);
+    loggerProd.fatal("Error al recibir los productos:", error);
     res.status(500).send("Error al recibir los productos:");
   }
 });
