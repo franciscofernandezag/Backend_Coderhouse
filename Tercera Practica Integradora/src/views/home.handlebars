@@ -94,24 +94,23 @@
           <button type="submit" class="btn btn-primary">Registrarse</button>
         </form>
       </div>
-</div>
-      <div id="forgot-password-form" style="display: none;">
-        <div class="row mt-5">
-          <div class="col-md-6">
-            <h5>Recuperar Contraseña</h5>
-            <form action="/recoverypassword" method="post">
-              <div class="form-group">
-                <label for="forgot-password-email">Email:</label>
-                <input type="email" class="form-control" id="forgot-password-email" name="email"
-                  placeholder="Ingrese su email registrado" />
-              </div>
-              <p>Ingresa tu E-mail y te enviaremos un correo electrónico para cambiar tu contraseña</p>
-              <button type="submit" class="btn btn-sm btn-primary">Enviar</button>
-            </form>
-          </div>
+<div id="forgot-password-form" style="display: none;">
+  <div class="row mt-5">
+    <div class="col-md-6">
+      <h5>Recuperar Contraseña</h5>
+      <form action="/recovery" method="get">
+        <div class="form-group">
+          <label for="forgot-password-email">Email:</label>
+          <input type="email" class="form-control" id="forgot-password-email" name="email"
+            placeholder="Ingrese su email registrado" />
         </div>
-      </div>
+        <p>Ingresa tu E-mail y te enviaremos un correo electrónico para cambiar tu contraseña</p>
+        <button type="submit" class="btn btn-sm btn-primary">Enviar</button>
+      </form>
     </div>
+  </div>
+</div>
+
 
       
     

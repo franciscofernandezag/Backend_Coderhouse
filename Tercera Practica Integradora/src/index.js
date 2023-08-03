@@ -16,9 +16,9 @@ import productRouter from "./routes/product.routes.js";
 import cartRouter from "./routes/cart.routes.js";
 import adminRouter from "./routes/admin.routes.js";
 import messagesRouter from "./routes/messages.routes.js";
-import recoveryRouter from "./routes/recoverypassword.routes.js";
-import { loggerDev, loggerProd } from  "./utils/logger.js";
+import recoveryRouter from "./routes/recovery.routes.js.js";
 import loggerTestRouter from "./routes/logegerTest.routes.js";
+import { loggerDev, loggerProd } from  "./utils/logger.js";
 
 const app = express();
 const PORT = 4000;
@@ -106,7 +106,6 @@ app.get("/logout", (req, res) => {
 
 // Configurar las rutas de autenticación de GitHub
 app.get('/auth/github', passport.authenticate('github', { scope: ['user:usernamegithub'] }));
-
 app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/login' }),
   (req, res) => {
     req.session.user = req.user;
@@ -120,7 +119,8 @@ app.use('/carts', authenticate, cartRouter);
 app.use('/admin', authenticate, adminRouter);
 app.use('/message',authenticate, messagesRouter);
 app.use('/chat',authenticate, express.static(__dirname + '/public')) 
-app.use('/recoverypassword', recoveryRouter);
+app.use('/recovery', recoveryRouter);
+
 
 //vista chat
 app.get("/chat", (req, res) => {
