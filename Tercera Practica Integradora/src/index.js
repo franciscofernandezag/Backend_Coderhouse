@@ -90,8 +90,6 @@ app.get('/', (req, res) => {
 // Ruta POST para el inicio de sesión
 app.post('/login', loginUser);
 
-// Ruta POST para recuperacion de contraseña
-app.post('/recoverypassword', recoveryRouter);
 
 // Ruta POST para el registro de usuarios
 app.post('/registro', registerUser);
@@ -122,6 +120,7 @@ app.use('/carts', authenticate, cartRouter);
 app.use('/admin', authenticate, adminRouter);
 app.use('/message',authenticate, messagesRouter);
 app.use('/chat',authenticate, express.static(__dirname + '/public')) 
+app.use('/recoverypassword', recoveryRouter);
 
 //vista chat
 app.get("/chat", (req, res) => {

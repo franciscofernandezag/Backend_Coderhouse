@@ -1,0 +1,58 @@
+http: Server on port 4000 {"timestamp":"2023-08-02 18:46:26"}
+http: DB is connected {"timestamp":"2023-08-02 18:46:27"}
+fatal: Este es un mensaje de log fatal {"timestamp":"2023-08-02 18:46:49"}
+error: Este es un mensaje de log de error {"timestamp":"2023-08-02 18:46:49"}
+warning: Este es un mensaje de log de advertencia {"timestamp":"2023-08-02 18:46:49"}
+info: Este es un mensaje de log de información {"timestamp":"2023-08-02 18:46:49"}
+http: Este es un mensaje de log HTTP {"timestamp":"2023-08-02 18:46:49"}
+debug: Este es un mensaje de log debug {"timestamp":"2023-08-02 18:46:49"}
+http: Server on port 4000 {"timestamp":"2023-08-02 18:48:17"}
+http: DB is connected {"timestamp":"2023-08-02 18:48:18"}
+http: Server on port 4000 {"timestamp":"2023-08-02 18:49:51"}
+http: DB is connected {"timestamp":"2023-08-02 18:49:52"}
+http: Server on port 4000 {"timestamp":"2023-08-02 18:50:39"}
+http: Server on port 4000 {"timestamp":"2023-08-02 18:50:44"}
+http: DB is connected {"timestamp":"2023-08-02 18:50:45"}
+http: Server on port 4000 {"timestamp":"2023-08-02 18:51:06"}
+http: DB is connected {"timestamp":"2023-08-02 18:51:07"}
+http: Server on port 4000 {"timestamp":"2023-08-02 18:51:51"}
+http: DB is connected {"timestamp":"2023-08-02 18:51:52"}
+http: Server on port 4000 {"timestamp":"2023-08-03 09:56:37"}
+http: DB is connected {"timestamp":"2023-08-03 09:56:38"}
+http: Server on port 4000 {"timestamp":"2023-08-03 09:59:19"}
+http: Ciente conectado socket IO {"timestamp":"2023-08-03 09:59:19"}
+http: DB is connected {"timestamp":"2023-08-03 09:59:20"}
+http: [object Object] {"timestamp":"2023-08-03 09:59:24"}
+http: Server on port 4000 {"timestamp":"2023-08-03 09:59:55"}
+http: Ciente conectado socket IO {"timestamp":"2023-08-03 09:59:55"}
+http: DB is connected {"timestamp":"2023-08-03 09:59:56"}
+http: Ciente conectado socket IO {"timestamp":"2023-08-03 10:00:04"}
+http: Server on port 4000 {"timestamp":"2023-08-03 10:22:04"}
+http: DB is connected {"timestamp":"2023-08-03 10:22:05"}
+http: Server on port 4000 {"timestamp":"2023-08-03 10:25:19"}
+http: DB is connected {"timestamp":"2023-08-03 10:25:20"}
+http: Server on port 4000 {"timestamp":"2023-08-03 10:33:02"}
+http: DB is connected {"timestamp":"2023-08-03 10:33:03"}
+http: Server on port 4000 {"timestamp":"2023-08-03 10:38:33"}
+http: DB is connected {"timestamp":"2023-08-03 10:38:34"}
+http: Server on port 4000 {"timestamp":"2023-08-03 10:45:31"}
+http: DB is connected {"timestamp":"2023-08-03 10:45:32"}
+http: Server on port 4000 {"timestamp":"2023-08-03 10:46:21"}
+http: DB is connected {"timestamp":"2023-08-03 10:46:22"}
+http: Server on port 4000 {"timestamp":"2023-08-03 10:47:24"}
+http: DB is connected {"timestamp":"2023-08-03 10:47:25"}
+http: Server on port 4000 {"timestamp":"2023-08-03 11:53:14"}
+http: DB is connected {"timestamp":"2023-08-03 11:53:15"}
+http: Server on port 4000 {"timestamp":"2023-08-03 12:31:07"}
+http: DB is connected {"timestamp":"2023-08-03 12:31:08"}
+http: Server on port 4000 {"timestamp":"2023-08-03 12:36:59"}
+http: DB is connected {"timestamp":"2023-08-03 12:37:00"}
+http: Server on port 4000 {"timestamp":"2023-08-03 12:39:33"}
+http: DB is connected {"timestamp":"2023-08-03 12:39:34"}
+info: Se envió un correo a fco.fernandez.ag@gmail.com con la compra exitosa procesada. {"timestamp":"2023-08-03 12:39:41"}
+http: Server on port 4000 {"timestamp":"2023-08-03 12:40:44"}
+http: DB is connected {"timestamp":"2023-08-03 12:40:45"}
+http: Server on port 4000 {"timestamp":"2023-08-03 12:53:46"}
+http: DB is connected {"timestamp":"2023-08-03 12:53:47"}
+http: Server on port 4000 {"timestamp":"2023-08-03 12:59:02"}
+http: DB is connected {"timestamp":"2023-08-03 12:59:04"}
