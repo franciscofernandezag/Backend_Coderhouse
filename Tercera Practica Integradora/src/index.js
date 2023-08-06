@@ -16,7 +16,7 @@ import productRouter from "./routes/product.routes.js";
 import cartRouter from "./routes/cart.routes.js";
 import adminRouter from "./routes/admin.routes.js";
 import messagesRouter from "./routes/messages.routes.js";
-import recoveryRouter from "./routes/recovery.routes.js.js";
+import recoveryRouter from "./routes/recovery.routes.js";
 import loggerTestRouter from "./routes/logegerTest.routes.js";
 import { loggerDev, loggerProd } from  "./utils/logger.js";
 
