@@ -15,6 +15,7 @@ import { registerUser } from "./controllers/localAuth.js";
 import productRouter from "./routes/product.routes.js";
 import cartRouter from "./routes/cart.routes.js";
 import adminRouter from "./routes/admin.routes.js";
+import premiumRouter from "./routes/premium.routes.js";
 import messagesRouter from "./routes/messages.routes.js";
 import recoveryRouter from "./routes/recovery.routes.js";
 import loggerTestRouter from "./routes/logegerTest.routes.js";
@@ -117,6 +118,7 @@ app.get('/auth/github/callback', passport.authenticate('github', { failureRedire
 app.use('/products', authenticate, productRouter);
 app.use('/carts', authenticate, cartRouter);
 app.use('/admin', authenticate, adminRouter);
+app.use('/premium', authenticate, premiumRouter);
 app.use('/message',authenticate, messagesRouter);
 app.use('/chat',authenticate, express.static(__dirname + '/public')) 
 app.use('/recovery', recoveryRouter);

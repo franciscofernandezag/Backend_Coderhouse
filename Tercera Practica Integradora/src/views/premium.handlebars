@@ -4,17 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <title>Admin</title>
+    <title>premium</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 
-<body class="{{#if adminView}}admin-view{{/if}}">
+<body class="{{#if premiumView}}premium-view{{/if}}">
    <style>
         body {
-            background-color: #96b1cc;
+            background-color: #69c0b4;
         }
     </style>
     <div class="container mt-4">
@@ -24,8 +24,8 @@
             <h5>Usted tiene permisos de: {{rol}}</h5>
         </div>
 
-        <h1>Portal de Administración</h1>
-        <form action="/admin" method="get">
+        <h1>Portal de usuarios Premium</h1>
+        <form action="/premium" method="get">
             <div class="form-group">
                 <label for="query">Filtrar por título:</label>
                 <input type="text" class="form-control" id="query" name="query" placeholder="Ingrese un título" />
@@ -52,7 +52,7 @@
                         <p class="card-text">{{this.description}}</p>
                         <p class="card-text"><strong>Precio:</strong> {{this.price}}</p>
                         <p class="card-text"><strong>Stock:</strong> {{this.stock}}</p>
-                        <form action="/admin/products/{{this._id}}/update-price" method="post">
+                        <form action="/premium/products/{{this._id}}/update-price" method="post">
                             <div class="form-group">
                                 <label for="amount">Nuevo precio:</label>
                                 <input type="number" class="form-control" id="amount" name="amount"
@@ -60,7 +60,7 @@
                             </div>
                             <button class="btn btn-primary btn-block" type="submit">Actualizar precio</button>
                         </form>
-                        <form action="/admin/products/{{this._id}}/update-stock" method="post">
+                        <form action="/premium/products/{{this._id}}/update-stock" method="post">
                             <div class="form-group">
                                 <label for="amount">Nuevo stock:</label>
                                 <input type="number" class="form-control" id="amount" name="amount"

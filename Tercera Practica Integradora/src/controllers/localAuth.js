@@ -26,8 +26,10 @@ export async function loginUser(req, res, next) {
       // Verificar si el usuario tiene rol de administrador
       if (user.rol === 'administrador') {
         return res.redirect('/admin'); // Redirigir a la ruta /admin para usuarios administradores
+      } else if (user.rol === 'premium') {
+        return res.redirect('/premium'); // Redirigir a la ruta /premium para usuarios premium
       } else {
-        return res.redirect('/products'); // Redirigir a la ruta /products para usuarios no administradores
+        return res.redirect('/products'); // Redirigir a la ruta /products para usuarios no administradores ni premium
       }
     });
   })(req, res, next);
