@@ -9,7 +9,8 @@ const productSchema = Schema({
     id: Number,
     status: Boolean,
     price: Number,
-    thumbnail: String
+    thumbnail: String,
+    owner : String
 });
 
 productSchema.plugin(paginate);

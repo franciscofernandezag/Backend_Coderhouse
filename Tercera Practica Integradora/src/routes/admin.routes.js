@@ -1,5 +1,6 @@
 import { Router } from "express";
 import productModel from "../models/Products.js";
+import { userModel } from "../models/Users.js";
 import { loggerDev, loggerProd } from "../utils/logger.js";
 
 const adminRouter = Router();
@@ -116,5 +117,60 @@ adminRouter.post("/products/:id/update-price", async (req, res) => {
       res.status(500).send("Error al actualizar el stock");
     }
   });
+
+
+  // Ruta para eliminar un producto del market
+  adminRouter.post("/products/:id/delete-product", async (req, res) => {
+    try {
+      const productId = req.params.id;
+  
+      const product = await productModel.findById(productId);
+      if (!product) {
+        return res.status(404).send("Producto no encontrado");
+      }
+
+      // Eliminar el producto del modelo
+      await productModel.findByIdAndDelete(productId);
+  
+      req.session.message = "Has eliminado un producto.";
+      loggerProd.info(`Producto con ID ${productId} eliminado con ID ${productId}`);
+  
+      res.redirect(`/admin?message=${encodeURIComponent(req.session.message)}`);
+    } catch (error) {
+      loggerProd.error("Error al eliminar un producto:", error);
+      res.status(500).send("Error al eliminar un producto");
+    }
+  });
+  
+// Ruta para agregar producto
+adminRouter.post("/products/owner/addproduct", async (req, res) => {
+  try {
+    const { code, title, description, stock, id, status, price, thumbnail } = req.body;
+
+    // Crear un nuevo producto utilizando el modelo y el email del usuario logeado
+    const newProduct = new productModel({
+      code,
+      title,
+      description,
+      stock,
+      id,
+      status:  true,
+      price,
+      thumbnail,
+      owner: req.session.user.email, // Establecer el owner como el email del usuario logeado
+    });
+
+ // Guarda el nuevo producto en la base de datos
+ await newProduct.save();
+
+    req.session.message = "Producto agregado exitosamente.";
+    // Redirigir a la página adecuada después de agregar el producto
+    res.redirect(`/admin?message=${encodeURIComponent(req.session.message)}`);
+  } catch (error) {
+    console.error("Error al agregar un producto:", error);
+    res.status(500).send("Error al agregar un producto");
+  }
+});
+
 
 export default adminRouter;

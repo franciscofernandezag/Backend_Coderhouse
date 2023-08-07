@@ -25,17 +25,15 @@ export async function loginUser(req, res, next) {
 
       // Verificar si el usuario tiene rol de administrador
       if (user.rol === 'administrador') {
-        return res.redirect('/admin'); // Redirigir a la ruta /admin para usuarios administradores
+        return res.redirect('/admin'); 
       } else if (user.rol === 'premium') {
-        return res.redirect('/premium'); // Redirigir a la ruta /premium para usuarios premium
+        return res.redirect('/premium'); 
       } else {
-        return res.redirect('/products'); // Redirigir a la ruta /products para usuarios no administradores ni premium
+        return res.redirect('/products'); 
       }
     });
   })(req, res, next);
 }
-
-
 export async function registerUser(req, res) {
   const { nombre, apellido, email, edad, genero, rol, password } = req.body;
   try {
@@ -51,7 +49,6 @@ export async function registerUser(req, res) {
 
     // Generar el hash de la contraseña
     const hashedPassword = await hashPassword(password);
-
     const user = await userModel.create({
       first_name: nombre,
       last_name: apellido,

@@ -14,6 +14,7 @@ const userSchema = new Schema({
         unique: false,
         index: false
     },
+
     gender: {
         type: String,
         required: false

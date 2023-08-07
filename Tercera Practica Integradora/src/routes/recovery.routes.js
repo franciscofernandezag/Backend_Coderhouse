@@ -13,7 +13,6 @@ recoveryRouter.get("/", async (req, res) => {
     const user = await userModel.findOne({ email });
 
     if (user) {
-      // Genera el timestamp actual
       const timemail = new Date().toISOString();
       console.log("fecha y hora envio de correo    :" +timemail );
       const htmlBody = `<p>Hola ${user.first_name},</p>
@@ -92,49 +91,5 @@ recoveryRouter.get("/changepassword/mailsended", async (req, res) => {
     res.status(500).send("Error al cambiar la contraseña.");
   }
 });
-
-
-
-// recoveryRouter.get("/test", async (req, res) => {
-//   try {
-//     // Obtener el email del usuario desde algún lugar (puedes cambiar esto según tu lógica)
-//     const email = "ffernandez@iumbrales.cl";
-
-//     // Obtener el usuario desde la base de datos usando el email
-//     const user = await userModel.findOne({ email });
-
-//     if (!user) {
-//       // Manejar el caso en el que no se encuentre el usuario con el email proporcionado
-//       return res.status(404).send("Usuario no encontrado.");
-//     }
-
-//     // Una vez que tienes el usuario, puedes acceder a su contraseña
-//     console.log(user.password);
-
-//     // Resto de tu lógica aquí...
-
-//   } catch (error) {
-//     // Manejar el error en caso de que ocurra algún problema
-//     console.error(error);
-//     res.status(500).send("Error al cambiar la contraseña.");
-//   }
-// });
-
-
-
-// recoveryRouter.get("/succesful", async (req, res) => {
-//   try {
-//     const email = req.query.email;
-//     const user = await userModel.findOne({ email });
-
-//     res.render('changesuccesful', { email: email });
-
-//   } catch (error) {
-//     res.status(500).send("Error al cambiar la contraseña:");
-//   }
-// });
-
-
-
 
 export default recoveryRouter;
