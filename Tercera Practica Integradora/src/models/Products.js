@@ -10,7 +10,10 @@ const productSchema = Schema({
     status: Boolean,
     price: Number,
     thumbnail: String,
-    owner : String
+    owner: {
+        type: String,
+        default: "admin" 
+    }
 });
 
 productSchema.plugin(paginate);

@@ -1,6 +1,5 @@
 import { Router } from "express";
 import productModel from "../models/Products.js";
-import { loggerDev, loggerProd } from "../utils/logger.js";
 
 const premiumRouter = Router();
 
@@ -9,12 +8,13 @@ premiumRouter.get("/", async (req, res) => {
     const { limit = 12, page = 1, sort, query, message } = req.query;
     const userName = req.session.user.first_name;
     const email = req.session.user.email;
+    const owner = req.session.user.owner;
     const rol = req.session.user.rol;
     const cartId = req.session.user.cartId;
     const options = {};
     options.limit = parseInt(limit);
     options.skip = (parseInt(page) - 1) * parseInt(limit);
-
+    console.log("Valor de cart:", cartId);
 
     const queryOptions = query ? { title: { $regex: query, $options: "i" } } : {};
 
@@ -45,32 +45,23 @@ premiumRouter.get("/", async (req, res) => {
       nextLink: page < totalPages ? `http://localhost:4000/premium?limit=${limit}&page=${parseInt(page) + 1}` : null,
     };
 
-    // Utiliza el logger para registrar información debug si el usuario es premium
-    if (rol === "premium") {
-
-      // Si el usuario es premium, accede a la ruta premiumrouter
-      res.render('premium', {
-        layout: false,
-        partials: {
-          navbar: 'navbar',
-        },
-        products: products,
-        response: response,
-        userName: userName,
-        email: email,
-        rol: rol,
-        cartId: cartId,
-      });
-    } else {
-      loggerProd.error(`Usuario '${email}' no autorizado accediendo a la ruta '/premium'.`);
-      // Si el usuario tiene rol "usuario", redirigir a la raíz "/"
-      res.redirect("/");
-    }
+    res.render('premium', {
+      layout: false, // Desactivar el uso del layout
+      partials: {
+        navbar: 'navbar', // Incluir el partial del navbar si es necesario en otras vistas
+      },
+      products: products,
+      response: response,
+      userName: userName,
+      email: email,
+      rol: rol,
+      cartId: cartId,
+      message: message || ""
+    });
 
   } catch (error) {
-    // Utiliza el logger para registrar errores
-    loggerProd.error("Error al recibir los productos:", error);
-    res.status(500).send(`Error al recibir los productos: ${error.message}`); // Envía el mensaje de error real al cliente
+    console.log("Error al recibir los productos:", error);
+    res.status(500).send("Error al recibir los productos:");
   }
 });
 
@@ -79,22 +70,24 @@ premiumRouter.post("/products/:id/update-stock", async (req, res) => {
   try {
     const productId = req.params.id;
     const { amount } = req.body;
+
     const product = await productModel.findById(productId);
     if (!product) {
       return res.status(404).send("Producto no encontrado");
     }
+
     product.stock = parseInt(amount);
+
     await product.save();
+
     req.session.message = "Se ha actualizado el stock del producto.";
-    loggerProd.info(`Se ha actualizado el stock del producto con ID ${productId}. Stock actualizado: ${amount}.`);
+
     res.redirect(`/premium?message=${encodeURIComponent(req.session.message)}`);
   } catch (error) {
-    // Utiliza el logger para registrar errores
-    loggerProd.error("Error al actualizar el stock:", error);
+    console.log("Error al actualizar el stock:", error);
     res.status(500).send("Error al actualizar el stock");
   }
 });
-
 
 // Ruta para actualizar precio
 premiumRouter.post("/products/:id/update-price", async (req, res) => {
@@ -106,15 +99,73 @@ premiumRouter.post("/products/:id/update-price", async (req, res) => {
       if (!product) {
         return res.status(404).send("Producto no encontrado");
       }
+  
       product.price = parseInt(amount);
+  
       await product.save();
+
       req.session.message = "Se ha actualizado el precio del producto.";
-      loggerProd.info(`Se ha actualizado el precio del producto con ID ${productId}. Precio actualizado: ${amount}.`);
+  
       res.redirect(`/premium?message=${encodeURIComponent(req.session.message)}`);
     } catch (error) {
-      loggerProd.error("Error al actualizar precio:", error);
+      console.log("Error al actualizar el stock:", error);
       res.status(500).send("Error al actualizar el stock");
     }
   });
+
+
+  // Ruta para eliminar un producto del market
+  premiumRouter.post("/products/:id/delete-product", async (req, res) => {
+    try {
+      const productId = req.params.id;
+  
+      const product = await productModel.findById(productId);
+      if (!product) {
+        return res.status(404).send("Producto no encontrado");
+      }
+
+      // Eliminar el producto del modelo
+      await productModel.findByIdAndDelete(productId);
+  
+      req.session.message = "Has eliminado un producto.";
+      console.log(`Producto con ID ${productId} eliminado con ID ${productId}`);
+  
+      res.redirect(`/premium?message=${encodeURIComponent(req.session.message)}`);
+    } catch (error) {
+      console.error("Error al eliminar un producto:", error);
+      res.status(500).send("Error al eliminar un producto");
+    }
+  });
+  
+// Ruta para agregar producto
+premiumRouter.post("/products/owner/addproduct", async (req, res) => {
+  try {
+    const { code, title, description, stock, id, status, price, thumbnail } = req.body;
+
+    // Crear un nuevo producto utilizando el modelo y el email del usuario logeado
+    const newProduct = new productModel({
+      code,
+      title,
+      description,
+      stock,
+      id,
+      status:  true,
+      price,
+      thumbnail,
+      owner: req.session.user.email, // Establecer el owner como el email del usuario logeado
+    });
+
+ // Guarda el nuevo producto en la base de datos
+ await newProduct.save();
+
+    req.session.message = "Producto agregado exitosamente.";
+    // Redirigir a la página adecuada después de agregar el producto
+    res.redirect(`/premium?message=${encodeURIComponent(req.session.message)}`);
+  } catch (error) {
+    console.error("Error al agregar un producto:", error);
+    res.status(500).send("Error al agregar un producto");
+  }
+});
+
 
 export default premiumRouter;

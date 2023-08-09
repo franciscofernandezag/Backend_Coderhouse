@@ -97,8 +97,7 @@ app.post('/registro', registerUser);
 
 // Cerrar sesion (LOGOUT)
 app.get("/logout", (req, res) => {
-  const userEmail = req.session.user.email; 
-  loggerProd.info(`Usuario ${userEmail} ha cerrado sesión.`);
+
   // Eliminar la sesión del usuario
   req.session.destroy();
   // Redireccionar al inicio de sesión

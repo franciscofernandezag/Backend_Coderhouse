@@ -10,6 +10,7 @@ productRouter.get("/", async (req, res) => {
     const userName = req.session.user.first_name;
     const email = req.session.user.email;
     const rol = req.session.user.rol;
+    const owner = req.session.user.owner;
     const cartId = req.session.user.cartId;
     const options = {};
     options.limit = parseInt(limit);

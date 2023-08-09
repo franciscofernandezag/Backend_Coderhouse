@@ -23,7 +23,7 @@ export async function loginUser(req, res, next) {
       req.session.user = user;
       req.session.user.rol = user.rol;
 
-      // Verificar si el usuario tiene rol de administrador
+      // Verificarrol de usuario 
       if (user.rol === 'administrador') {
         return res.redirect('/admin'); 
       } else if (user.rol === 'premium') {

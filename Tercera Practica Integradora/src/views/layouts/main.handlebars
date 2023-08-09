@@ -14,10 +14,8 @@
 </head>
 
 <body>
-    {{#unless adminView}}
-        {{#unless premiumView}}
-            {{>navbar}}
-        {{/unless}}
+    {{#unless adminView}} 
+        {{>navbar}}
     {{/unless}}
     {{{body}}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
@@ -26,15 +24,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="js/main.js"></script>
 
-    {{#if adminView}}
-        <style>
-            .navbar {
-                display: none;
-            }
-        </style>
-    {{/if}}
 
-    {{#if premiumView}}
+    {{#if adminView}}
         <style>
             .navbar {
                 display: none;

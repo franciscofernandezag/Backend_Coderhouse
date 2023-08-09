@@ -22,7 +22,16 @@
             <h3>Bienvenido, {{userName}}</h3>
             <h4>{{email}}</h4>
             <h5>Usted tiene permisos de: {{rol}}</h5>
+
+                <form action="/chat" method="GET" style="display: inline;">
+          <button type="submit" class="btn btn-link">
+            <i class="fas fa-comments fa-2x"></i>
+            <span class="badge badge-danger">{{cartItemCount}}</span>
+            <span>Chat</span>
+          </button>
+        </form>
         </div>
+      
 
         <h1>Portal de Administración</h1>
         <form action="/admin" method="get">
@@ -91,6 +100,8 @@
                         <p class="card-text">{{this.description}}</p>
                         <p class="card-text"><strong>Precio:</strong> {{this.price}}</p>
                         <p class="card-text"><strong>Stock:</strong> {{this.stock}}</p>
+                        <p class="card-text"><strong>Tienda propietaria:</strong> {{this.owner}}</p>
+
                         <form action="/admin/products/{{this._id}}/update-price" method="post">
                             <div class="form-group">
                                 <label for="amount">Nuevo precio:</label>
@@ -110,7 +121,6 @@
                         <form action="/admin/products/{{this._id}}/delete-product" method="post">
                             <div class="form-group">
                                 <label for="amount">Eliminar producto:</label>
-                                <p>¿Estás seguro de que deseas eliminar este producto?</p>
                             </div>
                             <button class="btn btn-danger btn-block" type="button"
                                 onclick="confirmDelete('{{this._id}}')">
