@@ -113,26 +113,30 @@ app.get('/auth/github/callback', passport.authenticate('github', { failureRedire
   }
 );
 
-// Rutas
-app.use('/products', authenticate, productRouter);
-app.use('/carts', authenticate, cartRouter);
-app.use('/admin', authenticate, adminRouter);
-app.use('/premium', authenticate, premiumRouter);
-app.use('/message',authenticate, messagesRouter);
-app.use('/chat',authenticate, express.static(__dirname + '/public')) 
+// Rutas con permisos de acceso de usuarios segun rol
+app.use('/products', authenticate(['usuario', 'premium']), productRouter);
+app.use('/carts', authenticate(['usuario', 'premium']), cartRouter);
+app.use('/admin', authenticate(['administrador']), adminRouter);
+app.use('/premium', authenticate(['premium']), premiumRouter);
+app.use('/message',authenticate(['usuario', 'premium','administrador']), messagesRouter);
+app.use('/chat',authenticate(['usuario', 'premium','administrador']), express.static(__dirname + '/public')) 
 app.use('/recovery', recoveryRouter);
-
 
 //vista chat
 app.get("/chat", (req, res) => {
   const cartId = req.session.user.cartId; 
   const userEmail = req.session.user.email; 
-  loggerProd.http(`Ciente ${userEmail} acaba de conectarse a chat`);
+  console.log("Se accedió a la vista de chat. Usuario:", userEmail);
+  loggerDev.http(`Ciente ${userEmail} acaba de conectarse a chat`);
   res.render('chat', { cartId: cartId }); 
 });
 
 // Agregar la ruta de prueba del logger
 app.use("/loggerTest", loggerTestRouter);
+
+
+
+
 
 
 

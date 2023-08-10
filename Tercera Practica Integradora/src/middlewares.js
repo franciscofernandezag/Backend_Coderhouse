@@ -1,19 +1,22 @@
+import { loggerDev, loggerProd } from  "./utils/logger.js";
+
 // Autentificacion 
-export function authenticate(req, res, next) {
-  if (req.session.user) {
-    next();
-  } else {
-    res.redirect('/');
-  }
+export function authenticate(allowedRoles) {
+  return (req, res, next) => {
+    if (req.session.user) {
+      const user = req.session.user;
+
+      if (allowedRoles.includes(user.rol)) {
+        req.currentUser = user;
+       
+        next();
+      } else {
+        loggerDev.http(`Usuario con correo ${user.email} intentando acceder a una ruta no autorizada`);
+        res.status(403).render('forbidden', { title: 'Acceso denegado' });
+      }
+    } else {
+      res.redirect('/');
+    }
+  };
 }
-
-
-// Winston
-export const info = (req, res, next) => {
-  req.logger = logger;
-  req.logger.info(`${req.method} en ${req.url} - ${new Date().toLocaleTimeString()}`);
-
-
-  next();
-};
 
