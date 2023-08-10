@@ -44,4 +44,5 @@ const purchaseSchema = new Schema({
 
 purchaseSchema.plugin(paginate);
 
+
 export default model("Purchase", purchaseSchema);
