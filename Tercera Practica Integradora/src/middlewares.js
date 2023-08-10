@@ -1,6 +1,6 @@
 import { loggerDev, loggerProd } from  "./utils/logger.js";
 
-// Autentificacion 
+// Autentificacion de usuarios en base a roles 
 export function authenticate(allowedRoles) {
   return (req, res, next) => {
     if (req.session.user) {

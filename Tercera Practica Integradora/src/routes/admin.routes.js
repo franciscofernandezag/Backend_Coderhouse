@@ -44,7 +44,6 @@ adminRouter.get("/", async (req, res) => {
       prevLink: page > 1 ? `http://localhost:4000/admin?limit=${limit}&page=${parseInt(page) - 1}` : null,
       nextLink: page < totalPages ? `http://localhost:4000/admin?limit=${limit}&page=${parseInt(page) + 1}` : null,
     };
-
     res.render('admin', {
       layout: false, // Desactivar el uso del layout
       partials: {
@@ -70,18 +69,13 @@ adminRouter.post("/products/:id/update-stock", async (req, res) => {
   try {
     const productId = req.params.id;
     const { amount } = req.body;
-
     const product = await productModel.findById(productId);
     if (!product) {
       return res.status(404).send("Producto no encontrado");
     }
-
     product.stock = parseInt(amount);
-
     await product.save();
-
     req.session.message = "Se ha actualizado el stock del producto.";
-
     res.redirect(`/admin?message=${encodeURIComponent(req.session.message)}`);
   } catch (error) {
     console.log("Error al actualizar el stock:", error);
@@ -94,18 +88,13 @@ adminRouter.post("/products/:id/update-price", async (req, res) => {
     try {
       const productId = req.params.id;
       const { amount } = req.body;
-  
       const product = await productModel.findById(productId);
       if (!product) {
         return res.status(404).send("Producto no encontrado");
       }
-  
       product.price = parseInt(amount);
-  
       await product.save();
-
       req.session.message = "Se ha actualizado el precio del producto.";
-  
       res.redirect(`/admin?message=${encodeURIComponent(req.session.message)}`);
     } catch (error) {
       console.log("Error al actualizar el stock:", error);
@@ -118,7 +107,6 @@ adminRouter.post("/products/:id/update-price", async (req, res) => {
   adminRouter.post("/products/:id/delete-product", async (req, res) => {
     try {
       const productId = req.params.id;
-  
       const product = await productModel.findById(productId);
       if (!product) {
         return res.status(404).send("Producto no encontrado");
@@ -166,6 +154,5 @@ adminRouter.post("/products/owner/addproduct", async (req, res) => {
     res.status(500).send("Error al agregar un producto");
   }
 });
-
 
 export default adminRouter;

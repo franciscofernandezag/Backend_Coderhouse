@@ -32,7 +32,6 @@
         </form>
         </div>
       
-
         <h1>Portal de Administración</h1>
         <form action="/admin" method="get">
             <div class="form-group">
@@ -49,9 +48,6 @@
             </div>
             <button type="submit" class="btn btn-primary">Aplicar</button>
         </form>
-
-
-
         <form id="addProductForm" action="/admin/products/owner/addproduct" method="post">
             <!-- Botón que muestra los campos para agregar producto -->
             <button type="button" class="btn btn-success" id="showAddProductFields">
@@ -87,8 +83,6 @@
                 <button type="submit" class="btn btn-primary">Agregar</button>
             </div>
         </form>
-
-
         <div class="row">
             {{#each products}}
             <div class="col-md-4 mt-4">
@@ -101,7 +95,6 @@
                         <p class="card-text"><strong>Precio:</strong> {{this.price}}</p>
                         <p class="card-text"><strong>Stock:</strong> {{this.stock}}</p>
                         <p class="card-text"><strong>Tienda propietaria:</strong> {{this.owner}}</p>
-
                         <form action="/admin/products/{{this._id}}/update-price" method="post">
                             <div class="form-group">
                                 <label for="amount">Nuevo precio:</label>
@@ -127,13 +120,11 @@
                                 <i class="fas fa-trash-alt"></i> Eliminar producto
                             </button>
                         </form>
-
                     </div>
                 </div>
             </div>
             {{/each}}
         </div>
-
         <div id="message-container" class="text-center mt-4">
             {{#if message}}
             <script>
@@ -150,7 +141,6 @@
             </script>
             {{/if}}
         </div>
-
         <div class="text-center mt-4">
             <nav aria-label="Page navigation">
                 <ul class="pagination">
@@ -173,11 +163,9 @@
                 </ul>
             </nav>
         </div>
-
         <form action="/logout" method="get">
             <button type="submit" class="btn btn-danger">Cerrar sesión</button>
         </form>
-
         <div class="d-flex mt-4">
             <p class="mr-4"><strong>Status</strong>: {{response.status}}</p>
             <p class="mr-4"><strong>Total Páginas:</strong> {{response.totalPages}}</p>
@@ -185,9 +173,7 @@
             <p class="mr-4"><strong>Próxima:</strong> {{response.nextPage}}</p>
             <p><strong>Actual:</strong> {{response.page}}</p>
         </div>
-
     </div>
-
     <script>
         document.getElementById('showAddProductFields').addEventListener('click', function () {
             document.getElementById('addProductFields').style.display = 'block';

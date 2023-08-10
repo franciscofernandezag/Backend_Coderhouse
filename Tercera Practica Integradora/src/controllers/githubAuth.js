@@ -4,9 +4,7 @@ import { userModel } from "../models/Users.js";
 import cartModel from "../models/Carts.js";
 import { loggerDev, loggerProd } from  "../utils/logger.js";
 
-passport.use(
-  "github",
-  new GitHubStrategy(
+passport.use("github",new GitHubStrategy(
     {
       clientID: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,

@@ -3,12 +3,8 @@ import productModel from "../models/Products.js";
 
 const premiumRouter = Router();
 
-
 premiumRouter.get("/", async (req, res) => {
-  try {
-    res.render('choose-action', {
-      layout: false 
-    });
+  try {res.render('choose-action', { layout: false });
   } catch (error) {
     console.log("Error:", error);
     res.status(500).send("Error interno del servidor");
@@ -20,9 +16,7 @@ premiumRouter.get("/admin", async (req, res) => {
     const { limit = 12, page = 1, sort, query, message } = req.query;
     const { first_name: userName, email, rol, cartId } = req.session.user;
     const options = { limit: parseInt(limit), skip: (parseInt(page) - 1) * parseInt(limit) };
-    
     const queryOptions = query ? { title: { $regex: query, $options: "i" } } : {};
-
     const totalCount = await productModel.countDocuments(queryOptions);
     const totalPages = Math.ceil(totalCount / options.limit);
 
@@ -44,8 +38,7 @@ premiumRouter.get("/admin", async (req, res) => {
       nextLink: page < totalPages ? `http://localhost:4000/premium/admin?limit=${limit}&page=${parseInt(page) + 1}` : null,
     };
 
-    if (rol === "premium") {
-      res.render("premium", {
+    if (rol === "premium") {res.render("premium", {
         layout: false,
         partials: {
           navbar: "navbar",
@@ -172,8 +165,5 @@ premiumRouter.post("/products/:id/delete-product", async (req, res) => {
     res.status(500).send("Error al eliminar un producto");
   }
 });
-
-
-
 
 export default premiumRouter;

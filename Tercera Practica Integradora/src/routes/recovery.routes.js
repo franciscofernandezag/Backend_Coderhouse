@@ -3,7 +3,6 @@ import { userModel } from "../models/Users.js";
 import { transporter } from "../utils/nodemailer.js";
 import { comparePasswords, hashPassword } from "../utils/bcryptUtils.js";
 
-
 const recoveryRouter = Router();
 
 // Ruta para enviar correo electronico a usuario registrado
