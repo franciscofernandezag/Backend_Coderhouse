@@ -1,0 +1,223 @@
+http: Server on port 4000 {"timestamp":"2023-08-10 09:01:15"}
+http: DB is connected {"timestamp":"2023-08-10 09:01:16"}
+http: Server on port 4000 {"timestamp":"2023-08-10 09:09:08"}
+http: DB is connected {"timestamp":"2023-08-10 09:09:09"}
+http: Server on port 4000 {"timestamp":"2023-08-10 09:17:06"}
+http: DB is connected {"timestamp":"2023-08-10 09:17:07"}
+http: Server on port 4000 {"timestamp":"2023-08-10 09:18:25"}
+http: DB is connected {"timestamp":"2023-08-10 09:18:26"}
+http: Server on port 4000 {"timestamp":"2023-08-10 09:18:59"}
+http: DB is connected {"timestamp":"2023-08-10 09:19:00"}
+http: Server on port 4000 {"timestamp":"2023-08-10 09:19:19"}
+http: DB is connected {"timestamp":"2023-08-10 09:19:20"}
+http: Server on port 4000 {"timestamp":"2023-08-10 09:21:19"}
+http: DB is connected {"timestamp":"2023-08-10 09:21:20"}
+http: Server on port 4000 {"timestamp":"2023-08-10 09:23:24"}
+http: DB is connected {"timestamp":"2023-08-10 09:23:25"}
+http: Server on port 4000 {"timestamp":"2023-08-10 09:26:08"}
+http: DB is connected {"timestamp":"2023-08-10 09:26:09"}
+http: Server on port 4000 {"timestamp":"2023-08-10 09:27:12"}
+http: DB is connected {"timestamp":"2023-08-10 09:27:13"}
+http: Server on port 4000 {"timestamp":"2023-08-10 10:19:21"}
+http: DB is connected {"timestamp":"2023-08-10 10:19:23"}
+http: Server on port 4000 {"timestamp":"2023-08-10 10:20:14"}
+http: DB is connected {"timestamp":"2023-08-10 10:20:15"}
+http: Server on port 4000 {"timestamp":"2023-08-10 10:38:55"}
+http: DB is connected {"timestamp":"2023-08-10 10:38:56"}
+http: Server on port 4000 {"timestamp":"2023-08-10 10:39:19"}
+http: DB is connected {"timestamp":"2023-08-10 10:39:20"}
+http: Server on port 4000 {"timestamp":"2023-08-10 10:39:46"}
+http: DB is connected {"timestamp":"2023-08-10 10:39:47"}
+http: Server on port 4000 {"timestamp":"2023-08-10 10:41:24"}
+http: DB is connected {"timestamp":"2023-08-10 10:41:25"}
+http: Server on port 4000 {"timestamp":"2023-08-10 10:41:39"}
+http: DB is connected {"timestamp":"2023-08-10 10:41:40"}
+http: Server on port 4000 {"timestamp":"2023-08-10 10:43:42"}
+http: DB is connected {"timestamp":"2023-08-10 10:43:43"}
+http: Server on port 4000 {"timestamp":"2023-08-10 10:44:44"}
+http: DB is connected {"timestamp":"2023-08-10 10:44:45"}
+http: Server on port 4000 {"timestamp":"2023-08-10 10:47:14"}
+http: DB is connected {"timestamp":"2023-08-10 10:47:15"}
+http: Server on port 4000 {"timestamp":"2023-08-10 10:47:34"}
+http: DB is connected {"timestamp":"2023-08-10 10:47:35"}
+http: Server on port 4000 {"timestamp":"2023-08-10 10:50:40"}
+http: DB is connected {"timestamp":"2023-08-10 10:50:41"}
+http: Server on port 4000 {"timestamp":"2023-08-10 10:51:22"}
+http: DB is connected {"timestamp":"2023-08-10 10:51:23"}
+http: Server on port 4000 {"timestamp":"2023-08-10 10:52:28"}
+http: DB is connected {"timestamp":"2023-08-10 10:52:29"}
+http: Server on port 4000 {"timestamp":"2023-08-10 10:53:24"}
+http: DB is connected {"timestamp":"2023-08-10 10:53:25"}
+http: Server on port 4000 {"timestamp":"2023-08-10 10:54:04"}
+http: DB is connected {"timestamp":"2023-08-10 10:54:05"}
+http: Server on port 4000 {"timestamp":"2023-08-10 10:55:41"}
+http: DB is connected {"timestamp":"2023-08-10 10:55:42"}
+http: Server on port 4000 {"timestamp":"2023-08-10 10:56:33"}
+http: DB is connected {"timestamp":"2023-08-10 10:56:34"}
+http: Server on port 4000 {"timestamp":"2023-08-10 10:57:05"}
+http: DB is connected {"timestamp":"2023-08-10 10:57:06"}
+http: Server on port 4000 {"timestamp":"2023-08-10 10:57:47"}
+http: DB is connected {"timestamp":"2023-08-10 10:57:48"}
+http: Server on port 4000 {"timestamp":"2023-08-10 11:05:07"}
+http: DB is connected {"timestamp":"2023-08-10 11:05:08"}
+http: Server on port 4000 {"timestamp":"2023-08-10 11:06:14"}
+http: DB is connected {"timestamp":"2023-08-10 11:06:15"}
+http: Server on port 4000 {"timestamp":"2023-08-10 11:06:33"}
+http: DB is connected {"timestamp":"2023-08-10 11:06:34"}
+http: Server on port 4000 {"timestamp":"2023-08-10 11:06:54"}
+http: DB is connected {"timestamp":"2023-08-10 11:06:55"}
+http: Server on port 4000 {"timestamp":"2023-08-10 11:08:21"}
+http: DB is connected {"timestamp":"2023-08-10 11:08:22"}
+http: Server on port 4000 {"timestamp":"2023-08-10 11:09:32"}
+http: DB is connected {"timestamp":"2023-08-10 11:09:33"}
+http: Server on port 4000 {"timestamp":"2023-08-10 11:11:27"}
+http: DB is connected {"timestamp":"2023-08-10 11:11:28"}
+http: Server on port 4000 {"timestamp":"2023-08-10 11:11:32"}
+http: DB is connected {"timestamp":"2023-08-10 11:11:33"}
+http: Server on port 4000 {"timestamp":"2023-08-10 11:13:55"}
+http: DB is connected {"timestamp":"2023-08-10 11:13:56"}
+http: Server on port 4000 {"timestamp":"2023-08-10 11:54:14"}
+http: DB is connected {"timestamp":"2023-08-10 11:54:15"}
+info: Se envió un correo a premium@premium.com con la compra exitosa procesada. {"timestamp":"2023-08-10 11:54:48"}
+http: Server on port 4000 {"timestamp":"2023-08-10 11:55:52"}
+http: DB is connected {"timestamp":"2023-08-10 11:55:53"}
+http: Server on port 4000 {"timestamp":"2023-08-10 11:55:58"}
+http: DB is connected {"timestamp":"2023-08-10 11:55:59"}
+http: Server on port 4000 {"timestamp":"2023-08-10 11:57:07"}
+http: DB is connected {"timestamp":"2023-08-10 11:57:09"}
+http: Ciente premium@premium.com acaba de conectarse a chat {"timestamp":"2023-08-10 11:57:36"}
+http: Ciente conectado socket IO {"timestamp":"2023-08-10 11:57:36"}
+http: Server on port 4000 {"timestamp":"2023-08-10 12:00:30"}
+http: DB is connected {"timestamp":"2023-08-10 12:00:31"}
+http: Server on port 4000 {"timestamp":"2023-08-10 12:01:22"}
+http: DB is connected {"timestamp":"2023-08-10 12:01:23"}
+http: Server on port 4000 {"timestamp":"2023-08-10 12:02:04"}
+http: DB is connected {"timestamp":"2023-08-10 12:02:04"}
+http: Server on port 4000 {"timestamp":"2023-08-10 12:02:18"}
+http: DB is connected {"timestamp":"2023-08-10 12:02:19"}
+http: Server on port 4000 {"timestamp":"2023-08-10 12:02:54"}
+http: DB is connected {"timestamp":"2023-08-10 12:02:55"}
+http: Server on port 4000 {"timestamp":"2023-08-10 12:03:10"}
+http: DB is connected {"timestamp":"2023-08-10 12:03:11"}
+http: Server on port 4000 {"timestamp":"2023-08-10 12:04:03"}
+http: DB is connected {"timestamp":"2023-08-10 12:04:04"}
+info: Se envió un correo a fco.fernandez.ag@gmail.com con la compra exitosa procesada. {"timestamp":"2023-08-10 12:05:10"}
+http: Server on port 4000 {"timestamp":"2023-08-10 12:07:47"}
+http: DB is connected {"timestamp":"2023-08-10 12:07:48"}
+http: Server on port 4000 {"timestamp":"2023-08-10 12:11:10"}
+http: DB is connected {"timestamp":"2023-08-10 12:11:11"}
+http: Server on port 4000 {"timestamp":"2023-08-10 12:11:47"}
+http: DB is connected {"timestamp":"2023-08-10 12:11:48"}
+http: Server on port 4000 {"timestamp":"2023-08-10 12:18:12"}
+http: DB is connected {"timestamp":"2023-08-10 12:18:13"}
+http: Server on port 4000 {"timestamp":"2023-08-10 12:24:42"}
+http: DB is connected {"timestamp":"2023-08-10 12:24:43"}
+http: Server on port 4000 {"timestamp":"2023-08-16 16:18:09"}
+http: DB is connected {"timestamp":"2023-08-16 16:18:11"}
+info: Se envió un correo a fco.fernandez.ag@gmail.com con la compra exitosa procesada. {"timestamp":"2023-08-16 16:18:29"}
+http: Server on port 4000 {"timestamp":"2023-08-16 16:23:08"}
+http: DB is connected {"timestamp":"2023-08-16 16:23:09"}
+http: Server on port 4000 {"timestamp":"2023-08-16 16:47:40"}
+http: DB is connected {"timestamp":"2023-08-16 16:47:41"}
+http: Server on port 4000 {"timestamp":"2023-08-16 16:51:37"}
+http: DB is connected {"timestamp":"2023-08-16 16:51:38"}
+http: Server on port 4000 {"timestamp":"2023-08-16 16:53:15"}
+http: DB is connected {"timestamp":"2023-08-16 16:53:17"}
+http: Server on port 4000 {"timestamp":"2023-08-16 17:09:55"}
+http: DB is connected {"timestamp":"2023-08-16 17:09:55"}
+http: Server on port 4000 {"timestamp":"2023-08-16 17:13:01"}
+http: DB is connected {"timestamp":"2023-08-16 17:13:02"}
+http: Server on port 4000 {"timestamp":"2023-08-16 18:15:19"}
+http: DB is connected {"timestamp":"2023-08-16 18:15:20"}
+http: Server on port 4000 {"timestamp":"2023-08-16 18:17:11"}
+http: DB is connected {"timestamp":"2023-08-16 18:17:12"}
+http: Server on port 4000 {"timestamp":"2023-08-16 18:17:48"}
+http: DB is connected {"timestamp":"2023-08-16 18:17:49"}
+http: Server on port 4000 {"timestamp":"2023-08-16 18:20:16"}
+http: DB is connected {"timestamp":"2023-08-16 18:20:18"}
+http: Server on port 4000 {"timestamp":"2023-08-17 09:24:01"}
+http: DB is connected {"timestamp":"2023-08-17 09:24:02"}
+http: Server on port 4000 {"timestamp":"2023-08-17 09:35:31"}
+http: DB is connected {"timestamp":"2023-08-17 09:35:32"}
+http: Server on port 4000 {"timestamp":"2023-08-17 09:36:49"}
+http: DB is connected {"timestamp":"2023-08-17 09:36:50"}
+http: Server on port 4000 {"timestamp":"2023-08-17 09:46:03"}
+http: DB is connected {"timestamp":"2023-08-17 09:46:04"}
+http: Server on port 4000 {"timestamp":"2023-08-17 09:50:33"}
+http: DB is connected {"timestamp":"2023-08-17 09:50:34"}
+http: Server on port 4000 {"timestamp":"2023-08-17 09:51:05"}
+http: DB is connected {"timestamp":"2023-08-17 09:51:06"}
+http: Server on port 4000 {"timestamp":"2023-08-17 09:59:53"}
+http: DB is connected {"timestamp":"2023-08-17 09:59:54"}
+http: Server on port 4000 {"timestamp":"2023-08-17 10:02:14"}
+http: DB is connected {"timestamp":"2023-08-17 10:02:15"}
+http: Server on port 4000 {"timestamp":"2023-08-17 10:04:06"}
+http: DB is connected {"timestamp":"2023-08-17 10:04:07"}
+http: Server on port 4000 {"timestamp":"2023-08-17 10:05:23"}
+http: DB is connected {"timestamp":"2023-08-17 10:05:24"}
+http: Server on port 4000 {"timestamp":"2023-08-17 10:15:39"}
+http: DB is connected {"timestamp":"2023-08-17 10:15:40"}
+http: Server on port 4000 {"timestamp":"2023-08-17 10:17:03"}
+http: DB is connected {"timestamp":"2023-08-17 10:17:04"}
+http: Server on port 4000 {"timestamp":"2023-08-17 10:38:40"}
+http: DB is connected {"timestamp":"2023-08-17 10:38:41"}
+http: Server on port 4000 {"timestamp":"2023-08-17 10:39:07"}
+http: DB is connected {"timestamp":"2023-08-17 10:39:08"}
+http: Server on port 4000 {"timestamp":"2023-08-17 11:31:29"}
+http: DB is connected {"timestamp":"2023-08-17 11:31:30"}
+http: Server on port 4000 {"timestamp":"2023-08-17 11:32:13"}
+http: DB is connected {"timestamp":"2023-08-17 11:32:14"}
+http: Server on port 4000 {"timestamp":"2023-08-17 11:32:31"}
+http: DB is connected {"timestamp":"2023-08-17 11:32:32"}
+http: Server on port 4000 {"timestamp":"2023-08-17 11:34:06"}
+http: DB is connected {"timestamp":"2023-08-17 11:34:07"}
+http: Server on port 4000 {"timestamp":"2023-08-17 11:38:12"}
+http: DB is connected {"timestamp":"2023-08-17 11:38:13"}
+http: Server on port 4000 {"timestamp":"2023-08-17 11:45:14"}
+http: DB is connected {"timestamp":"2023-08-17 11:45:15"}
+http: Server on port 4000 {"timestamp":"2023-08-17 12:34:19"}
+http: DB is connected {"timestamp":"2023-08-17 12:34:20"}
+http: Server on port 4000 {"timestamp":"2023-08-17 12:39:56"}
+http: DB is connected {"timestamp":"2023-08-17 12:39:57"}
+http: Server on port 4000 {"timestamp":"2023-08-17 12:58:42"}
+http: DB is connected {"timestamp":"2023-08-17 12:58:43"}
+http: Server on port 4000 {"timestamp":"2023-08-17 12:58:59"}
+http: DB is connected {"timestamp":"2023-08-17 12:59:00"}
+http: Server on port 4000 {"timestamp":"2023-08-17 13:00:25"}
+http: DB is connected {"timestamp":"2023-08-17 13:00:26"}
+http: Server on port 4000 {"timestamp":"2023-08-17 13:02:05"}
+http: DB is connected {"timestamp":"2023-08-17 13:02:06"}
+http: Server on port 4000 {"timestamp":"2023-08-17 13:02:44"}
+http: DB is connected {"timestamp":"2023-08-17 13:02:45"}
+http: Server on port 4000 {"timestamp":"2023-08-17 13:04:00"}
+http: DB is connected {"timestamp":"2023-08-17 13:04:01"}
+http: Server on port 4000 {"timestamp":"2023-08-17 13:05:57"}
+http: DB is connected {"timestamp":"2023-08-17 13:05:58"}
+http: Server on port 4000 {"timestamp":"2023-08-17 13:06:45"}
+http: DB is connected {"timestamp":"2023-08-17 13:06:46"}
+http: Server on port 4000 {"timestamp":"2023-08-17 13:07:05"}
+http: DB is connected {"timestamp":"2023-08-17 13:07:05"}
+http: Server on port 4000 {"timestamp":"2023-08-17 13:54:56"}
+http: DB is connected {"timestamp":"2023-08-17 13:54:57"}
+http: Server on port 4000 {"timestamp":"2023-08-17 13:55:40"}
+http: DB is connected {"timestamp":"2023-08-17 13:55:41"}
+http: Server on port 4000 {"timestamp":"2023-08-17 13:59:49"}
+http: DB is connected {"timestamp":"2023-08-17 13:59:50"}
+http: Server on port 4000 {"timestamp":"2023-08-17 14:07:15"}
+http: DB is connected {"timestamp":"2023-08-17 14:07:16"}
+http: Server on port 4000 {"timestamp":"2023-08-17 14:08:20"}
+http: DB is connected {"timestamp":"2023-08-17 14:08:21"}
+http: Server on port 4000 {"timestamp":"2023-08-17 14:11:32"}
+http: DB is connected {"timestamp":"2023-08-17 14:11:33"}
+http: Server on port 4000 {"timestamp":"2023-08-17 14:12:45"}
+http: DB is connected {"timestamp":"2023-08-17 14:12:46"}
+http: Server on port 4000 {"timestamp":"2023-08-17 18:19:28"}
+http: DB is connected {"timestamp":"2023-08-17 18:19:29"}
+http: Server on port 4000 {"timestamp":"2023-08-17 18:25:05"}
+http: DB is connected {"timestamp":"2023-08-17 18:25:06"}
+http: Server on port 4000 {"timestamp":"2023-08-17 18:42:58"}
+http: DB is connected {"timestamp":"2023-08-17 18:43:00"}
+http: Server on port 4000 {"timestamp":"2023-08-17 18:45:43"}
+http: DB is connected {"timestamp":"2023-08-17 18:45:44"}
+http: Server on port 4000 {"timestamp":"2023-08-17 18:46:41"}
+http: DB is connected {"timestamp":"2023-08-17 18:46:42"}

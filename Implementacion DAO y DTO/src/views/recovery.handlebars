@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambiar Contraseña</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Cambiar Contraseña</h1>
+        <h6>{{email}}</h6>
+        <p>Ingrese su nueva contraseña y haga clic en "Cambiar Contraseña" para guardar los cambios.</p>
+        <form action="/recovery/changepassword/mailsended" method="get">
+            <input type="hidden" name="email" value="{{email}}">
+            <div class="form-group">
+                <label for="newPas90sword">Nueva Contraseña:</label>
+                <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="Ingrese su nueva contraseña" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Cambiar Contraseña</button>
+        </form>
+    </div>
+
+    {{#if error}}
+    <script>
+        Swal.fire({
+          title: "Mensaje",
+          text: "La contraseña no puede ser igual a la anterior",
+          icon: "error",
+          timer: 3000,
+          timerProgressBar: true,
+          toast: true,
+          position: "top",
+          showConfirmButton: false
+        });
+    </script>
+    {{/if}}
+</body>
+</html>
