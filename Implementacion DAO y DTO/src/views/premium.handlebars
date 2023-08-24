@@ -9,7 +9,8 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
-<body >
+
+<body>
     <style>
         body {
             background-color: #4cce96;
@@ -20,6 +21,13 @@
             <h3>Bienvenido, {{userName}}</h3>
             <h4>{{email}}</h4>
             <h5>Usted tiene permisos de: {{rol}}</h5>
+            <form action="/chat" method="GET" style="display: inline;">
+                <button type="submit" class="btn btn-link">
+                    <i class="fas fa-comments fa-2x"></i>
+                    <span class="badge badge-danger">{{cartItemCount}}</span>
+                    <span>Chat</span>
+                </button>
+            </form>
         </div>
 
         <h1>Portal de Usuarios Premium</h1>

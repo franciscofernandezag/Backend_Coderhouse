@@ -1,5 +1,5 @@
 export default class ProductDTO {
-    constructor(code, title, description, stock, id, price, thumbnail, session) {
+    constructor(code, title, description, stock, id, price, thumbnail, cartId) {
       this.code = code;
       this.title = title;
       this.description = description;
@@ -7,14 +7,7 @@ export default class ProductDTO {
       this.id = id;
       this.price = price;
       this.thumbnail = thumbnail;
-  
-      // Datos de session
-      if (session) {
-        this.userName = session.first_name;
-        this.email = session.email;
-        this.rol = session.rol;
-        this.cartId = session.cartId;
-      }
+    
     }
   }
   

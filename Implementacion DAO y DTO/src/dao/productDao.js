@@ -3,9 +3,18 @@ import productModel from "../models/Products.js";
 const productDao = {
   async getProducts(queryOptions, options) {
     try {
-      return await productModel.find(queryOptions, null, options).exec();
+      const productsQuery = productModel.find(queryOptions, null, options);
+      return await productsQuery.exec();
     } catch (error) {
       throw new Error(`Error al obtener productos: ${error.message}`);
+    }
+  },
+  
+  async getTotalProductCount(queryOptions) {
+    try {
+      return await productModel.countDocuments(queryOptions);
+    } catch (error) {
+      throw new Error(`Error al obtener el conteo total de productos: ${error.message}`);
     }
   },
   
