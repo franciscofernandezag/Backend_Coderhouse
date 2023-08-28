@@ -69,10 +69,8 @@ describe('ProductDao', () => {
         stock: 30,
       });
 
-      // Realizar la operación y obtener el resultado
       const result = await productDao.getProducts();
 
-      // Aserciones usando Chai
       expect(result).to.be.an('array');
       expect(result).to.have.lengthOf(2);
       expect(result[0].title).to.equal('Product 1');
@@ -171,6 +169,4 @@ describe('ProductDao', () => {
     });
   });
 
-
-  // Agrega más bloques "describe" y pruebas para las otras funciones de productDao
 });
