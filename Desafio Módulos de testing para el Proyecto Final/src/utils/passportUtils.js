@@ -1,7 +1,7 @@
 import passport from 'passport';
 import bcrypt from 'bcrypt';
 import { Strategy as LocalStrategy } from 'passport-local';
-import { userModel } from '../models/Users.js';
+import { userModel } from '../dao/models/Users.js';
 
 // Configurar la estrategia de autenticación local
 passport.use(new LocalStrategy(

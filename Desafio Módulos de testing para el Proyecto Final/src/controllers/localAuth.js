@@ -1,5 +1,5 @@
-import { userModel } from "../models/Users.js";
-import cartModel from "../models/Carts.js";
+import { userModel } from "../dao/models/Users.js";
+import cartModel from "../dao/models/Carts.js";
 import { comparePasswords, hashPassword } from "../utils/bcryptUtils.js";
 import passport from '../utils/passportUtils.js';
 

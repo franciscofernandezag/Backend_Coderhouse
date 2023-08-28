@@ -1,4 +1,4 @@
-import productModel from "../models/Products.js";
+import productModel from "./models/Products.js";
 
 const productDao = {
   async getProducts(queryOptions, options) {

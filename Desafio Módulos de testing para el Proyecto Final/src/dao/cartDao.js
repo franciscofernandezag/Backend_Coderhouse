@@ -1,5 +1,5 @@
 
-import CartModel from "../models/Carts.js";
+import CartModel from "./models/Carts.js";
 
 const cartDao = {
     async getCartByIdAdd(cartId) {

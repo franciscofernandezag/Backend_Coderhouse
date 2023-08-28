@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { userModel } from "../models/Users.js";
+import { userModel } from "../dao/models/Users.js";
 import { transporter } from "../utils/nodemailer.js";
 import { comparePasswords, hashPassword } from "../utils/bcryptUtils.js";
 

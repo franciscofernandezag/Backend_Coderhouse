@@ -1,7 +1,7 @@
 import passport from "passport";
 import { Strategy as GitHubStrategy } from "passport-github2";
-import { userModel } from "../models/Users.js";
-import cartModel from "../models/Carts.js";
+import { userModel } from "../dao/models/Users.js";
+import cartModel from "../dao/models/Carts.js";
 import { loggerDev, loggerProd } from  "../utils/logger.js";
 
 passport.use("github",new GitHubStrategy(

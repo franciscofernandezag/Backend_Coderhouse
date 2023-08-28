@@ -1,4 +1,4 @@
-import purchaseModel from "../models/Purchase.js";
+import purchaseModel from "./models/Purchase.js";
 
 const purchaseDao = {
   async createPurchase(purchaseData) {
