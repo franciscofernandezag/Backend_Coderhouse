@@ -1,3 +1,4 @@
+import "dotenv/config";
 import chai from 'chai';
 import assert from 'assert';
 import mongoose from 'mongoose';
@@ -9,7 +10,7 @@ const expect = chai.expect;
 describe('ProductDao', () => {
   before(async () => {
     // Configuración de conexión a una base de datos de prueba
-    await mongoose.connect('mongodb+srv://fcofernandezag:coderhouse@cluster0.pr4rnyq.mongodb.net/?retryWrites=true&w=majority', {
+    await mongoose.connect(process.env.URL_MONGODB_TEST, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });

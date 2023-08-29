@@ -1,7 +1,7 @@
 import chai from 'chai';
 import mongoose from 'mongoose';
 import CartModel from '../../src/dao/models/Carts.js';
-import assert from 'assert';
+import "dotenv/config";
 import ProductModel from '../../src/dao/models/Products.js'; // Asegúrate de que la ruta sea correcta
 import CartDao from '../../src/dao/cartDao.js';
 import productDao from '../../src/dao/productDao.js';
@@ -11,7 +11,7 @@ const expect = chai.expect;
 describe('CartDao', () => {
   before(async () => {
     // Configuración de conexión a una base de datos de prueba
-    await mongoose.connect('mongodb+srv://fcofernandezag:coderhouse@cluster0.pr4rnyq.mongodb.net/?retryWrites=true&w=majority', {
+    await mongoose.connect(process.env.URL_MONGODB_TEST, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });

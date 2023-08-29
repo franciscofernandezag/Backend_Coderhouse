@@ -34,7 +34,6 @@ const purchaseDao = {
     }
   },
 
-  // Agregar otras funciones de DAO según las operaciones necesarias
 };
 
 export default purchaseDao;
