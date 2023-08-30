@@ -7,7 +7,7 @@ const productRouter = Router();
 
 productRouter.get("/", async (req, res) => {
   try {
-    const { limit = 12, page = 1, sort, query, message } = req.query;
+    const { limit = 12, page = 1, sort, query, message} = req.query;
     const userName = req.session.user.first_name;
     const email = req.session.user.email;
     const rol = req.session.user.rol;
@@ -21,7 +21,6 @@ productRouter.get("/", async (req, res) => {
 
     const totalCount = await productDao.getTotalProductCount(queryOptions);
     const totalPages = Math.ceil(totalCount / options.limit);
-
     const response = {
       status: "success",
       payload: products, 
@@ -41,12 +40,12 @@ productRouter.get("/", async (req, res) => {
       navbar: 'navbar', 
       products: products, 
       response: response,  
-      userName: userName, 
+      userName: userName,  
       cartId: cartId,
       email: email, 
       rol: rol, 
-      
-      message: message || "" 
+      success: "Bienvenido",
+      message: message || ""
     });
   } catch (error) {
     loggerProd.fatal("Error al recibir los productos:", error);

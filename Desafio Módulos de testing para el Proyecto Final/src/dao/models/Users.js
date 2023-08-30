@@ -34,7 +34,7 @@ const userSchema = new Schema({
     },
     authenticationType: {
         type: String,
-        required: true
+        required: false
     },
     cartId: {
         type: Schema.Types.ObjectId,

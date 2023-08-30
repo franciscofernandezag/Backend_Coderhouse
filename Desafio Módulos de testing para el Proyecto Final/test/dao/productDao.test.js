@@ -41,24 +41,17 @@ describe('ProductDao', () => {
         owner: 'admin',
       };
 
-      // Realizar la operación y obtener el resultado
       const result = await productDao.addProduct(newProductData);
-
-      //validar si se creo  valido el describe id   //una opcion 
-    const result1= !!result._id // si llega con id entrega true
-    assert.deepStrictEqual(result1,true)
-    // otra es con el asser de ok
-    assert.ok(result._id)
-    // algo adicional probar 
-    assert.strictEqual(result.title, newProductData.title);
+      const result1 = !!result._id
+      assert.deepStrictEqual(result1, true)
+      assert.ok(result._id)
+      assert.strictEqual(result.title, newProductData.title);
     });
   });
 
-  // 
-
   describe('getProducts', () => {
     it(' Prueba 2 : Metodo getProduct para agregar productos', async () => {
-  
+
       await productDao.addProduct({
         title: 'Product 1',
         price: 10,
@@ -77,7 +70,6 @@ describe('ProductDao', () => {
       expect(result[0].title).to.equal('Product 1');
       expect(result[0].price).to.equal(10);
       expect(result[0].stock).to.equal(50);
-
       expect(result[1].title).to.equal('Product 2');
       expect(result[1].price).to.equal(20);
       expect(result[1].stock).to.equal(30);

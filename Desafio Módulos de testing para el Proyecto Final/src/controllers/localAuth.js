@@ -35,9 +35,9 @@ export async function loginUser(req, res, next) {
   })(req, res, next);
 }
 export async function registerUser(req, res) {
-  const { nombre, apellido, email, edad, genero, rol, password } = req.body;
+  const { nombre, apellido, email, genero, rol, password } = req.body;
   try {
-    if (!nombre || !apellido || !email || !edad || !genero || !rol || !password) {
+    if (!nombre || !apellido || !email || !genero || !rol || !password) {
       return res.status(400).render('home', { title: 'Página de inicio', error: 'Faltan campos obligatorios' });
     }
 

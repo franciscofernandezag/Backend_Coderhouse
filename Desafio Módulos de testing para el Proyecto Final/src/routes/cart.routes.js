@@ -74,6 +74,7 @@ cartRouter.get("/:cartId", async (req, res) => {
       products: summedProducts,
       total: calcularTotal(summedProducts),
       message: message,
+      success: "Bienvenido al Carrito de compras" 
     });
   } catch (error) {
     loggerProd.fatal("Error al obtener los productos del carrito:", error);

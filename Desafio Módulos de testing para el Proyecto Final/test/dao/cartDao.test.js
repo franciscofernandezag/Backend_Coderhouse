@@ -2,7 +2,7 @@ import chai from 'chai';
 import mongoose from 'mongoose';
 import CartModel from '../../src/dao/models/Carts.js';
 import "dotenv/config";
-import ProductModel from '../../src/dao/models/Products.js'; // Asegúrate de que la ruta sea correcta
+import ProductModel from '../../src/dao/models/Products.js'; 
 import CartDao from '../../src/dao/cartDao.js';
 import productDao from '../../src/dao/productDao.js';
 
@@ -27,7 +27,6 @@ describe('CartDao', () => {
 
   describe('getCartById', () => {
     it('Prueba 1 : Metodo getCartById , busca el id de carrito creado', async () => {
-      // Crear un carrito en la base de datos
       const cart = await CartModel.create({ products: [] });
       const product = await ProductModel.create({
         title: 'Product 1',

@@ -20,3 +20,8 @@ export function authenticate(allowedRoles) {
   };
 }
 
+export function customAuthenticate(req, res, next) {
+  const user = JSON.parse(req.headers.user);
+  req.currentUser = user;
+  next();
+}
