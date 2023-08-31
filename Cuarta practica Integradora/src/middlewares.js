@@ -1,6 +1,6 @@
 import { loggerDev, loggerProd } from  "./utils/logger.js";
 
-// Autentificacion de usuarios en base a roles 
+// Autentificacion de usuarios en base a roles. Esto es para proteguer las rutas
 export function authenticate(allowedRoles) {
   return (req, res, next) => {
     if (req.session.user) {
@@ -15,13 +15,9 @@ export function authenticate(allowedRoles) {
         res.status(403).render('forbidden', { title: 'Acceso denegado' });
       }
     } else {
+      loggerDev.http(`Intento de acceso a rutas no autorizado sin logearse`);
       res.redirect('/');
+   
     }
   };
-}
-
-export function customAuthenticate(req, res, next) {
-  const user = JSON.parse(req.headers.user);
-  req.currentUser = user;
-  next();
 }
