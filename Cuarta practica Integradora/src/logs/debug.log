@@ -544,3 +544,32 @@ info: Se envió un correo a fernandezfco@hotmail.cl con la compra exitosa proces
 info: Se envió un correo a fernandezfco@hotmail.cl para la compra pendiente. {"timestamp":"2023-08-31 15:22:15"}
 info: Se envió un correo a fernandezfco@hotmail.cl para la compra pendiente. {"timestamp":"2023-08-31 15:22:35"}
 info: Se envió un correo a fernandezfco@hotmail.cl con la compra exitosa procesada. {"timestamp":"2023-08-31 15:23:36"}
+http: Server on port 4000 {"timestamp":"2023-09-04 07:56:30"}
+http: DB is connected {"timestamp":"2023-09-04 07:56:31"}
+http: Server on port 4000 {"timestamp":"2023-09-04 07:58:30"}
+http: DB is connected {"timestamp":"2023-09-04 07:58:31"}
+http: Server on port 4000 {"timestamp":"2023-09-04 08:01:57"}
+http: DB is connected {"timestamp":"2023-09-04 08:01:58"}
+http: Server on port 4000 {"timestamp":"2023-09-04 08:05:10"}
+http: DB is connected {"timestamp":"2023-09-04 08:05:11"}
+http: Ciente premium@premium.com acaba de conectarse a chat {"timestamp":"2023-09-04 08:12:41"}
+http: Ciente cata@cata.com acaba de conectarse a chat {"timestamp":"2023-09-04 08:13:00"}
+http: Ciente cata@cata.com acaba de conectarse a chat {"timestamp":"2023-09-04 08:13:20"}
+http: Ciente cata@cata.com acaba de conectarse a chat {"timestamp":"2023-09-04 08:13:34"}
+http: Ciente cata@cata.com acaba de conectarse a chat {"timestamp":"2023-09-04 08:13:44"}
+http: Ciente premium@premium.com acaba de conectarse a chat {"timestamp":"2023-09-04 08:14:09"}
+http: Server on port 4000 {"timestamp":"2023-09-04 08:15:37"}
+http: DB is connected {"timestamp":"2023-09-04 08:15:38"}
+http: Ciente premium@premium.com acaba de conectarse a chat {"timestamp":"2023-09-04 08:16:49"}
+http: Server on port 4000 {"timestamp":"2023-09-04 08:21:30"}
+http: DB is connected {"timestamp":"2023-09-04 08:21:31"}
+http: Ciente premium@premium.com acaba de conectarse a chat {"timestamp":"2023-09-04 08:21:34"}
+http: Ciente conectado socket IO {"timestamp":"2023-09-04 08:21:34"}
+http: Ciente premium@premium.com acaba de conectarse a chat {"timestamp":"2023-09-04 08:21:42"}
+http: Ciente conectado socket IO {"timestamp":"2023-09-04 08:21:42"}
+http: Intento de acceso a rutas no autorizado sin logearse {"timestamp":"2023-09-04 11:35:03"}
+http: Intento de acceso a rutas no autorizado sin logearse {"timestamp":"2023-09-04 11:35:55"}
+http: Intento de acceso a rutas no autorizado sin logearse {"timestamp":"2023-09-04 11:37:30"}
+http: Server on port 4000 {"timestamp":"2023-09-04 11:48:19"}
+http: Ciente conectado socket IO {"timestamp":"2023-09-04 11:48:19"}
+http: DB is connected {"timestamp":"2023-09-04 11:48:20"}
