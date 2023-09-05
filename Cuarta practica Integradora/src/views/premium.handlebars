@@ -13,7 +13,7 @@
 <body>
     <style>
         body {
-            background-color: #4cce96;
+            background-color: rgb(30, 121, 86);
         }
     </style>
     <div class="container mt-4">
@@ -24,10 +24,18 @@
             <form action="/chat" method="GET" style="display: inline;">
                 <button type="submit" class="btn btn-link">
                     <i class="fas fa-comments fa-2x"></i>
-                    <span class="badge badge-danger">{{cartItemCount}}</span>
+                    <span class="badge badge-danger"></span>
                     <span>Chat</span>
                 </button>
             </form>
+<form action="/users/{{userId}}" method="GET" style="display: inline;">
+    <button type="submit" class="btn btn-link">
+        <i class="fas fa-user fa-2x"></i>
+        <span>Personalizar Usuario</span>
+    </button>
+</form>
+
+
         </div>
 
         <h1>Portal de Usuarios Premium</h1>
@@ -48,7 +56,6 @@
         </form>
 
         <form id="addProductForm" action="/premium/products/owner/addproduct" method="post">
-            <!-- Botón que muestra los campos para agregar producto -->
             <button type="button" class="btn btn-success" id="showAddProductFields">
                 <i class="fas fa-plus"></i> Agregar Producto
             </button>

@@ -15,7 +15,7 @@ premiumRouter.get("/", async (req, res) => {
 premiumRouter.get("/admin", async (req, res) => {
   try {
     const { limit = 12, page = 1, sort, query, message } = req.query;
-    const { first_name: userName, email, rol, cartId } = req.session.user;
+    const { first_name: userName, email, rol, cartId, _id: userId } = req.session.user; 
     const options = { limit: parseInt(limit), skip: (parseInt(page) - 1) * parseInt(limit) };
     const queryOptions = query ? { title: { $regex: query, $options: "i" } } : {};
 
@@ -57,6 +57,7 @@ premiumRouter.get("/admin", async (req, res) => {
         email: email,
         rol: rol,
         cartId: cartId,
+        userId: userId, 
         message: message || ""
       });
     } else {

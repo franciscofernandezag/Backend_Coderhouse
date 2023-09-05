@@ -8,20 +8,23 @@ import passport from './controllers/githubAuth.js';
 import cookieParser from 'cookie-parser';
 import MongoStore from 'connect-mongo'
 import { __dirname, __filename } from './path.js'
-import { authenticate } from './middlewares.js';
+import { authenticate } from './middleware/authenticate.js';
 import { connectDatabase } from './database.js';
 import { loginUser } from "./controllers/localAuth.js"; 
 import { registerUser } from "./controllers/localAuth.js"; 
+import { logout } from './controllers/logout.js'; 
 import productRouter from "./routes/product.routes.js";
 import cartRouter from "./routes/cart.routes.js";
 import adminRouter from "./routes/admin.routes.js";
 import premiumRouter from "./routes/premium.routes.js";
+import userRouter from "./routes/users.routes.js";
 import messagesRouter from "./routes/messages.routes.js";
 import recoveryRouter from "./routes/recovery.routes.js";
 import loggerTestRouter from "./routes/loggerTest.routes.js";
 import { loggerDev, loggerProd } from  "./utils/logger.js";
 import swaggerJsdoc from  'swagger-jsdoc'
 import swaggerUiExpress from 'swagger-ui-express'
+
 
 const app = express();
 const PORT = 4000;
@@ -58,6 +61,26 @@ io.on('connection', (socket) => {
     })
 })
 
+//Swagger configuracion 
+const swaggerOptions={
+  definition:{
+      openapi:'3.0.1',
+      info:{
+          title:" Documentacion de las API",
+          description:" Informacion de tienda virtual",
+          version: '1.0.0',
+          contact:{
+              name:"Francisco Fernandez",
+              url: "https://www.linkedin.com/in/francisco-fernandez-fernandez-97930430/"
+          }
+      }
+  },
+  apis: [`${process.cwd()}/src/docs/**/*.yaml`],
+  // apis: [`./docs/**/*.yaml`],
+}
+
+const spec=swaggerJsdoc(swaggerOptions)
+
 // Handlebars
 app.engine(
   'handlebars',
@@ -92,27 +115,12 @@ app.get('/', (req, res) => {
       navbar: 'navbar', 
     },
     title: 'Página de inicio',
-
   });
 });
 
-// Ruta POST para el inicio de sesión
+// Rutas de login y registros 
 app.post('/login', loginUser);
-
-
-// Ruta POST para el registro de usuarios
 app.post('/registro', registerUser);
-
-// Cerrar sesion (LOGOUT)
-app.get("/logout", (req, res) => {
-
-  // Eliminar la sesión del usuario
-  req.session.destroy();
-  // Redireccionar al inicio de sesión
-  res.redirect("/");
-});
-
-// Configurar las rutas de autenticación de GitHub
 app.get('/auth/github', passport.authenticate('github', { scope: ['user:usernamegithub'] }));
 app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/login' }),
   (req, res) => {
@@ -120,32 +128,17 @@ app.get('/auth/github/callback', passport.authenticate('github', { failureRedire
     res.redirect('/products');
   }
 );
-
-//Swagger configuracion 
-const swaggerOptions={
-  definition:{
-      openapi:'3.0.1',
-      info:{
-          title:" Documentacion de las API",
-          description:" Informacion de tienda virtual",
-          version: '1.0.0',
-          contact:{
-              name:"Francisco Fernandez",
-              url: "https://www.linkedin.com/in/francisco-fernandez-fernandez-97930430/"
-          }
-      }
-  },
-  apis: [`${process.cwd()}/src/docs/**/*.yaml`],
-  // apis: [`./docs/**/*.yaml`],
-}
-
-const spec=swaggerJsdoc(swaggerOptions)
+app.get("/logout", async (req, res) => {
+  await logout(req); 
+  res.redirect("/");
+});
 
 // Rutas con permisos de acceso de usuarios segun rol
 app.use('/products', authenticate(['usuario', 'premium']), productRouter);
 app.use('/carts', authenticate(['usuario', 'premium']), cartRouter);
 app.use('/admin', authenticate(['administrador']), adminRouter);
 app.use('/premium', authenticate(['premium']), premiumRouter);
+app.use('/users', authenticate(['usuario', 'premium','administrador']), userRouter);
 app.use('/message',authenticate(['usuario', 'premium','administrador']), messagesRouter);
 app.use('/chat',authenticate(['usuario', 'premium','administrador']), express.static(__dirname + '/public')) 
 app.use('/recovery', recoveryRouter);
@@ -160,12 +153,5 @@ app.get("/chat", (req, res) => {
   res.render('chat', { cartId: cartId }); 
 });
 
-// Agregar la ruta de prueba del logger
+// ruta de prueba del logger
 app.use("/loggerTest", loggerTestRouter);
-
-
-
-
-
-
-
