@@ -7,16 +7,18 @@ const productRouter = Router();
 
 productRouter.get("/", async (req, res) => {
   try {
+    
     const { limit = 12, page = 1, sort, query, message} = req.query;
     const userName = req.session.user.first_name;
     const email = req.session.user.email;
     const rol = req.session.user.rol;
     const cartId = req.session.user.cartId;
+    const userId = req.session.user._id;
+   
     const options = {};
     options.limit = parseInt(limit);
     options.skip = (parseInt(page) - 1) * parseInt(limit);
     const queryOptions = query ? { title: { $regex: query, $options: "i" } } : {};
-
     const products = await productDao.getProducts(queryOptions, options);
 
     const totalCount = await productDao.getTotalProductCount(queryOptions);
@@ -39,7 +41,8 @@ productRouter.get("/", async (req, res) => {
     res.render('products', { 
       navbar: 'navbar', 
       products: products, 
-      response: response,  
+      response: response,
+      userId: userId,   
       userName: userName,  
       cartId: cartId,
       email: email, 

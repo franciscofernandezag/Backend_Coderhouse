@@ -1,21 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <div class="d-flex flex-row align-items-center">
-      <span class="ml-2 h3">Tienda Virtual de Libros</span>
-    </div>
 
     <ul class="navbar-nav ml-auto">
-      <!-- Formulario Personalizar Usuario -->
-      <li class="nav-item flex-grow-1">
-        <form action="/users/{{userId}}" method="GET" style="display: inline;">
-          <button type="submit" class="btn btn-link">
-            <i class="fas fa-user fa-2x"></i>
-            <span>Personalizar Usuario</span>
-          </button>
-        </form>
-      </li>
-
-      <li class="nav-item flex-grow-1">
+           <li class="nav-item flex-grow-1">
         <form action="/products" method="GET" style="display: inline;">
           <button type="submit" class="btn btn-link">
             <i class="fas fa-home fa-2x"></i>
@@ -25,11 +11,13 @@
         </form>
       </li>
       <li class="nav-item flex-grow-1">
-        <a href="/chat" class="btn btn-link">
-          <i class="fas fa-comments fa-2x"></i>
-          <span class="badge badge-danger"></span>
-          <span>Chat</span>
-        </a>
+        <form action="/chat" method="GET" style="display: inline;">
+          <button type="submit" class="btn btn-link">
+            <i class="fas fa-comments fa-2x"></i>
+            <span class="badge badge-danger"></span>
+            <span>Chat</span>
+          </button>
+        </form>
       </li>
       <li class="nav-item flex-grow-1">
         <form action="/carts/{{cartId}}" method="GET" style="display: inline;">
@@ -39,14 +27,22 @@
           </button>
         </form>
       </li>
+      <li class="nav-item flex-grow-1">
+    <form action="/users/{{userId}}" method="GET" style="display: inline;">
+    <button type="submit" class="btn btn-link">
+        <i class="fas fa-user fa-2x"></i>
+        <span>Perfil</span>
+    </button>
+</form>
+      </li>
       <li class="nav-item">
         <form action="/logout" method="get">
           <button type="submit" class="btn btn-link">
             <i class="fas fa-sign-out-alt fa-2x"></i>
-            <span>Cerrar sesión</span>
+            <span >Cerrar sesión</span>
           </button>
         </form>
       </li>
     </ul>
-  </div>
+
 </nav>

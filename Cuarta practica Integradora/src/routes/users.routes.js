@@ -9,17 +9,23 @@ const userRouter = Router();
 userRouter.get('/:userId', async (req, res) => {
   try {
     const userId = req.params.userId;
-    const user = req.session.user; 
+    const user = req.session.user;
     const userProfileImage = user.documents && user.documents.find((doc) => doc.name === 'Foto de perfil');
-console.log(user)
-
-    res.render('users', { user, userId, userProfileImage, layout: false, partials: { navbar: "" } });
+    
+    // redirige a home en base al rol de usuario 
+    let formAction = '';
+    if (user.rol === 'premium') {
+      formAction = '/premium/admin';
+    } else if (user.rol === 'usuario') {
+      formAction = '/products';
+    }
+    
+    res.render('users', { user, userId, userProfileImage, formAction, layout: false, partials: { navbar: "" } });
   } catch (error) {
     console.error('Error al obtener los datos del usuario:', error);
     res.status(500).send('Error en el servidor');
   }
 });
-
 
 // Ruta para manejar la solicitud POST de edición de usuario
 userRouter.post('/:userId/edit', async (req, res) => {
@@ -76,15 +82,14 @@ userRouter.post('/:userId/change-password', async (req, res) => {
       const profileImage = req.file;
   
       if (!profileImage) {
+        
         return res.status(400).json({ error: 'Debes cargar una imagen de perfil' });
       }
   
-      // Verifica si existe una "Foto de perfil" y la elimina
       const existingProfileImage = await userDao.getUserDocumentByName(userId, 'Foto de perfil');
       if (existingProfileImage) {
         await userDao.removeUserDocumentById(userId, existingProfileImage._id);
       }
-  
       const updateData = {
         $push: {
           documents: {
@@ -93,26 +98,17 @@ userRouter.post('/:userId/change-password', async (req, res) => {
           }
         }
       };
-  
-      // Realiza la actualización en la base de datos y espera a que se complete
       const updatedUser = await userDao.updateUserById(userId, updateData);
-  
       if (!updatedUser) {
         return res.status(404).json({ error: 'Usuario no encontrado' });
       }
-  
-      // Actualiza la sesión del usuario con el usuario recién actualizado
       req.session.user = updatedUser;
-  
-      res.status(200).json({ message: 'Imagen de perfil cargada exitosamente' });
+      const userProfileImage = updatedUser.documents && updatedUser.documents.find((doc) => doc.name === 'Foto de perfil');
+      res.render('users', { user: updatedUser, message: 'Imagen de perfil cargada exitosamente', userProfileImage, layout: false, partials: { navbar: "" } });  
     } catch (error) {
       console.error('Error al cargar la imagen de perfil:', error);
       res.status(500).send('Error en el servidor');
     }
   });
-  
-  
-
-
 
 export default userRouter;
