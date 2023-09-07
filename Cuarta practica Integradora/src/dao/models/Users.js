@@ -1,5 +1,10 @@
 import { Schema, model } from "mongoose";
 
+const documentSchema = new Schema({
+  name: String,      // Nombre del documento (por ejemplo, "foto de perfil", "identificación", etc.)
+  reference: String  // Referencia al archivo de la imagen (nombre del archivo, URL, o identificador)
+});
+
 const userSchema = new Schema({
   first_name: {
     type: String,
@@ -38,12 +43,7 @@ const userSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "cart"
   },
-  documents: [
-    {
-      name: String,
-      reference: String
-    }
-  ],
+  documents: [documentSchema], // Arreglo de objetos para documentos
   last_connection: {
     type: Date,
     required: false

@@ -1,74 +1,114 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
     <title>Usuario</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+  <body>
     <div class="container mt-4">
-        <h1>Datos del Usuario</h1>
-        <form action="/premium/admin" method="GET" style="display: inline;">
-            <button type="submit" class="btn btn-link">
-                <i class="fas fa-home fa-2x"></i>
-                <span class="badge badge-danger"></span>
-                <span>Home</span>
-            </button>
-        </form>
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">{{user.first_name}} {{user.last_name}}</h5>
-                <p class="card-text"><strong>Email:</strong> {{user.email}}</p>
-                <p class="card-text"><strong>Género:</strong> {{user.gender}}</p>
-                <p class="card-text"><strong>Rol:</strong> {{user.rol}}</p>
-            </div>
-        </div>
+      <h1>Datos del Usuario</h1>
+      <form action="/premium/admin" method="GET" style="display: inline;">
+        <button type="submit" class="btn btn-link">
+          <i class="fas fa-home fa-2x"></i>
+          <span class="badge badge-danger"></span>
+          <span>Home</span>
+        </button>
+      </form>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{user.first_name}} {{user.last_name}}</h5>
+          <p class="card-text"><strong>Email:</strong> {{user.email}}</p>
+          <p class="card-text"><strong>Género:</strong> {{user.gender}}</p>
+          <p class="card-text"><strong>Rol:</strong> {{user.rol}}</p>
+         <img src="/documents/profiles/{{userProfileImage.reference}}" alt="Foto de Perfil" width="150">
 
-        <h2>Modificar Datos del Usuario</h2>
-        <form action="/users/{{user._id}}/edit" method="POST">
-            <div class="form-group">
-                <label for="first_name">Nombre:</label>
-                <input type="text" class="form-control" id="first_name" name="first_name" value="{{user.first_name}}">
-            </div>
-            <div class="form-group">
-                <label for="last_name">Apellido:</label>
-                <input type="text" class="form-control" id="last_name" name="last_name" value="{{user.last_name}}">
-            </div>
-         <div class="form-group">
-        <label for="gender">Género:</label>
-        <select class="form-control" id="gender" name="gender">
+
+        </div>
+      </div>
+      <h2>Subir Foto de Perfil</h2>
+      <form
+        action="/users/{{user._id}}/documents/upload-profile"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <div class="form-group">
+          <label for="profileImage">Foto de Perfil:</label>
+          <input
+            type="file"
+            class="form-control"
+            id="profileImage"
+            name="profileImage"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Subir Foto de Perfil</button>
+      </form>
+
+      <h2>Modificar Datos del Usuario</h2>
+      <form action="/users/{{user._id}}/edit" method="POST">
+        <div class="form-group">
+          <label for="first_name">Nombre:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="first_name"
+            name="first_name"
+            value="{{user.first_name}}"
+          />
+        </div>
+        <div class="form-group">
+          <label for="last_name">Apellido:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="last_name"
+            name="last_name"
+            value="{{user.last_name}}"
+          />
+        </div>
+        <div class="form-group">
+          <label for="gender">Género:</label>
+          <select class="form-control" id="gender" name="gender">
             <option value="masculino">Masculino</option>
             <option value="femenino">Femenino</option>
             <option value="indeterminado">Indeterminado</option>
-        </select>
-    </div>
-            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-        </form>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+      </form>
     </div>
 
     <div class="container mt-2">
-        <button id="changePasswordBtn" class="btn btn-warning">Cambiar Contraseña</button>
-        <div id="passwordContainer" style="display: none;">
-            <h2>Cambiar Contraseña</h2>
-            <form action="/users/{{user._id}}/change-password" method="POST">
-                <div class="form-group">
-                    <label for="newPassword">Nueva Contraseña:</label>
-                    <input type="password" class="form-control" id="newPassword" name="newPassword">
-                </div>
-                <button type="submit" class="btn btn-warning">Guardar Contraseña</button>
-            </form>
-        </div>
+      <button id="changePasswordBtn" class="btn btn-warning">Cambiar Contraseña</button>
+      <div id="passwordContainer" style="display: none;">
+        <h2>Cambiar Contraseña</h2>
+        <form action="/users/{{user._id}}/change-password" method="POST">
+          <div class="form-group">
+            <label for="newPassword">Nueva Contraseña:</label>
+            <input
+              type="password"
+              class="form-control"
+              id="newPassword"
+              name="newPassword"
+            />
+          </div>
+          <button type="submit" class="btn btn-warning">Guardar Contraseña</button>
+        </form>
+      </div>
     </div>
 
     <script>
-        const changePasswordBtn = document.getElementById('changePasswordBtn');
-        const passwordContainer = document.getElementById('passwordContainer');
-
-        changePasswordBtn.addEventListener('click', () => {
-            passwordContainer.style.display = 'block';
-        });
+      const changePasswordBtn = document.getElementById('changePasswordBtn');
+      const passwordContainer = document.getElementById('passwordContainer');
+      changePasswordBtn.addEventListener('click', () => {
+      passwordContainer.style.display = 'block'; });
     </script>
-</body>
+  </body>
 </html>

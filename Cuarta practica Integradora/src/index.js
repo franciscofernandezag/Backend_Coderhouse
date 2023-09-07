@@ -34,6 +34,7 @@ const server = app.listen(PORT, () => {
 })
 
 app.use(express.json());
+app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.SIGNED_COOKIE));
 app.use(session({
@@ -140,7 +141,7 @@ app.use('/admin', authenticate(['administrador']), adminRouter);
 app.use('/premium', authenticate(['premium']), premiumRouter);
 app.use('/users', authenticate(['usuario', 'premium','administrador']), userRouter);
 app.use('/message',authenticate(['usuario', 'premium','administrador']), messagesRouter);
-app.use('/chat',authenticate(['usuario', 'premium','administrador']), express.static(__dirname + '/public')) 
+app.use('/chat', authenticate(['usuario', 'premium', 'administrador']));
 app.use('/recovery', recoveryRouter);
 app.use('/apidocs',swaggerUiExpress.serve,swaggerUiExpress.setup(spec))
 

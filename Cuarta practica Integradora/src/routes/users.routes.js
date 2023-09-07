@@ -1,34 +1,33 @@
 import { Router } from "express";
 import userDao from "../dao/userDao.js"
 import { comparePasswords, hashPassword } from "../utils/bcryptUtils.js";
+import { profileUploadMiddleware } from "../middleware/multer.js";
 
 
 const userRouter = Router();
 
-
-
-// Ruta para mostrar la vista de usuario y manejar la actualización
 userRouter.get('/:userId', async (req, res) => {
-    try {
-      const userId = req.params.userId;
-      const user = req.session.user; 
-      res.render('users', { user, userId, layout: false, partials: { navbar: "" } });
-    } catch (error) {
-      console.error('Error al obtener los datos del usuario:', error);
-      res.status(500).send('Error en el servidor');
-    }
-  });
+  try {
+    const userId = req.params.userId;
+    const user = req.session.user; 
+    const userProfileImage = user.documents && user.documents.find((doc) => doc.name === 'Foto de perfil');
+console.log(user)
+
+    res.render('users', { user, userId, userProfileImage, layout: false, partials: { navbar: "" } });
+  } catch (error) {
+    console.error('Error al obtener los datos del usuario:', error);
+    res.status(500).send('Error en el servidor');
+  }
+});
+
 
 // Ruta para manejar la solicitud POST de edición de usuario
 userRouter.post('/:userId/edit', async (req, res) => {
     try {
       const userId = req.params.userId;
       const { first_name, last_name, gender } = req.body; 
-  
-      // Obtén el usuario actual
       const user = req.session.user;
   
-      // Actualiza los campos distintos a la contraseña
       const updateData = { first_name, last_name, gender };
       const updatedUser = await userDao.updateUserById(userId, updateData);
   
@@ -70,6 +69,50 @@ userRouter.post('/:userId/change-password', async (req, res) => {
       res.status(500).send('Error en el servidor');
     }
   });
+
+  userRouter.post('/:userId/documents/upload-profile', profileUploadMiddleware, async (req, res) => {
+    try {
+      const userId = req.params.userId;
+      const profileImage = req.file;
+  
+      if (!profileImage) {
+        return res.status(400).json({ error: 'Debes cargar una imagen de perfil' });
+      }
+  
+      // Verifica si existe una "Foto de perfil" y la elimina
+      const existingProfileImage = await userDao.getUserDocumentByName(userId, 'Foto de perfil');
+      if (existingProfileImage) {
+        await userDao.removeUserDocumentById(userId, existingProfileImage._id);
+      }
+  
+      const updateData = {
+        $push: {
+          documents: {
+            name: 'Foto de perfil',
+            reference: profileImage.filename
+          }
+        }
+      };
+  
+      // Realiza la actualización en la base de datos y espera a que se complete
+      const updatedUser = await userDao.updateUserById(userId, updateData);
+  
+      if (!updatedUser) {
+        return res.status(404).json({ error: 'Usuario no encontrado' });
+      }
+  
+      // Actualiza la sesión del usuario con el usuario recién actualizado
+      req.session.user = updatedUser;
+  
+      res.status(200).json({ message: 'Imagen de perfil cargada exitosamente' });
+    } catch (error) {
+      console.error('Error al cargar la imagen de perfil:', error);
+      res.status(500).send('Error en el servidor');
+    }
+  });
+  
+  
+
 
 
 export default userRouter;

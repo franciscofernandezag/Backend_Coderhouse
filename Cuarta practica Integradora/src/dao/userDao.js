@@ -51,6 +51,37 @@ const userDao = {
       throw error;
     }
   },
+  async getUserDocumentByName(userId, documentName) {
+    try {
+      const user = await userModel.findById(userId);
+      if (!user) {
+        throw new Error("Usuario no encontrado");
+      }
+
+      const document = user.documents.find((doc) => doc.name === documentName);
+      return document;
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  async removeUserDocumentById(userId, documentId) {
+    try {
+      const user = await userModel.findByIdAndUpdate(
+        userId,
+        { $pull: { documents: { _id: documentId } } },
+        { new: true }
+      );
+  
+      if (!user) {
+        throw new Error("Usuario no encontrado");
+      }
+  
+      return true; 
+    } catch (error) {
+      throw error;
+    }
+  },
 
 };
 
