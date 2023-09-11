@@ -149,9 +149,11 @@ app.use('/apidocs',swaggerUiExpress.serve,swaggerUiExpress.setup(spec))
 app.get("/chat", (req, res) => {
   const cartId = req.session.user.cartId; 
   const userEmail = req.session.user.email; 
+  const userId = req.session.user._id;
+
   console.log("Se accedió a la vista de chat. Usuario:", userEmail);
   loggerDev.http(`Ciente ${userEmail} acaba de conectarse a chat`);
-  res.render('chat', { cartId: cartId }); 
+  res.render('chat', { cartId: cartId , userId:userId }); 
 });
 
 // ruta de prueba del logger

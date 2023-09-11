@@ -1,11 +1,13 @@
 import { Router } from "express";
 import { loggerProd } from "../utils/logger.js";
-import productDao from "../dao/productDao.js"; 
+import productDao from "../dao/productDao.js";
+import { productUploadMiddleware }from "../middleware/multer.js";
 
 const premiumRouter = Router();
 
 premiumRouter.get("/", async (req, res) => {
-  try {res.render('choose-action', { layout: false });
+  try {
+    res.render('choose-action', { layout: false });
   } catch (error) {
     loggerProd.fatal("Error:", error);
     res.status(500).send("Error interno del servidor");
@@ -15,21 +17,18 @@ premiumRouter.get("/", async (req, res) => {
 premiumRouter.get("/admin", async (req, res) => {
   try {
     const { limit = 12, page = 1, sort, query, message } = req.query;
-    const { first_name: userName, email, rol, cartId, _id: userId } = req.session.user; 
+    const { first_name: userName, email, rol, cartId, _id: userId } = req.session.user;
     const options = { limit: parseInt(limit), skip: (parseInt(page) - 1) * parseInt(limit) };
     const queryOptions = query ? { title: { $regex: query, $options: "i" } } : {};
 
     const totalCount = await productDao.getTotalProductCount({ ...queryOptions, owner: email });
     const totalPages = Math.ceil(totalCount / options.limit);
-
     let productsQuery = productDao.getProducts({ ...queryOptions, owner: email }, options);
-
     if (sort === "asc") {
       productsQuery = productsQuery.sort({ price: 1 });
     } else if (sort === "desc") {
       productsQuery = productsQuery.sort({ price: -1 });
     }
-
     const products = await productsQuery;
 
     const response = {
@@ -57,7 +56,7 @@ premiumRouter.get("/admin", async (req, res) => {
         email: email,
         rol: rol,
         cartId: cartId,
-        userId: userId, 
+        userId: userId,
         message: message || ""
       });
     } else {
@@ -69,15 +68,11 @@ premiumRouter.get("/admin", async (req, res) => {
     res.status(500).send(`Error al recibir los productos: ${error.message}`);
   }
 });
-
-
-// Ruta para agregar producto
+// Ruta para agregar producto con imagen en URL 
 premiumRouter.post("/products/owner/addproduct", async (req, res) => {
   try {
     const { code, title, description, stock, id, status, price, thumbnail } =
       req.body;
-
-    // Crear un nuevo producto utilizando el DAO y el email del usuario logeado
     const productData = {
       code,
       title,
@@ -89,17 +84,42 @@ premiumRouter.post("/products/owner/addproduct", async (req, res) => {
       thumbnail,
       owner: req.session.user.email, // Establecer el owner como el owner logeado
     };
-
     await productDao.addProduct(productData);
-
     req.session.message = "Producto agregado exitosamente.";
-    // Redirigir a la página adecuada después de agregar el producto
     res.redirect(`/premium/admin?message=${encodeURIComponent(req.session.message)}`);
   } catch (error) {
     loggerProd.fatal("Error al agregar un producto:", error);
     res.status(500).send("Error al agregar un producto");
   }
 });
+
+// Ruta para agregar producto con imagen cargada LOCALMENTE
+premiumRouter.post("/products/owner/addproductLocal", productUploadMiddleware, async (req, res) => {
+  try {
+    const { code, title, description, stock, id, status, price } = req.body;
+    const thumbnailPath = `/documents/products/${req.file.filename}`;
+    console.log(thumbnailPath)
+    const productData = {
+      code,
+      title,
+      description,
+      stock,
+      id,
+      status: true,
+      price,
+      thumbnail: thumbnailPath, 
+      owner: req.session.user.email, 
+    };
+
+    await productDao.addProduct(productData);
+    req.session.message = "Producto agregado exitosamente.";
+    res.redirect(`/premium/admin?message=${encodeURIComponent(req.session.message)}`);
+  } catch (error) {
+    loggerProd.fatal("Error al agregar un producto:", error);
+    res.status(500).send("Error al agregar un producto");
+  }
+});
+
 
 // Ruta para actualizar stock
 premiumRouter.post("/products/:id/update-stock", async (req, res) => {
@@ -113,7 +133,7 @@ premiumRouter.post("/products/:id/update-stock", async (req, res) => {
     }
     product.stock = parseInt(amount);
 
-    await productDao.updateStock(productId, product.stock); 
+    await productDao.updateStock(productId, product.stock);
 
     req.session.message = "Se ha actualizado el stock del producto.";
 
@@ -130,12 +150,12 @@ premiumRouter.post("/products/:id/update-price", async (req, res) => {
     const productId = req.params.id;
     const { amount } = req.body;
 
-    const product = await productDao.getProductById(productId); 
+    const product = await productDao.getProductById(productId);
     if (!product) {
       return res.status(404).send("Producto no encontrado");
     }
-    
-    await productDao.updatePrice(productId, parseInt(amount)); 
+
+    await productDao.updatePrice(productId, parseInt(amount));
 
     req.session.message = "Se ha actualizado el precio del producto.";
     loggerProd.info(
@@ -162,7 +182,7 @@ premiumRouter.post("/products/:id/delete-product", async (req, res) => {
     // Verificar si el usuario conectado es el propietario del producto
     const { email } = req.session.user;
     if (product.owner !== email) {
-      return  res.status(403).render('forbidden', { title: 'Acceso denegado' });
+      return res.status(403).render('forbidden', { title: 'Acceso denegado' });
 
     }
     // Eliminar el producto del modelo

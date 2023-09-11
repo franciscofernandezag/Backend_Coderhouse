@@ -55,7 +55,7 @@ cartRouter.post("/:cartId/products/:productId", async (req, res) => {
 cartRouter.get("/:cartId", async (req, res) => {
   try {
     const { cartId } = req.params;
-
+    const userId = req.session.user._id;
     const cart = await cartDao.getCartByIdAdd(cartId);
     if (!cart) {
       return res.status(404).json({ error: "Carrito no encontrado" });
@@ -71,6 +71,7 @@ cartRouter.get("/:cartId", async (req, res) => {
     res.render("carts", {
       cart: cart,
       cartId: cartId,
+      userId : userId,
       products: summedProducts,
       total: calcularTotal(summedProducts),
       message: message,
