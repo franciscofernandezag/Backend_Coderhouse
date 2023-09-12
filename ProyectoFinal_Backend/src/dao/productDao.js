@@ -1,9 +1,16 @@
 import productModel from "./models/Products.js";
 
 const productDao = {
-  async getProducts(queryOptions, options) {
+  async getProducts(queryOptions, options, sortOption) {
     try {
       const productsQuery = productModel.find(queryOptions, null, options);
+
+      if (sortOption === "asc") {
+        productsQuery.sort({ price: 1 }); 
+      } else if (sortOption === "desc") {
+        productsQuery.sort({ price: -1 }); 
+      }
+
       return await productsQuery.exec();
     } catch (error) {
       throw new Error(`Error al obtener productos: ${error.message}`);

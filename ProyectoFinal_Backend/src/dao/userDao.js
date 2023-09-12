@@ -11,7 +11,6 @@ const userDao = {
     }
   },
 
-
   async deleteUserById(userId) {
     try {
       const result = await userModel.findByIdAndDelete(userId);
@@ -103,6 +102,42 @@ const userDao = {
       throw error;
     }
   },
+
+  async getUserById(userId) {
+    try {
+      const user = await userModel.findById(userId);
+      return user;
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  async findByIdAndUpdate(userId, updateData) {
+    try {
+      const result = await userModel.findByIdAndUpdate(userId, updateData, { new: true });
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  async deleteInactiveUsers(twentyMinutesAgo) {
+    try {
+      const result = await userModel.deleteMany({ last_connection: { $lt: twentyMinutesAgo } });
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  async deleteUser(userId) {
+    try {
+      const result = await userModel.findByIdAndDelete(userId);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
 
 };
 

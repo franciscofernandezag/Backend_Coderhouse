@@ -11,7 +11,7 @@
 
 </head>
 
-<body >
+<body>
     <style>
         body {
             background-color: #96b1cc;
@@ -22,27 +22,34 @@
             <h3>Bienvenido, {{userName}}</h3>
             <h4>{{email}}</h4>
             <h5>Usted tiene permisos de: {{rol}}</h5>
+         <form id="adminForm" action="/admin" method="GET" style="display: inline;">
+                <button type="submit" class="btn btn-link text-danger">
+                    <i class="fas fa-home fa-2x text-danger"></i>
+                    <span class="text-danger">Home</span>
+                </button>
+            </form>
 
-               <a href="/chat" class="btn btn-link">
-        <i class="fas fa-comments fa-2x"></i>
-        <span class="badge badge-danger"></span>
-        <span>Chat</span>
-      </a>
-      <form action="/admin/adminUser" method="GET" style="display: inline;">
-        <button type="submit" class="btn btn-link">
-        <i class="fas fa-user-cog fa-2x"></i>
-          <span>Administración de Usuarios</span>
-        </button>
-      </form>
+            <a href="/chat" class="btn btn-link text-danger">
+                <i class="fas fa-comments fa-2x text-danger"></i>
+                <span class="text-danger">Chat</span>
+            </a>
 
-     <form action="/admin/perfil" method="GET" style="display: inline;">
-        <button type="submit" class="btn btn-link">
-          <i class="fas fa-user fa-2x"></i>
-          <span>Perfil</span>
-        </button>
-      </form>
+            <form action="/admin/adminUser" method="GET" style="display: inline;">
+                <button type="submit" class="btn btn-link text-danger">
+                    <i class="fas fa-user-cog fa-2x text-danger"></i>
+                    <span class="text-danger">Administración de Usuarios</span>
+                </button>
+            </form>
+
+            <form action="/admin/perfil" method="GET" style="display: inline;">
+                <button type="submit" class="btn btn-link text-danger">
+                    <i class="fas fa-user fa-2x text-danger"></i>
+                    <span class="text-danger">Perfil</span>
+                </button>
+            </form>
+
         </div>
-      
+
         <h1>Portal de Administración</h1>
         <form action="/admin" method="get">
             <div class="form-group">
