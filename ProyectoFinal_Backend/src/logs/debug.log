@@ -990,3 +990,225 @@ info: Usuario premium@premium.com inició sesión. Última conexión: Sun Sep 10
 http: Server on port 4000 {"timestamp":"2023-09-11 14:28:30"}
 http: DB is connected {"timestamp":"2023-09-11 14:28:31"}
 info: Usuario premium@premium.com inició sesión. Última conexión: Mon Sep 11 2023 14:28:37 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 14:28:37"}
+http: Server on port 4000 {"timestamp":"2023-09-11 14:32:52"}
+http: DB is connected {"timestamp":"2023-09-11 14:32:53"}
+info: Usuario premium@premium.com inició sesión. Última conexión: Mon Sep 11 2023 14:33:02 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 14:33:02"}
+info: Usuario premium@premium.com cerró sesión. Última conexión: Mon Sep 11 2023 14:33:12 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 14:33:12"}
+info: Usuario admin@admin.com inició sesión. Última conexión: Mon Sep 11 2023 14:33:17 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 14:33:17"}
+http: Ciente admin@admin.com acaba de conectarse a chat {"timestamp":"2023-09-11 14:35:19"}
+http: Ciente conectado socket IO {"timestamp":"2023-09-11 14:35:20"}
+info: Usuario admin@admin.com cerró sesión. Última conexión: Mon Sep 11 2023 14:35:37 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 14:35:37"}
+info: Usuario premium@premium.com inició sesión. Última conexión: Mon Sep 11 2023 14:35:43 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 14:35:43"}
+info: Usuario premium@premium.com cerró sesión. Última conexión: Mon Sep 11 2023 14:35:49 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 14:35:49"}
+info: Usuario admin@admin.com inició sesión. Última conexión: Mon Sep 11 2023 14:35:58 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 14:35:58"}
+http: Server on port 4000 {"timestamp":"2023-09-11 14:36:41"}
+http: DB is connected {"timestamp":"2023-09-11 14:36:42"}
+info: Usuario admin@admin.com cerró sesión. Última conexión: Mon Sep 11 2023 14:36:54 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 14:36:55"}
+info: Usuario premium@premium.com inició sesión. Última conexión: Mon Sep 11 2023 14:36:59 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 14:36:59"}
+info: Usuario premium@premium.com cerró sesión. Última conexión: Mon Sep 11 2023 14:37:09 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 14:37:09"}
+http: Server on port 4000 {"timestamp":"2023-09-11 14:37:38"}
+http: DB is connected {"timestamp":"2023-09-11 14:37:40"}
+info: Usuario admin@admin.com inició sesión. Última conexión: Mon Sep 11 2023 14:37:44 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 14:37:44"}
+http: Server on port 4000 {"timestamp":"2023-09-11 14:51:58"}
+http: DB is connected {"timestamp":"2023-09-11 14:51:59"}
+http: Intento de acceso a rutas no autorizado sin logearse {"timestamp":"2023-09-11 14:52:57"}
+info: Usuario admin@admin.com inició sesión. Última conexión: Mon Sep 11 2023 14:53:02 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 14:53:02"}
+http: Server on port 4000 {"timestamp":"2023-09-11 14:53:26"}
+http: DB is connected {"timestamp":"2023-09-11 14:53:27"}
+http: Server on port 4000 {"timestamp":"2023-09-11 14:54:19"}
+http: DB is connected {"timestamp":"2023-09-11 14:54:20"}
+http: Server on port 4000 {"timestamp":"2023-09-11 14:56:11"}
+http: DB is connected {"timestamp":"2023-09-11 14:56:12"}
+http: Server on port 4000 {"timestamp":"2023-09-11 14:56:40"}
+http: DB is connected {"timestamp":"2023-09-11 14:56:41"}
+http: Usuario con correo admin@admin.com intentando acceder a una ruta no autorizada {"timestamp":"2023-09-11 14:56:51"}
+http: Usuario con correo admin@admin.com intentando acceder a una ruta no autorizada {"timestamp":"2023-09-11 14:56:51"}
+http: Server on port 4000 {"timestamp":"2023-09-11 15:03:48"}
+http: DB is connected {"timestamp":"2023-09-11 15:03:49"}
+http: Server on port 4000 {"timestamp":"2023-09-11 15:04:11"}
+http: DB is connected {"timestamp":"2023-09-11 15:04:12"}
+info: Usuario admin@admin.com cerró sesión. Última conexión: Mon Sep 11 2023 15:04:12 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 15:04:12"}
+info: Usuario admin@admin.com inició sesión. Última conexión: Mon Sep 11 2023 15:04:17 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 15:04:17"}
+http: Server on port 4000 {"timestamp":"2023-09-11 15:04:58"}
+http: DB is connected {"timestamp":"2023-09-11 15:04:59"}
+info: Usuario admin@admin.com cerró sesión. Última conexión: Mon Sep 11 2023 15:05:19 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 15:05:19"}
+info: Usuario premium@premium.com inició sesión. Última conexión: Mon Sep 11 2023 15:05:25 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 15:05:25"}
+info: Usuario premium@premium.com cerró sesión. Última conexión: Mon Sep 11 2023 15:09:07 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 15:09:07"}
+info: Usuario admin@admin.com inició sesión. Última conexión: Mon Sep 11 2023 15:09:12 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 15:09:12"}
+http: Usuario con correo admin@admin.com intentando acceder a una ruta no autorizada {"timestamp":"2023-09-11 15:10:02"}
+http: Usuario con correo admin@admin.com intentando acceder a una ruta no autorizada {"timestamp":"2023-09-11 15:10:02"}
+http: Intento de acceso a rutas no autorizado sin logearse {"timestamp":"2023-09-11 15:19:11"}
+info: Usuario admin@admin.com inició sesión. Última conexión: Mon Sep 11 2023 15:19:16 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 15:19:16"}
+http: Usuario con correo admin@admin.com intentando acceder a una ruta no autorizada {"timestamp":"2023-09-11 15:22:09"}
+http: Usuario con correo admin@admin.com intentando acceder a una ruta no autorizada {"timestamp":"2023-09-11 15:22:09"}
+http: Usuario con correo admin@admin.com intentando acceder a una ruta no autorizada {"timestamp":"2023-09-11 15:22:43"}
+http: Usuario con correo admin@admin.com intentando acceder a una ruta no autorizada {"timestamp":"2023-09-11 15:22:43"}
+http: Usuario con correo admin@admin.com intentando acceder a una ruta no autorizada {"timestamp":"2023-09-11 15:23:22"}
+http: Usuario con correo admin@admin.com intentando acceder a una ruta no autorizada {"timestamp":"2023-09-11 15:23:22"}
+http: Usuario con correo admin@admin.com intentando acceder a una ruta no autorizada {"timestamp":"2023-09-11 15:23:27"}
+http: Usuario con correo admin@admin.com intentando acceder a una ruta no autorizada {"timestamp":"2023-09-11 15:23:27"}
+http: Usuario con correo admin@admin.com intentando acceder a una ruta no autorizada {"timestamp":"2023-09-11 15:23:48"}
+http: Usuario con correo admin@admin.com intentando acceder a una ruta no autorizada {"timestamp":"2023-09-11 15:23:48"}
+http: Server on port 4000 {"timestamp":"2023-09-11 15:23:54"}
+http: DB is connected {"timestamp":"2023-09-11 15:23:55"}
+http: Usuario con correo admin@admin.com intentando acceder a una ruta no autorizada {"timestamp":"2023-09-11 15:24:01"}
+http: Usuario con correo admin@admin.com intentando acceder a una ruta no autorizada {"timestamp":"2023-09-11 15:24:01"}
+http: Usuario con correo admin@admin.com intentando acceder a una ruta no autorizada {"timestamp":"2023-09-11 15:24:53"}
+http: Usuario con correo admin@admin.com intentando acceder a una ruta no autorizada {"timestamp":"2023-09-11 15:24:54"}
+info: Usuario premium@premium.com inició sesión. Última conexión: Mon Sep 11 2023 15:25:13 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 15:25:13"}
+info: Usuario premium@premium.com cerró sesión. Última conexión: Mon Sep 11 2023 15:25:22 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 15:25:22"}
+info: Usuario admin@admin.com inició sesión. Última conexión: Mon Sep 11 2023 15:25:28 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 15:25:28"}
+http: Usuario con correo admin@admin.com intentando acceder a una ruta no autorizada {"timestamp":"2023-09-11 15:28:10"}
+http: Usuario con correo admin@admin.com intentando acceder a una ruta no autorizada {"timestamp":"2023-09-11 15:28:11"}
+http: Usuario con correo admin@admin.com intentando acceder a una ruta no autorizada {"timestamp":"2023-09-11 15:28:18"}
+http: Usuario con correo admin@admin.com intentando acceder a una ruta no autorizada {"timestamp":"2023-09-11 15:28:18"}
+http: Usuario con correo admin@admin.com intentando acceder a una ruta no autorizada {"timestamp":"2023-09-11 15:29:25"}
+http: Usuario con correo admin@admin.com intentando acceder a una ruta no autorizada {"timestamp":"2023-09-11 15:29:25"}
+http: Usuario con correo admin@admin.com intentando acceder a una ruta no autorizada {"timestamp":"2023-09-11 15:29:31"}
+http: Usuario con correo admin@admin.com intentando acceder a una ruta no autorizada {"timestamp":"2023-09-11 15:29:31"}
+http: Server on port 4000 {"timestamp":"2023-09-11 15:35:18"}
+http: DB is connected {"timestamp":"2023-09-11 15:35:19"}
+http: Server on port 4000 {"timestamp":"2023-09-11 15:36:04"}
+http: DB is connected {"timestamp":"2023-09-11 15:36:05"}
+http: Server on port 4000 {"timestamp":"2023-09-11 15:41:48"}
+http: DB is connected {"timestamp":"2023-09-11 15:41:49"}
+http: Server on port 4000 {"timestamp":"2023-09-11 15:42:06"}
+http: DB is connected {"timestamp":"2023-09-11 15:42:07"}
+http: Intento de acceso a rutas no autorizado sin logearse {"timestamp":"2023-09-11 15:44:37"}
+info: Usuario admin@admin.com inició sesión. Última conexión: Mon Sep 11 2023 15:44:42 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 15:44:42"}
+http: Server on port 4000 {"timestamp":"2023-09-11 15:45:04"}
+http: DB is connected {"timestamp":"2023-09-11 15:45:05"}
+http: Server on port 4000 {"timestamp":"2023-09-11 15:45:18"}
+http: DB is connected {"timestamp":"2023-09-11 15:45:18"}
+http: Server on port 4000 {"timestamp":"2023-09-11 15:47:00"}
+http: DB is connected {"timestamp":"2023-09-11 15:47:01"}
+http: Server on port 4000 {"timestamp":"2023-09-11 15:47:05"}
+http: DB is connected {"timestamp":"2023-09-11 15:47:06"}
+http: Server on port 4000 {"timestamp":"2023-09-11 15:48:41"}
+http: DB is connected {"timestamp":"2023-09-11 15:48:42"}
+http: Intento de acceso a rutas no autorizado sin logearse {"timestamp":"2023-09-11 16:00:28"}
+info: Usuario admin@admin.com inició sesión. Última conexión: Mon Sep 11 2023 16:00:34 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 16:00:34"}
+http: Server on port 4000 {"timestamp":"2023-09-11 16:03:04"}
+http: DB is connected {"timestamp":"2023-09-11 16:03:05"}
+http: Server on port 4000 {"timestamp":"2023-09-11 16:03:49"}
+http: DB is connected {"timestamp":"2023-09-11 16:03:50"}
+http: Server on port 4000 {"timestamp":"2023-09-11 16:31:48"}
+http: DB is connected {"timestamp":"2023-09-11 16:31:49"}
+http: Intento de acceso a rutas no autorizado sin logearse {"timestamp":"2023-09-11 16:33:29"}
+info: Usuario admin@admin.com inició sesión. Última conexión: Mon Sep 11 2023 16:33:34 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 16:33:34"}
+http: Server on port 4000 {"timestamp":"2023-09-11 16:34:15"}
+http: DB is connected {"timestamp":"2023-09-11 16:34:16"}
+http: Server on port 4000 {"timestamp":"2023-09-11 16:37:44"}
+http: DB is connected {"timestamp":"2023-09-11 16:37:45"}
+info: Usuario admin@admin.com cerró sesión. Última conexión: Mon Sep 11 2023 16:39:13 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 16:39:13"}
+info: Usuario premium@premium.com inició sesión. Última conexión: Mon Sep 11 2023 16:39:33 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 16:39:33"}
+info: Usuario premium@premium.com cerró sesión. Última conexión: Mon Sep 11 2023 16:40:02 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 16:40:02"}
+info: Usuario admin@admin.com inició sesión. Última conexión: Mon Sep 11 2023 16:40:09 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 16:40:09"}
+http: Server on port 4000 {"timestamp":"2023-09-11 16:45:08"}
+http: DB is connected {"timestamp":"2023-09-11 16:45:09"}
+http: Server on port 4000 {"timestamp":"2023-09-11 16:50:54"}
+http: DB is connected {"timestamp":"2023-09-11 16:50:55"}
+info: Usuario admin@admin.com cerró sesión. Última conexión: Mon Sep 11 2023 16:54:00 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 16:54:00"}
+info: Usuario fco.fernandez.ag@gmail.com autenticado a través de GitHub. Última conexión: Mon Sep 11 2023 16:54:09 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 16:54:09"}
+info: Usuario fco.fernandez.ag@gmail.com cerró sesión. Última conexión: Mon Sep 11 2023 16:54:17 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 16:54:17"}
+info: Usuario admin@admin.com inició sesión. Última conexión: Mon Sep 11 2023 19:08:28 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 19:08:28"}
+http: Server on port 4000 {"timestamp":"2023-09-11 19:10:16"}
+http: DB is connected {"timestamp":"2023-09-11 19:10:17"}
+http: Server on port 4000 {"timestamp":"2023-09-11 19:11:44"}
+http: DB is connected {"timestamp":"2023-09-11 19:11:45"}
+http: Server on port 4000 {"timestamp":"2023-09-11 19:12:23"}
+http: DB is connected {"timestamp":"2023-09-11 19:12:24"}
+http: Server on port 4000 {"timestamp":"2023-09-11 19:12:55"}
+http: DB is connected {"timestamp":"2023-09-11 19:12:56"}
+info: Usuario admin@admin.com cerró sesión. Última conexión: Mon Sep 11 2023 19:18:02 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 19:18:02"}
+info: Usuario fco.fernandez.ag@gmail.com autenticado a través de GitHub. Última conexión: Mon Sep 11 2023 19:18:08 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 19:18:08"}
+http: Server on port 4000 {"timestamp":"2023-09-11 19:26:33"}
+http: DB is connected {"timestamp":"2023-09-11 19:26:33"}
+http: Server on port 4000 {"timestamp":"2023-09-11 19:27:05"}
+http: DB is connected {"timestamp":"2023-09-11 19:27:06"}
+http: Server on port 4000 {"timestamp":"2023-09-11 19:27:19"}
+http: DB is connected {"timestamp":"2023-09-11 19:27:20"}
+info: Usuario fco.fernandez.ag@gmail.com autenticado a través de GitHub. Última conexión: Mon Sep 11 2023 19:44:54 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 19:44:54"}
+http: Intento de acceso a rutas no autorizado sin logearse {"timestamp":"2023-09-11 19:54:57"}
+info: Usuario fco.fernandez.ag@gmail.com autenticado a través de GitHub. Última conexión: Mon Sep 11 2023 19:55:00 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 19:55:01"}
+http: Intento de acceso a rutas no autorizado sin logearse {"timestamp":"2023-09-11 20:11:20"}
+info: Usuario fco.fernandez.ag@gmail.com autenticado a través de GitHub. Última conexión: Mon Sep 11 2023 20:11:24 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 20:11:24"}
+info: Usuario fco.fernandez.ag@gmail.com cerró sesión. Última conexión: Mon Sep 11 2023 20:12:45 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 20:12:45"}
+info: Usuario admin@admin.com inició sesión. Última conexión: Mon Sep 11 2023 20:13:57 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 20:13:58"}
+http: Server on port 4000 {"timestamp":"2023-09-11 20:14:56"}
+http: DB is connected {"timestamp":"2023-09-11 20:14:57"}
+http: Server on port 4000 {"timestamp":"2023-09-11 20:20:13"}
+http: DB is connected {"timestamp":"2023-09-11 20:20:14"}
+http: Server on port 4000 {"timestamp":"2023-09-11 20:22:38"}
+http: DB is connected {"timestamp":"2023-09-11 20:22:39"}
+http: Server on port 4000 {"timestamp":"2023-09-11 20:23:34"}
+http: DB is connected {"timestamp":"2023-09-11 20:23:35"}
+http: Server on port 4000 {"timestamp":"2023-09-11 20:25:07"}
+http: DB is connected {"timestamp":"2023-09-11 20:25:08"}
+http: Server on port 4000 {"timestamp":"2023-09-11 20:25:27"}
+http: DB is connected {"timestamp":"2023-09-11 20:25:28"}
+http: Server on port 4000 {"timestamp":"2023-09-11 20:35:50"}
+http: DB is connected {"timestamp":"2023-09-11 20:35:51"}
+info: Usuario admin@admin.com inició sesión. Última conexión: Mon Sep 11 2023 20:36:12 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 20:36:12"}
+http: Server on port 4000 {"timestamp":"2023-09-11 20:38:15"}
+http: DB is connected {"timestamp":"2023-09-11 20:38:16"}
+http: Server on port 4000 {"timestamp":"2023-09-11 20:41:35"}
+http: DB is connected {"timestamp":"2023-09-11 20:41:37"}
+http: Server on port 4000 {"timestamp":"2023-09-11 20:43:13"}
+http: DB is connected {"timestamp":"2023-09-11 20:43:14"}
+http: Intento de acceso a rutas no autorizado sin logearse {"timestamp":"2023-09-11 20:56:58"}
+info: Usuario admin@admin.com inició sesión. Última conexión: Mon Sep 11 2023 20:57:06 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 20:57:06"}
+http: Server on port 4000 {"timestamp":"2023-09-11 21:06:28"}
+http: DB is connected {"timestamp":"2023-09-11 21:06:29"}
+http: Server on port 4000 {"timestamp":"2023-09-11 21:08:03"}
+http: DB is connected {"timestamp":"2023-09-11 21:08:04"}
+http: Server on port 4000 {"timestamp":"2023-09-11 21:13:14"}
+http: DB is connected {"timestamp":"2023-09-11 21:13:15"}
+http: Server on port 4000 {"timestamp":"2023-09-11 21:17:01"}
+http: DB is connected {"timestamp":"2023-09-11 21:17:03"}
+http: Server on port 4000 {"timestamp":"2023-09-11 21:17:26"}
+http: DB is connected {"timestamp":"2023-09-11 21:17:27"}
+http: Server on port 4000 {"timestamp":"2023-09-11 21:23:52"}
+http: DB is connected {"timestamp":"2023-09-11 21:23:53"}
+http: Server on port 4000 {"timestamp":"2023-09-11 21:25:00"}
+http: DB is connected {"timestamp":"2023-09-11 21:25:01"}
+http: Server on port 4000 {"timestamp":"2023-09-11 21:25:14"}
+http: DB is connected {"timestamp":"2023-09-11 21:25:15"}
+http: Server on port 4000 {"timestamp":"2023-09-11 21:26:13"}
+http: DB is connected {"timestamp":"2023-09-11 21:26:14"}
+http: Server on port 4000 {"timestamp":"2023-09-11 21:26:25"}
+http: DB is connected {"timestamp":"2023-09-11 21:26:26"}
+http: Server on port 4000 {"timestamp":"2023-09-11 21:26:38"}
+http: DB is connected {"timestamp":"2023-09-11 21:26:39"}
+http: Server on port 4000 {"timestamp":"2023-09-11 21:27:12"}
+http: DB is connected {"timestamp":"2023-09-11 21:27:13"}
+http: Server on port 4000 {"timestamp":"2023-09-11 21:27:27"}
+http: DB is connected {"timestamp":"2023-09-11 21:27:28"}
+http: Server on port 4000 {"timestamp":"2023-09-11 21:31:21"}
+http: DB is connected {"timestamp":"2023-09-11 21:31:22"}
+http: Server on port 4000 {"timestamp":"2023-09-11 21:31:36"}
+http: DB is connected {"timestamp":"2023-09-11 21:31:37"}
+http: Server on port 4000 {"timestamp":"2023-09-11 21:33:19"}
+http: DB is connected {"timestamp":"2023-09-11 21:33:20"}
+http: Server on port 4000 {"timestamp":"2023-09-11 21:34:15"}
+http: DB is connected {"timestamp":"2023-09-11 21:34:15"}
+http: Intento de acceso a rutas no autorizado sin logearse {"timestamp":"2023-09-11 21:44:39"}
+info: Usuario admin@admin.com inició sesión. Última conexión: Mon Sep 11 2023 21:44:45 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 21:44:45"}
+http: Server on port 4000 {"timestamp":"2023-09-11 21:46:54"}
+http: DB is connected {"timestamp":"2023-09-11 21:46:55"}
+http: Server on port 4000 {"timestamp":"2023-09-11 21:47:05"}
+http: DB is connected {"timestamp":"2023-09-11 21:47:06"}
+http: Server on port 4000 {"timestamp":"2023-09-11 21:47:21"}
+http: DB is connected {"timestamp":"2023-09-11 21:47:27"}
+http: Server on port 4000 {"timestamp":"2023-09-11 21:47:43"}
+http: DB is connected {"timestamp":"2023-09-11 21:47:44"}
+http: Server on port 4000 {"timestamp":"2023-09-11 21:48:06"}
+http: DB is connected {"timestamp":"2023-09-11 21:48:07"}
+info: Usuario admin@admin.com cerró sesión. Última conexión: Mon Sep 11 2023 21:50:27 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 21:50:27"}
+info: Usuario premium@premium.com inició sesión. Última conexión: Mon Sep 11 2023 21:50:32 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 21:50:32"}
+info: Usuario premium@premium.com cerró sesión. Última conexión: Mon Sep 11 2023 21:50:56 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 21:50:56"}
+info: Usuario cata@cata.com inició sesión. Última conexión: Mon Sep 11 2023 21:51:17 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 21:51:17"}
+info: Usuario cata@cata.com cerró sesión. Última conexión: Mon Sep 11 2023 21:51:30 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 21:51:30"}
+info: Usuario admin@admin.com inició sesión. Última conexión: Mon Sep 11 2023 21:51:35 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-11 21:51:36"}
+http: Server on port 4000 {"timestamp":"2023-09-11 21:52:37"}
+http: DB is connected {"timestamp":"2023-09-11 21:52:39"}
