@@ -1,7 +1,10 @@
 import { Router } from "express";
-import productModel from "../dao/models/Products.js";
+import { __dirname, __filename } from '../../src/path.js' 
 import productDao from "../dao/productDao.js";
 import userDao from "../dao/userDao.js";
+import { transporter } from "../utils/nodemailer.js";
+import path from 'path'; 
+import fs from 'fs';
 
 const adminRouter = Router();
 
@@ -12,7 +15,7 @@ adminRouter.get("/", async (req, res) => {
     const email = req.session.user.email;
     const rol = req.session.user.rol;
     const cartId = req.session.user.cartId;
-    const userId = req.session.user._id;
+
     const options = {};
     options.limit = parseInt(limit);
     options.skip = (parseInt(page) - 1) * parseInt(limit);
@@ -25,7 +28,6 @@ adminRouter.get("/", async (req, res) => {
     const totalPages = Math.ceil(totalCount / options.limit);
 
     const products = await productsQuery;
-
 
     const response = {
       status: "success",
@@ -96,7 +98,7 @@ adminRouter.post("/products/:id/update-price", async (req, res) => {
       return res.status(404).send("Producto no encontrado");
     }
     product.price = parseInt(amount);
-    await productDao.updatePrice(productId, parseInt(amount)); // Utilizar el DAO para actualizar el precio
+    await productDao.updatePrice(productId, parseInt(amount)); 
     req.session.message = "Se ha actualizado el precio del producto.";
     res.redirect(`/admin?message=${encodeURIComponent(req.session.message)}`);
   } catch (error) {
@@ -106,46 +108,85 @@ adminRouter.post("/products/:id/update-price", async (req, res) => {
 });
 
 // Ruta para eliminar un producto del market
+
 adminRouter.post("/products/:id/delete-product", async (req, res) => {
   try {
     const productId = req.params.id;
     const product = await productDao.getProductById(productId);
+
     if (!product) {
       return res.status(404).send("Producto no encontrado");
     }
+    const ownerEmail = product.owner;
+
+    // Verifica si product.thumbnail es una URL o una ruta local
+    const isThumbnailUrl = /^https:\/\//.test(product.thumbnail);
+    console.log(isThumbnailUrl)
+    console.log(product.thumbnail)
+    let attachments = [];
+
+    if (!isThumbnailUrl) {
+      // Si product.thumbnail no es una URL, es una ruta local
+      const thumbnailPath = path.join(__dirname, 'public', product.thumbnail);
+
+
+      try {
+        const fileData = fs.readFileSync(thumbnailPath);
+
+        // Agrega el archivo como un adjunto
+        attachments.push({
+          filename: 'portada.jpg', 
+          content: fileData, 
+          cid: 'imagen', 
+          contentType: 'image/jpeg',
+        });
+      } catch (error) {
+        console.error("Error al leer el archivo local:", error);
+      }
+    }
+
+    const htmlBody = `
+    <p>Estimado usuario,</p>
+    <p>El administrador ha eliminado el siguiente producto de la tienda:</p>
+    <table>
+      <tr>
+        <th>Nombre del producto</th>
+        <td>${product.title}</td>
+      </tr>
+      <tr>
+        <th>Precio</th>
+        <td>${product.price}</td>
+      </tr>
+      <tr>
+        <th>Stock</th>
+        <td>${product.stock}</td>
+      </tr>
+      <tr>
+        <th>Descripción del producto</th>
+        <td>${product.description}</td>
+      </tr>
+    </table>
+    <p>Imagen del producto:</p>
+    <img src="${product.thumbnail}" alt="Imagen del producto" style="max-width: 100%; height: auto;">
+    <p>Gracias por usar nuestra tienda en línea.</p>
+  `;
+
+    // Elimina el producto de la base de datos
     await productDao.deleteProduct(productId);
-    req.session.message = "Has eliminado un producto.";
+    req.session.message = "Has eliminado un producto. Se envía correo al propietario del producto informando la eliminación";
+
+    // Envía el correo electrónico al propietario del producto con los archivos adjuntos
+    await transporter.sendMail({
+      to: ownerEmail, // Envía el correo al correo electrónico del propietario
+      subject: "Un producto de la tienda Ebookstotal ha sido eliminado por el administrador",
+      html: htmlBody,
+      attachments: attachments, 
+    });
+
     res.redirect(`/admin?message=${encodeURIComponent(req.session.message)}`);
   } catch (error) {
     console.error("Error al eliminar un producto:", error);
     res.status(500).send("Error al eliminar un producto");
-  }
-});
-
-// Ruta para agregar producto
-adminRouter.post("/products/owner/addproduct", async (req, res) => {
-  try {
-    const { code, title, description, stock, id, status, price, thumbnail } =
-      req.body;
-
-    // Crear un nuevo producto utilizando el modelo y el email del usuario logeado
-    const newProduct = new productModel({
-      code,
-      title,
-      description,
-      stock,
-      id,
-      status: true,
-      price,
-      thumbnail,
-      owner: req.session.user.email,
-    });
-    await productDao.addProduct(newProduct);
-    req.session.message = "Producto agregado exitosamente.";
-    res.redirect(`/admin?message=${encodeURIComponent(req.session.message)}`);
-  } catch (error) {
-    console.error("Error al agregar un producto:", error);
-    res.status(500).send("Error al agregar un producto");
   }
 });
 
@@ -189,7 +230,6 @@ adminRouter.get("/adminUser", async (req, res) => {
     const userName = req.session.user.first_name;
     const email = req.session.user.email;
     const rol = req.session.user.rol;
-    const cartId = req.session.user.cartId;
     const options = {};
     options.limit = parseInt(limit);
     options.skip = (parseInt(page) - 1) * parseInt(limit);
@@ -264,7 +304,7 @@ adminRouter.get("/adminUser", async (req, res) => {
 // Ruta para eliminar un usuario
 adminRouter.post("/adminUsers/:userId/delete-user", async (req, res) => {
   try {
-    const userId = req.params.userId; // Cambiado de req.params.id a req.params.userId
+    const userId = req.params.userId;
     const user = await userDao.getUserById(userId);
     if (!user) {
       return res.status(404).send("Usuario no encontrado");
