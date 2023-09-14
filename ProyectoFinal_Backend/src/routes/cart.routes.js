@@ -1,13 +1,11 @@
 import { Router } from "express";
-import { sumarProductosIguales, calcularTotal } from "../utils/utilsCarts.js";
+import { sumarProductosIguales, calcularTotal, contarProductosEnCarrito } from "../utils/utilsCarts.js";
 import { loggerDev, loggerProd } from "../utils/logger.js";
 import cartDao from "../dao/cartDao.js";
 import productDao from "../dao/productDao.js"; 
 import purchaseDao from "../dao/purchaseDao.js";
 
-
 const cartRouter = Router();
-
 
 // Agregar producto a un carrito
 cartRouter.post("/:cartId/products/:productId", async (req, res) => {
@@ -62,6 +60,8 @@ cartRouter.get("/:cartId", async (req, res) => {
     }
 
     const summedProducts = sumarProductosIguales(cart.products); 
+    const totalProductosEnCarrito = contarProductosEnCarrito(cart.products);
+
     const message = req.session.message;
     req.session.message = null; 
     loggerProd.info(
@@ -74,6 +74,7 @@ cartRouter.get("/:cartId", async (req, res) => {
       userId : userId,
       products: summedProducts,
       total: calcularTotal(summedProducts),
+      totalProductosEnCarrito: totalProductosEnCarrito, 
       message: message,
       success: "Bienvenido al Carrito de compras" 
     });

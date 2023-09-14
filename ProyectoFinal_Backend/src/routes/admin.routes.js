@@ -1,32 +1,44 @@
 import { Router } from "express";
-import { __dirname, __filename } from '../../src/path.js' 
+import { __dirname, __filename } from "../../src/path.js";
 import productDao from "../dao/productDao.js";
 import userDao from "../dao/userDao.js";
 import { transporter } from "../utils/nodemailer.js";
-import path from 'path'; 
-import fs from 'fs';
+import path from "path";
+import fs from "fs";
 
 const adminRouter = Router();
 
 adminRouter.get("/", async (req, res) => {
   try {
-    const { limit = 12, page = 1, sort, query, message } = req.query;
+    const {limit = 12,page = 1,sort,query, owner, message,
+    } = req.query;
+
     const userName = req.session.user.first_name;
     const email = req.session.user.email;
     const rol = req.session.user.rol;
     const cartId = req.session.user.cartId;
+    const user = req.session.user;
+    const userProfileImage = user.documents && user.documents.find((doc) => doc.name === 'Foto de perfil');
 
     const options = {};
     options.limit = parseInt(limit);
     options.skip = (parseInt(page) - 1) * parseInt(limit);
 
-    const queryOptions = query ? { title: { $regex: query, $options: "i" } } : {};
-    
-    let productsQuery = productDao.getProducts(queryOptions, options, sort);
+    const queryOptions = {};
 
+    if (query) {
+      queryOptions.title = { $regex: query, $options: "i" };
+    }
+
+    // Agregar la opción de filtrar por "owner" si se proporciona
+    if (owner) {
+      queryOptions.owner = owner;
+    }
+
+    let productsQuery = productDao.getProducts(queryOptions, options, sort);
     const totalCount = await productDao.getTotalProductCount(queryOptions);
     const totalPages = Math.ceil(totalCount / options.limit);
-
+    const storeList = await productDao.getDistinctOwners();
     const products = await productsQuery;
 
     const response = {
@@ -56,19 +68,23 @@ adminRouter.get("/", async (req, res) => {
       partials: {
         navbar: "navbar",
       },
+      userProfileImage: userProfileImage,
       products: products,
       response: response,
       userName: userName,
       email: email,
       rol: rol,
       cartId: cartId,
+      storeList: storeList,
       message: message || "",
+      selectedOwner: owner,
     });
   } catch (error) {
     console.log("Error al recibir los productos:", error);
     res.status(500).send("Error al recibir los productos:");
   }
 });
+
 // Ruta para actualizar stock
 adminRouter.post("/products/:id/update-stock", async (req, res) => {
   try {
@@ -98,7 +114,7 @@ adminRouter.post("/products/:id/update-price", async (req, res) => {
       return res.status(404).send("Producto no encontrado");
     }
     product.price = parseInt(amount);
-    await productDao.updatePrice(productId, parseInt(amount)); 
+    await productDao.updatePrice(productId, parseInt(amount));
     req.session.message = "Se ha actualizado el precio del producto.";
     res.redirect(`/admin?message=${encodeURIComponent(req.session.message)}`);
   } catch (error) {
@@ -121,24 +137,23 @@ adminRouter.post("/products/:id/delete-product", async (req, res) => {
 
     // Verifica si product.thumbnail es una URL o una ruta local
     const isThumbnailUrl = /^https:\/\//.test(product.thumbnail);
-    console.log(isThumbnailUrl)
-    console.log(product.thumbnail)
+    console.log(isThumbnailUrl);
+    console.log(product.thumbnail);
     let attachments = [];
 
     if (!isThumbnailUrl) {
       // Si product.thumbnail no es una URL, es una ruta local
-      const thumbnailPath = path.join(__dirname, 'public', product.thumbnail);
-
+      const thumbnailPath = path.join(__dirname, "public", product.thumbnail);
 
       try {
         const fileData = fs.readFileSync(thumbnailPath);
 
         // Agrega el archivo como un adjunto
         attachments.push({
-          filename: 'portada.jpg', 
-          content: fileData, 
-          cid: 'imagen', 
-          contentType: 'image/jpeg',
+          filename: "portada.jpg",
+          content: fileData,
+          cid: "imagen",
+          contentType: "image/jpeg",
         });
       } catch (error) {
         console.error("Error al leer el archivo local:", error);
@@ -173,14 +188,16 @@ adminRouter.post("/products/:id/delete-product", async (req, res) => {
 
     // Elimina el producto de la base de datos
     await productDao.deleteProduct(productId);
-    req.session.message = "Has eliminado un producto. Se envía correo al propietario del producto informando la eliminación";
+    req.session.message =
+      "Has eliminado un producto. Se envía correo al propietario del producto informando la eliminación";
 
     // Envía el correo electrónico al propietario del producto con los archivos adjuntos
     await transporter.sendMail({
       to: ownerEmail, // Envía el correo al correo electrónico del propietario
-      subject: "Un producto de la tienda Ebookstotal ha sido eliminado por el administrador",
+      subject:
+        "Un producto de la tienda Ebookstotal ha sido eliminado por el administrador",
       html: htmlBody,
-      attachments: attachments, 
+      attachments: attachments,
     });
 
     res.redirect(`/admin?message=${encodeURIComponent(req.session.message)}`);
@@ -300,6 +317,7 @@ adminRouter.get("/adminUser", async (req, res) => {
     res.status(500).send("Error al recibir la lista de usuarios:");
   }
 });
+
 
 // Ruta para eliminar un usuario
 adminRouter.post("/adminUsers/:userId/delete-user", async (req, res) => {

@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { loggerProd } from "../utils/logger.js";
 import productDao from "../dao/productDao.js";
-import { productUploadMiddleware }from "../middleware/multer.js";
+import { productUploadMiddleware} from "../middleware/multer.js";
 
 const premiumRouter = Router();
 
@@ -20,6 +20,8 @@ premiumRouter.get("/admin", async (req, res) => {
     const { first_name: userName, email, rol, cartId, _id: userId } = req.session.user;
     const options = { limit: parseInt(limit), skip: (parseInt(page) - 1) * parseInt(limit) };
     const queryOptions = query ? { title: { $regex: query, $options: "i" } } : {};
+    const user = req.session.user;
+    const userProfileImage = user.documents && user.documents.find((doc) => doc.name === 'Foto de perfil');
 
     const totalCount = await productDao.getTotalProductCount({ ...queryOptions, owner: email });
     const totalPages = Math.ceil(totalCount / options.limit);
@@ -50,6 +52,7 @@ premiumRouter.get("/admin", async (req, res) => {
         partials: {
           navbar: "navbar",
         },
+        userProfileImage: userProfileImage,
         products: products,
         response: response,
         userName: userName,

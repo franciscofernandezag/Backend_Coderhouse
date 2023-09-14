@@ -75,6 +75,17 @@ const productDao = {
       throw new Error(`Error al agregar el producto: ${error.message}`);
     }
   },
+
+  async getDistinctOwners() {
+    try {
+      const distinctOwners = await productModel.distinct("owner");
+
+      return distinctOwners;
+    } catch (error) {
+      throw new Error(`Error al obtener propietarios únicos: ${error.message}`);
+    }
+  },
+
 };
 
 export default productDao;

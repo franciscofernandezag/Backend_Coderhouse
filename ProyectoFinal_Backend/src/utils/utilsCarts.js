@@ -27,4 +27,12 @@ export function sumarProductosIguales(products) {
     });
     return total;
   }
+  export function contarProductosEnCarrito(products) {
+    let totalProductos = 0;
   
+    products.forEach((product) => {
+      totalProductos += product.quantity;
+    });
+  
+    return totalProductos;
+  }

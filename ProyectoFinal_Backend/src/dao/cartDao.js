@@ -48,6 +48,22 @@ const cartDao = {
         }
     },
 
+    async getCartByUserId(userId) {
+        try {
+            return await CartModel.findOne({ user: userId }).populate("products.id");
+        } catch (error) {
+            throw new Error(`Error al obtener el carrito por ID de usuario: ${error.message}`);
+        }
+    },
+
+    async getTotalProductCount(queryOptions) {
+        try {
+          return await productModel.countDocuments(queryOptions);
+        } catch (error) {
+          throw new Error(`Error al obtener el conteo total de productos: ${error.message}`);
+        }
+      },
+
 };
 
 export default cartDao;
