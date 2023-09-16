@@ -147,3 +147,9 @@ http: Server on port 4000 {"timestamp":"2023-09-16 13:23:52"}
 http: DB is connected {"timestamp":"2023-09-16 13:23:53"}
 info: Usuario fco.fernandez.ag@gmail.com autenticado a través de GitHub. Última conexión: Sat Sep 16 2023 13:31:20 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-16 13:31:21"}
 info: Usuario fco.fernandez.ag@gmail.com cerró sesión. Última conexión: Sat Sep 16 2023 13:31:32 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-16 13:31:32"}
+http: Server on port 4000 {"timestamp":"2023-09-16 16:59:04"}
+http: DB is connected {"timestamp":"2023-09-16 16:59:06"}
+http: Server on port 4000 {"timestamp":"2023-09-16 17:31:48"}
+http: DB is connected {"timestamp":"2023-09-16 17:31:49"}
+info: Usuario testroutes@testroutes.com inició sesión. Última conexión: Sat Sep 16 2023 17:32:06 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-16 17:32:06"}
+info: Usuario testroutes@testroutes.com inició sesión. Última conexión: Sat Sep 16 2023 17:32:07 GMT-0300 (hora de verano de Chile) {"timestamp":"2023-09-16 17:32:07"}
